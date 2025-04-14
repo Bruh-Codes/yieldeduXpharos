@@ -16,9 +16,10 @@ export default function CookiePolicyPage() {
 						<strong>Last Updated:</strong> March 11, 2025
 					</p>
 					<p className="mb-4">
-						This Cookie Policy explains how YieldEdu Protocol (&quot;we&quot;,
-						&quot;us&quot;, or &quot;our&quot;) uses cookies and similar
-						technologies when you visit our website or use our platform.
+						This Cookie Policy explains how YieldPharos Protocol
+						(&quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) uses cookies
+						and similar technologies when you visit our website or use our
+						platform.
 					</p>
 					<p>
 						By using our platform, you consent to the use of cookies as

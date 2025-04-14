@@ -2,14 +2,14 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
 	return {
-		name: "YieldEdu",
-		short_name: "YieldEdu",
+		name: " YieldPharos",
+		short_name: " YieldPharos",
 		description:
-			"A Web3 protocol that lets you earn guaranteed yields on your Pharos tokens while learning about Web3.",
+			"The Web3 protocol that lets you earn guaranteed yields on your Pharos tokens while learning about Web3.",
 		start_url: "/",
 		display: "standalone",
 		background_color: "#f0f4f8",
-		theme_color: "#84cc16",
+		theme_color: "#131D45",
 		scope: "/",
 		screenshots: [
 			{

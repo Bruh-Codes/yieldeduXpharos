@@ -12,9 +12,9 @@ import { yieldEduMetadata } from "@/utils/metadata";
 import FaqItem from "@/components/FaqItem";
 export const metadata: Metadata = {
 	...yieldEduMetadata,
-	title: "YieldEdu - Support",
+	title: " YieldPharos - Support",
 	description:
-		"YieldEdu - Contact our support team for assistance with your YieldEdu account, staking, and more.",
+		" YieldPharos - Contact our support team for assistance with your  YieldPharos account, staking, and more.",
 };
 
 const page = () => {
@@ -106,16 +106,16 @@ const page = () => {
 
 					<div className="space-y-4">
 						<FaqItem
-							question="What is YieldEdu Protocol?"
-							answer="YieldEdu Protocol is a learn-to-earn platform that combines DeFi education with real staking opportunities. Users can earn rewards by learning about DeFi concepts and staking their tokens, while educators can monetize their knowledge by creating courses and content."
+							question="What is  YieldPharos Protocol?"
+							answer=" YieldPharos Protocol is a learn-to-earn platform that combines DeFi education with real staking opportunities. Users can earn rewards by learning about DeFi concepts and staking their tokens, while educators can monetize their knowledge by creating courses and content."
 						/>
 						<FaqItem
-							question="How do I earn rewards on YieldEdu?"
+							question="How do I earn rewards on  YieldPharos?"
 							answer="You can earn rewards in two main ways: by staking your tokens to earn APY, and by completing educational content to earn APY boosts and bonus tokens. The more you learn, the higher your potential rewards."
 						/>
 						<FaqItem
-							question="What tokens can I stake on YieldEdu?"
-							answer="Currently, YieldEdu supports staking of  PT
+							question="What tokens can I stake on  YieldPharos?"
+							answer="Currently,  YieldPharos supports staking of  PT
  tokens and our native platform token. We plan to expand support for additional tokens in the future based on community feedback and governance decisions."
 						/>
 						<FaqItem
@@ -123,7 +123,7 @@ const page = () => {
 							answer={`Yes, the minimum staking amount is ${MINIMUM_PT_TOKENS}. This minimum helps ensure efficient operation of the staking protocol and meaningful rewards for participants.`}
 						/>
 						<FaqItem
-							question="How secure is YieldEdu Protocol?"
+							question="How secure is  YieldPharos Protocol?"
 							answer="Security is our top priority. We use OCID for student authentication, implement industry-standard security practices, and our smart contracts have undergone rigorous audits by security auditors. We also maintain a bug bounty program to continuously improve our security posture."
 						/>
 					</div>

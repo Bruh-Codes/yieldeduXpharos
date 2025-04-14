@@ -1,4 +1,4 @@
-# 🌟 YieldEdu X Pharos
+# 🌟  YieldPharos X Pharos
  Fixed Yield Protocol
 
 A decentralized fixed-yield protocol built on pharos
@@ -163,7 +163,7 @@ npx hardhat ignition deploy ./ignition/modules/YieldPool.ts --['your network']
    sometimes connections to your metamask will not be detected. This is a reown library problem. to resolve this issue,
 
 - Click on your metamask
-- Click on the green dot on the top-right beside your pharosions menu
+- Click on the green dot on the top-right beside your pharos menu
 - Disconnect and try again connecting on th site.
 
 - Click on Metamask and go to settings

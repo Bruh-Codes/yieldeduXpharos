@@ -13,13 +13,13 @@ const Footer = () => {
 							<Link href={"/"}>
 								<Image
 									src={YieldEDUIcon}
-									alt="YieldEdu Logo"
+									alt=" YieldPharos Logo"
 									className="size-14 aspect-square"
 								/>
 							</Link>
 							<div>
 								<h1 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-sky-500 to-yellow-500">
-									YieldEdu
+									YieldPharos
 								</h1>
 							</div>
 						</div>
@@ -136,7 +136,8 @@ const Footer = () => {
 
 				<div className="mt-12 pt-8 border-t border-slate-200 dark:border-slate-800/60 flex flex-col md:flex-row justify-between items-center">
 					<p className="text-sm text-slate-500 dark:text-slate-400">
-						© {new Date().getFullYear()} YieldEdu Protocol. All rights reserved.
+						© {new Date().getFullYear()} YieldPharos Protocol. All rights
+						reserved.
 					</p>
 					<div className="mt-4 md:mt-0 flex gap-6">
 						<a

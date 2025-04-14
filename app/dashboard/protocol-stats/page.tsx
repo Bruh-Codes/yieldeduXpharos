@@ -11,9 +11,9 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
 	...yieldEduMetadata,
-	title: "YieldEdu - Protocol stats",
+	title: " YieldPharos - Protocol stats",
 	description:
-		"Explore key metrics and performance indicators of the YieldEdu protocol, including Total Value Locked, Active Stakers, and Average APY.",
+		"Explore key metrics and performance indicators of the  YieldPharos protocol, including Total Value Locked, Active Stakers, and Average APY.",
 };
 
 function StatsCard({
@@ -65,7 +65,7 @@ const page = () => {
 						Protocol Statistics
 					</h1>
 					<p className="text-slate-500 dark:text-slate-400">
-						Overview of YieldEdu protocol metrics
+						Overview of YieldPharos protocol metrics
 					</p>
 				</div>
 			</div>

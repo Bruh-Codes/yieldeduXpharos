@@ -7,7 +7,7 @@ if (!projectId) {
 	throw new Error("PROJECT_ID environment variable is not defined");
 }
 
-export const eduTestnet = defineChain({
+export const pharosTestnet = defineChain({
 	id: 50002,
 	name: "pharos Devnet",
 	chainNamespace: "eip155",
@@ -27,12 +27,12 @@ export const eduTestnet = defineChain({
 	blockExplorers: {
 		default: {
 			name: "Pharos",
-			url: "https://edu-chain-testnet.blockscout.com",
+			url: "https://pharosscan.xyz",
 		},
 	},
 });
 
-export const networks = [eduTestnet];
+export const networks = [pharosTestnet];
 
 //Set up the Wagmi Adapter (Config)
 export const wagmiAdapter = new WagmiAdapter({

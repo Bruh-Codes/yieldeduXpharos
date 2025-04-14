@@ -13,8 +13,8 @@ import LearnClientPage from "./LearnClientPage";
 
 export const metadata: Metadata = {
 	...yieldEduMetadata,
-	title: "YieldEdu - Learning Center",
-	description: "Learn and earn rewards with YieldEdu",
+	title: " YieldPharos - Learning Center",
+	description: "Learn and earn rewards with  YieldPharos",
 };
 
 const Page = () => {

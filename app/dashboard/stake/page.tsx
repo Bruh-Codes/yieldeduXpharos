@@ -16,7 +16,7 @@ import StakingStats from "./StakingStats";
 
 export const metadata: Metadata = {
 	...yieldEduMetadata,
-	title: "YieldEdu - Stake tokens",
+	title: " YieldPharos - Stake tokens",
 	description:
 		"Stake your Pharos tokens to earn rewards, track your staking stats, and boost your APY by completing lessons.",
 };

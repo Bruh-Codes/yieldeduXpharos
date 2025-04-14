@@ -5,9 +5,9 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
 	...yieldEduMetadata,
-	title: "YieldEdu - About Us",
+	title: " YieldPharos - About Us",
 	description:
-		"Learn more about YieldEdu, our mission, and our story. Join us in revolutionizing DeFi education.",
+		"Learn more about  YieldPharos, our mission, and our story. Join us in revolutionizing DeFi education.",
 };
 
 export default function Page() {
@@ -39,10 +39,11 @@ export default function Page() {
 						Our Mission
 					</h2>
 					<p className="mb-4">
-						YieldEdu Protocol was founded with a simple yet powerful mission: to
-						make DeFi education accessible, rewarding, and directly connected to
-						real-world applications. We believe that the best way to learn is by
-						doing, and the best incentive for learning is earning real rewards.
+						YieldPharos Protocol was founded with a simple yet powerful mission:
+						to make DeFi education accessible, rewarding, and directly connected
+						to real-world applications. We believe that the best way to learn is
+						by doing, and the best incentive for learning is earning real
+						rewards.
 					</p>
 					<p>
 						Our learn-to-earn model bridges the gap between theoretical
@@ -57,14 +58,14 @@ export default function Page() {
 						Our Story
 					</h2>
 					<p className="mb-4">
-						YieldEdu was formally YieldStake and was conceived in 2024 by
+						YieldPharos was formally YieldStake and was conceived in 2024 by
 						Kamasah Dickson who saw a critical gap in the market: plenty of
 						educational resources existed for blockchain and DeFi, but few
 						connected learning directly to earning opportunities.
 					</p>
 					<p className="mb-4">
-						Determined to change this, we launched YieldEdu in 2024, combining
-						interactive learning, staking opportunities, and on-chain
+						Determined to change this, we launched YieldPharos in 2024,
+						combining interactive learning, staking opportunities, and on-chain
 						incentives. Our approach quickly gained traction, and in 2025, we
 						placed 4th in the DeFi category at the{" "}
 						<a

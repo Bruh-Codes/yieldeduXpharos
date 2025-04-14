@@ -20,7 +20,7 @@ export async function generateMetadata({
 
 	return {
 		...yieldEduMetadata,
-		title: `YieldEdu - Learn ${courseData?.title}`,
+		title: ` YieldPharos - Learn ${courseData?.title}`,
 		description: courseData?.description,
 	};
 }

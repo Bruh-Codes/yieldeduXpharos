@@ -3,10 +3,10 @@ import openGraphImage from "@/public/YieldEDU.png";
 import { Metadata } from "next";
 
 export const yieldEduMetadata: Metadata = {
-	title: "YieldEdu",
+	title: " YieldPharos",
 	description:
 		"A Web3 protocol that lets you earn guaranteed yields on your Pharos tokens while learning about Web3.",
-	applicationName: "YieldEdu",
+	applicationName: " YieldPharos",
 	icons: [icon.src],
 
 	authors: [{ name: "Kamasah Dickson", url: "https://github.com/Bruh-Codes" }],
@@ -25,10 +25,10 @@ export const yieldEduMetadata: Metadata = {
 	creator: "Kamasah Dickson",
 
 	openGraph: {
-		title: "YieldEdu",
+		title: " YieldPharos",
 		type: "website",
 		emails: ["kamasahdickson@gmail.com"],
-		siteName: "YieldEdu",
+		siteName: " YieldPharos",
 		description:
 			"A Web3 protocol that lets you earn guaranteed yields on your  Pharos tokens while learning about Web3.",
 		images: [openGraphImage.src, icon.src],
@@ -36,7 +36,7 @@ export const yieldEduMetadata: Metadata = {
 
 	twitter: {
 		card: "summary_large_image",
-		title: "YieldEdu",
+		title: " YieldPharos",
 		description:
 			"A Web3 protocol that lets you earn guaranteed yields on your Pharos tokens while learning about Web3.",
 		images: [openGraphImage.src, icon.src],

@@ -18,8 +18,8 @@ export default function TermsOfServicePage() {
 						<strong>Last Updated:</strong> March 11, 2025
 					</p>
 					<p className="mb-4">
-						Welcome to YieldEdu Protocol. These Terms of Service
-						(&quot;Terms&quot;) govern your use of the YieldEdu Protocol
+						Welcome to YieldPharos Protocol. These Terms of Service
+						(&quot;Terms&quot;) govern your use of the YieldPharos Protocol
 						platform, website, and services (collectively, the
 						&quot;Service&quot;). By accessing or using the Service, you agree
 						to be bound by these Terms.
@@ -52,7 +52,7 @@ export default function TermsOfServicePage() {
 					</h2>
 					<p className="mb-4">
 						To use the Service, you must be at least 18 years old and capable of
-						forming a binding contract with YieldEdu Protocol. By using the
+						forming a binding contract with YieldPharos Protocol. By using the
 						Service, you represent and warrant that you meet these requirements.
 					</p>
 					<p>
@@ -89,10 +89,11 @@ export default function TermsOfServicePage() {
 						4. Educational Content and Staking
 					</h2>
 					<p className="mb-4">
-						YieldEdu Protocol provides educational content about decentralized
-						finance (DeFi) and opportunities to stake cryptocurrencies. We
-						strive to provide accurate and up-to-date information, but we do not
-						guarantee the accuracy, completeness, or usefulness of any content.
+						YieldPharos Protocol provides educational content about
+						decentralized finance (DeFi) and opportunities to stake
+						cryptocurrencies. We strive to provide accurate and up-to-date
+						information, but we do not guarantee the accuracy, completeness, or
+						usefulness of any content.
 					</p>
 					<p className="mb-4">
 						<strong>Educational Content:</strong> The educational content on our
@@ -116,7 +117,7 @@ export default function TermsOfServicePage() {
 					</h2>
 					<p className="mb-4">
 						The Service and its original content, features, and functionality
-						are owned by YieldEdu Protocol and are protected by international
+						are owned by YieldPharos Protocol and are protected by international
 						copyright, trademark, patent, trade secret, and other intellectual
 						property or proprietary rights laws.
 					</p>
@@ -164,7 +165,7 @@ export default function TermsOfServicePage() {
 						7. Limitation of Liability
 					</h2>
 					<p className="mb-4">
-						To the maximum extent permitted by law, YieldEdu Protocol and its
+						To the maximum extent permitted by law, YieldPharos Protocol and its
 						officers, directors, employees, and agents shall not be liable for
 						any indirect, incidental, special, consequential, or punitive
 						damages, including lost profits, arising out of or relating to your

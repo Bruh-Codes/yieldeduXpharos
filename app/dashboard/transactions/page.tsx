@@ -10,9 +10,9 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
 	...yieldEduMetadata,
-	title: "YieldEdu - Transactions",
+	title: " YieldPharos - Transactions",
 	description:
-		"View and manage your transaction history effortlessly with YieldEdu. Keep track of your recent activities in one place.",
+		"View and manage your transaction history effortlessly with  YieldPharos. Keep track of your recent activities in one place.",
 };
 
 const page = () => {

@@ -66,13 +66,13 @@ const DashboardHeader = () => {
 						<div className="hidden lg:hidden sm:flex items-center gap-3">
 							<Image
 								src={YieldEDUIcon}
-								alt="YieldEdu Logo"
+								alt=" YieldPharos Logo"
 								className="size-14 aspect-square"
 								priority
 							/>
 							<div>
 								<h1 className="text-2xl  font-bold bg-clip-text text-transparent bg-gradient-to-r from-sky-500 to-yellow-500">
-									YieldEDU
+									YieldPharos
 								</h1>
 								<p className="text-sm text-slate-500 dark:text-slate-400">
 									Learn, Stake and Earn

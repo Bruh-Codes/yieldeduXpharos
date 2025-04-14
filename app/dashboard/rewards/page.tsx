@@ -23,7 +23,7 @@ import React from "react";
 
 export const metadata: Metadata = {
 	...yieldEduMetadata,
-	title: "YieldEdu - Rewards",
+	title: " YieldPharos - Rewards",
 	description:
 		"View and manage staking rewards, track progress, and claim earnings effortlessly.",
 };
@@ -40,32 +40,26 @@ const Page = () => {
 	const rewardsData: Irewards[] = [
 		// {
 		// 	id: "1234",
-		// 	amount: "1,000  PT
-",
+		// 	amount: "1,000  PT,
 		// 	duration: "30 Days",
 		// 	apy: "12.5%",
-		// 	earned: "10.27  PT
-",
+		// 	earned: "10.27  PT,
 		// 	status: "Claimable",
 		// },
 		// {
 		// 	id: "2345",
-		// 	amount: "500  PT
-",
+		// 	amount: "500  PT,
 		// 	duration: "60 Days",
 		// 	apy: "15.0%",
-		// 	earned: "12.33  PT
-",
+		// 	earned: "12.33  PT,
 		// 	status: "Accruing",
 		// },
 		// {
 		// 	id: "3456",
-		// 	amount: "2,000  PT
-",
+		// 	amount: "2,000  PT,
 		// 	duration: "90 Days",
 		// 	apy: "18.5%",
-		// 	earned: "23.10  PT
-",
+		// 	earned: "23.10  PT,
 		// 	status: "Accruing",
 		// },
 	];

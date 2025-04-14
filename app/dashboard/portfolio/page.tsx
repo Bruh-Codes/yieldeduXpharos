@@ -10,9 +10,9 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
 	...yieldEduMetadata,
-	title: "YieldEdu - Portfolio",
+	title: " YieldPharos - Portfolio",
 	description:
-		"View and track your portfolio performance and asset allocations with YieldEdu.",
+		"View and track your portfolio performance and asset allocations with  YieldPharos.",
 };
 
 const page = () => {

@@ -9,7 +9,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
 	...yieldEduMetadata,
-	title: "YieldEdu - Settings",
+	title: " YieldPharos - Settings",
 };
 
 export default function SettingsPage() {

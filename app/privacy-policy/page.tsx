@@ -18,7 +18,7 @@ export default function PrivacyPolicyPage() {
 						<strong>Last Updated:</strong> March 11, 2025
 					</p>
 					<p className="mb-4">
-						Welcome to YieldEdu Protocol&apos;s Privacy Policy. This document
+						Welcome to YieldPharos Protocol&apos;s Privacy Policy. This document
 						explains how we collect, use, and protect your personal information
 						when you use our platform.
 					</p>

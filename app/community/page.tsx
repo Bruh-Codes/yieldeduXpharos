@@ -29,9 +29,9 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
 	...yieldEduMetadata,
-	title: "YieldEdu - Community",
+	title: " YieldPharos - Community",
 	description:
-		"Join the YieldEdu community to learn, share, and grow in the world of DeFi education. Connect with fellow students, educators, and enthusiasts.",
+		"Join the  YieldPharos community to learn, share, and grow in the world of DeFi education. Connect with fellow students, educators, and enthusiasts.",
 };
 
 export default function CommunityPage() {
@@ -46,7 +46,7 @@ export default function CommunityPage() {
 			<div className="space-y-8 container mx-auto px-5 py-28 md:max-w-5xl">
 				<section className="mb-10">
 					<p className="mb-6 text-lg text-slate-600 dark:text-slate-300">
-						YieldEdu community brings together students, educators, and DeFi
+						YieldPharos community brings together students, educators, and DeFi
 						enthusiasts from around the world. Join us to share knowledge,
 						discuss strategies, and help shape the future of DeFi education.
 					</p>
@@ -157,7 +157,7 @@ export default function CommunityPage() {
 												Strategies Workshop
 											</li>
 											<li className="text-sm text-slate-600 dark:text-slate-300">
-												<span className="font-medium">Apr 5:</span> YieldEdu
+												<span className="font-medium">Apr 5:</span> YieldPharos
 												Community Meetup - NYC
 											</li>
 										</ul>
@@ -184,7 +184,7 @@ export default function CommunityPage() {
 						<SocialCard
 							icon={<Twitter className="w-6 h-6" />}
 							name="Twitter"
-							handle="@YieldEdu"
+							handle="@ YieldPharos"
 							color="bg-blue-500"
 							url={process.env.NEXT_PUBLIC_TWITTER_URL}
 						/>
@@ -192,14 +192,14 @@ export default function CommunityPage() {
 						<SocialCard
 							icon={<Github className="w-6 h-6" />}
 							name="GitHub"
-							handle="YieldEdu"
+							handle=" YieldPharos"
 							color="bg-slate-800"
 							url={process.env.NEXT_PUBLIC_GITHUB_URL}
 						/>
 						<SocialCard
 							icon={<Globe className="w-6 h-6" />}
 							name="Telegram"
-							handle="YieldEdu Official"
+							handle=" YieldPharos Official"
 							color="bg-sky-500"
 							url={process.env.NEXT_PUBLIC_TELEGRAM}
 						/>
@@ -222,7 +222,7 @@ export default function CommunityPage() {
 										Become an Ambassador
 									</h3>
 									<p className="text-slate-700 dark:text-slate-300 mb-4">
-										Represent YieldEdu in your community, help others learn
+										Represent YieldPharos in your community, help others learn
 										about DeFi, and earn exclusive rewards.
 									</p>
 									<Button
@@ -345,7 +345,7 @@ export default function CommunityPage() {
 									Translations
 								</h3>
 								<p className="text-slate-600 dark:text-slate-300 mb-4">
-									Help make YieldEdu accessible to a global audience by
+									Help make YieldPharos accessible to a global audience by
 									contributing translations in your language.
 								</p>
 								<Button disabled variant="outline" className="w-full">

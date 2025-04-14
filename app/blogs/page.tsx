@@ -10,9 +10,9 @@ import { yieldEduMetadata } from "@/utils/metadata";
 
 export const metadata: Metadata = {
 	...yieldEduMetadata,
-	title: "YieldEdu - Blogs",
+	title: " YieldPharos - Blogs",
 	description:
-		"Explore our latest blogs and articles on DeFi, tutorials, and education. Stay updated with YieldEdu's insights and community news.",
+		"Explore our latest blogs and articles on DeFi, tutorials, and education. Stay updated with  YieldPharos's insights and community news.",
 };
 
 export default function BlogPage() {
@@ -167,11 +167,11 @@ export default function BlogPage() {
 								</span>
 							</div>
 							<h3 className="text-lg font-semibold mb-2 text-slate-900 dark:text-white">
-								Beginner's Guide to Staking on YieldEdu
+								Beginner's Guide to Staking on  YieldPharos
 							</h3>
 							<p className="text-sm text-slate-600 dark:text-slate-300 mb-3">
 								A step-by-step tutorial for newcomers looking to start staking
-								on YieldEdu Protocol.
+								on  YieldPharos Protocol.
 							</p>
 							<Link href="/blog/beginners-guide">
 								<Button
@@ -237,7 +237,7 @@ export default function BlogPage() {
 								</span>
 							</div>
 							<h3 className="text-lg font-semibold mb-2 text-slate-900 dark:text-white">
-								YieldEdu Protocol Announces New Educator Rewards Program
+								 YieldPharos Protocol Announces New Educator Rewards Program
 							</h3>
 							<p className="text-sm text-slate-600 dark:text-slate-300 mb-3">
 								Learn about our enhanced rewards system for educators

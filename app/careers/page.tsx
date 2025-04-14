@@ -17,9 +17,9 @@ import { yieldEduMetadata } from "@/utils/metadata";
 
 export const metadata: Metadata = {
 	...yieldEduMetadata,
-	title: "YieldEdu - Careers",
+	title: " YieldPharos - Careers",
 	description:
-		"Join the YieldEdu team and help us revolutionize DeFi education and staking. Explore our open positions and apply today.",
+		"Join the  YieldPharos team and help us revolutionize DeFi education and staking. Explore our open positions and apply today.",
 };
 
 export default function CareersPage() {
@@ -34,7 +34,7 @@ export default function CareersPage() {
 			<main className="space-y-8 container mx-auto px-5 md:max-w-5xl py-28">
 				<section className="mb-10">
 					<p className="mb-6 text-lg text-slate-600 dark:text-slate-300">
-						YieldEdu Protocol is on a mission to revolutionize DeFi education
+						YieldPharos Protocol is on a mission to revolutionize DeFi education
 						and staking. We&apos;re looking for passionate, innovative thinkers
 						to join our growing team and help us build the future of
 						learn-to-earn.
@@ -77,7 +77,7 @@ export default function CareersPage() {
 
 					<div className="bg-gradient-to-r from-sky-50 to-yellow-50 dark:from-sky-500/10 dark:to-yellow-500/10 rounded-xl p-6 border border-sky-200 dark:border-sky-500/30 text-center">
 						<h2 className="text-2xl font-bold mb-4 text-slate-900 dark:text-white">
-							Why Join YieldEdu?
+							Why Join YieldPharos?
 						</h2>
 						<div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left max-w-3xl mx-auto">
 							<div className="flex items-start gap-2">

@@ -78,7 +78,7 @@ export default function Page() {
 										in the World of DeFi
 									</h1>
 									<p className="text-lg md:text-xl text-slate-600 dark:text-slate-300 mb-8 max-w-2xl">
-										YieldEdu combines education with real-world DeFi staking,
+										YieldPharos combines education with real-world DeFi staking,
 										allowing you to earn while you learn.
 									</p>
 
@@ -181,7 +181,7 @@ export default function Page() {
 							<h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900 dark:text-white">
 								Why Choose{" "}
 								<span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-500 to-yellow-500">
-									YieldEdu
+									YieldPharos
 								</span>
 							</h2>
 							<p className="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
@@ -219,7 +219,7 @@ export default function Page() {
 								Simple Process
 							</Badge>
 							<h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900 dark:text-white">
-								How YieldEdu{" "}
+								How YieldPharos{" "}
 								<span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-500 to-yellow-500">
 									Works
 								</span>
@@ -294,7 +294,7 @@ export default function Page() {
 
 						<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 							<TestimonialCard
-								quote="YieldEdu completely changed how I approach DeFi education."
+								quote=" YieldPharos completely changed how I approach DeFi education."
 								name="Sarah"
 								role="Developer"
 								image=""
@@ -336,7 +336,7 @@ export default function Page() {
 									Ready to Start Your DeFi Journey?
 								</h2>
 								<p className="text-lg text-white/90 max-w-2xl mx-auto mb-10">
-									Join thousands of students and educators on YieldEdu and
+									Join thousands of students and educators on YieldPharos and
 									transform your understanding of DeFi while earning real
 									rewards.
 								</p>

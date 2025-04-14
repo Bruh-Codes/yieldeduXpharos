@@ -17,9 +17,9 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
 	...yieldEduMetadata,
-	title: "YieldEdu - Features",
+	title: " YieldPharos - Features",
 	description:
-		"Discover the unique features of YieldEdu Protocol. Learn-to-earn, staking rewards, and more.",
+		"Discover the unique features of  YieldPharos Protocol. Learn-to-earn, staking rewards, and more.",
 };
 
 function FeatureCard({
@@ -61,7 +61,7 @@ const FeaturesPage = () => {
 						Overview
 					</h2>
 					<p className="mb-4">
-						YieldEdu Protocol combines educational content with real DeFi
+						YieldPharos Protocol combines educational content with real DeFi
 						staking opportunities, creating a unique learn-to-earn ecosystem
 						where knowledge translates directly into rewards.
 					</p>

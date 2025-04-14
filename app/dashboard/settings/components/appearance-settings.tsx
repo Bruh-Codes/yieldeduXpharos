@@ -22,7 +22,7 @@ export function AppearanceSettings() {
 				<CardHeader>
 					<CardTitle>Theme</CardTitle>
 					<CardDescription>
-						Customize how YieldEdu looks on your device
+						Customize how YieldPharos looks on your device
 					</CardDescription>
 				</CardHeader>
 				<CardContent className="space-y-6">

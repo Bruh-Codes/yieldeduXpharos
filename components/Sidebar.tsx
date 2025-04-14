@@ -90,7 +90,7 @@ const Sidebar = () => {
 								<Link href={"/"}>
 									<Image
 										src={YieldEDUIcon}
-										alt="YieldEdu Logo"
+										alt=" YieldPharos Logo"
 										priority
 										className="size-14 shrink-0 aspect-square"
 									/>
@@ -98,7 +98,7 @@ const Sidebar = () => {
 								{sidebarOpen && (
 									<div>
 										<h1 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-sky-500 to-yellow-500">
-											YieldEdu
+											YieldPharos
 										</h1>
 										<p className="text-xs text-slate-500 dark:text-slate-400">
 											Learn & Earn Protocol

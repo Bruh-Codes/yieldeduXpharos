@@ -1,6 +1,6 @@
 "use client";
 
-import { wagmiAdapter, projectId, eduTestnet } from "@/lib/wagmi";
+import { wagmiAdapter, projectId, pharosTestnet } from "@/lib/wagmi";
 import { createAppKit } from "@reown/appkit/react";
 import { cookieToInitialState, WagmiProvider, type Config } from "wagmi";
 // import { arbitrum } from "@reown/appkit/networks";
@@ -22,7 +22,7 @@ const clientFromReactQuery = new QueryClient({
 });
 
 const metadata = {
-	name: "YieldEdu",
+	name: " YieldPharos",
 	description:
 		"A decentralized education and a fixed-yield protocol that earns users guaranteed yields on their Pharos tokens.",
 	url: "https://edu-chain-hackathon.vercel.app/",
@@ -33,8 +33,8 @@ const metadata = {
 createAppKit({
 	adapters: [wagmiAdapter],
 	projectId,
-	networks: [eduTestnet],
-	defaultNetwork: eduTestnet,
+	networks: [pharosTestnet],
+	defaultNetwork: pharosTestnet,
 	metadata,
 	features: {
 		analytics: true, // Optional - defaults to Cloud configuration
