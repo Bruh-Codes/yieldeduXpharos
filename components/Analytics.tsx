@@ -36,7 +36,7 @@ const Analytics = ({ positions }: AnalyticsProps) => {
 
 	if (!positions || positions.length === 0) {
 		return (
-			<Card className="bg-slate-100 dark:bg-slate-900/50 border-slate-200 dark:border-slate-700 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500">
+			<Card className="bg-slate-100 dark:bg-[#1A103D] border-slate-200 dark:border-slate-700/40 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500">
 				<CardContent className="px-2 sm:p-6 flex items-center justify-center h-[200px]">
 					<p className="text-slate-400">No data available</p>
 				</CardContent>
@@ -45,7 +45,7 @@ const Analytics = ({ positions }: AnalyticsProps) => {
 	}
 
 	return (
-		<Card className="bg-slate-200 dark:bg-slate-800/50 border-none">
+		<Card className="bg-slate-200dark:bg-[#1A103D] border-none">
 			<CardContent className="px-2 sm:p-6">
 				<ChartContainer
 					config={chartConfig}

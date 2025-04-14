@@ -6,7 +6,7 @@ import "@openzeppelin/hardhat-upgrades";
 
 import { vars } from "hardhat/config";
 const ACCOUNT_PRIVATE_KEY = vars.get("ACCOUNT_PRIVATE_KEY");
-const ETHERSCAN_API_KEY = vars.get("ETHERSCAN_API_KEY");
+const PHAROS_API_KEY = vars.get("PHAROS_API_KEY");
 
 if (!ACCOUNT_PRIVATE_KEY) {
 	throw new Error(
@@ -14,9 +14,9 @@ if (!ACCOUNT_PRIVATE_KEY) {
 	);
 }
 
-if (!ETHERSCAN_API_KEY) {
+if (!PHAROS_API_KEY) {
 	throw new Error(
-		`ETHERSCAN_API_KEY is not set. "use npx hardhat vars set ETHERSCAN_API_KEY"`
+		`PHAROS_API_KEY is not set. "use npx hardhat vars set PHAROS_API_KEY"`
 	);
 }
 
@@ -46,7 +46,7 @@ const config = {
 
 	etherscan: {
 		apiKey: {
-			"edu-testnet": ETHERSCAN_API_KEY,
+			"edu-testnet": PHAROS_API_KEY,
 		},
 		customChains: [
 			{

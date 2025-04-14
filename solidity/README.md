@@ -1,15 +1,20 @@
-# 🌟 EDU Fixed Yield Protocol
+# 🌟 YieldEdu X Pharos
+ Fixed Yield Protocol
 
-A decentralized fixed-yield protocol built on EDU Chain that enables users to earn guaranteed yields through staking and participating in educational activities. Stack your knowledge with your tokens - learn, earn, and earn FYT tokens on your EDU holdings through staking rewards and educational achievements.
+A decentralized fixed-yield protocol built on pharos
+ Chain that enables users to earn guaranteed yields through staking and participating in educational activities. Stack your knowledge with your tokens - learn, earn, and earn FYT tokens on your pharos
+ holdings through staking rewards and educational achievements.
 
-![EDU](https://github.com/user-attachments/assets/6e7cd216-f018-4f28-8485-1ab3669e9927)
+![pharos
+](https://github.com/user-attachments/assets/6e7cd216-f018-4f28-8485-1ab3669e9927)
 
 ## 🔧 Prerequisites
 
 - Node.js v18+
 - pnpm
 - Git
-- EDU testnet wallet
+-pharos
+ testnet wallet
 - IDE (VS Code recommended)
 
 ## 🚀 Quick Start
@@ -17,8 +22,10 @@ A decentralized fixed-yield protocol built on EDU Chain that enables users to ea
 1. **Clone the repository**
 
 ```bash
-git clone https://github.com/Bruh-Codes/EDU-chain-hackathon.git
-cd EDU-chain-hackathon
+git clone https://github.com/Bruh-Codes/pharos
+-chain-hackathon.git
+cd pharos
+-chain-hackathon
 ```
 
 1. **Install dependencies for hardhat**
@@ -39,7 +46,7 @@ cd .. # // from frontend
 
 # In the root directory
 npx hardhat vars set ACCOUNT_PRIVATE_KEY
-# Enter your wallet's private key when prompted
+# Enter your wallet's private key when propharosed
 ```
 
 1. **Compile Smart Contracts**
@@ -79,15 +86,16 @@ pnpm run dev
 1. **Access the Application**
    Open `http://localhost:3000` in your browser
 
-## 📝 Contract Addresses (EDU Testnet)
+## 📝 Contract Addresses (pharos
+ Testnet)
 
-YieldToken: `0x235a61846Cc52410948E37B1d426Cb82F41f940e`
-YieldPool: `0xCbe4C05520F526FEFd0e0FC133bfA24a033546B8`
+YieldToken: ``
+YieldPool: ``
 
 ## 📝 Verified Contract URL
 
-[YieldToken](https://edu-chain-testnet.blockscout.com/address/0x235a61846Cc52410948E37B1d426Cb82F41f940e#code)
-[YieldPool](https://edu-chain-testnet.blockscout.com/address/0xCbe4C05520F526FEFd0e0FC133bfA24a033546B8#code)
+[YieldToken](https://)
+[YieldPool](https://)
 
 ## 🔍 Features
 
@@ -97,7 +105,7 @@ YieldPool: `0xCbe4C05520F526FEFd0e0FC133bfA24a033546B8`
   - Automatic yield calculation
   - No impermanent loss risk
 
-- **Flexible Staking Options**
+- **Flexible Staking pharosions**
 
   - Lock periods from 1 to 365 days
   - Early unstaking with 10% penalty
@@ -155,7 +163,7 @@ npx hardhat ignition deploy ./ignition/modules/YieldPool.ts --['your network']
    sometimes connections to your metamask will not be detected. This is a reown library problem. to resolve this issue,
 
 - Click on your metamask
-- Click on the green dot on the top-right beside your options menu
+- Click on the green dot on the top-right beside your pharosions menu
 - Disconnect and try again connecting on th site.
 
 - Click on Metamask and go to settings

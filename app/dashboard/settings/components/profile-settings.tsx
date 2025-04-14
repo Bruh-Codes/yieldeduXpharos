@@ -56,7 +56,7 @@ export function ProfileSettings() {
 
 	return (
 		<div className="space-y-6">
-			<Card className="bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50 backdrop-blur-sm shadow-sm">
+			<Card className="bg-white dark:bg-[#1A103D] border-slate-200 dark:border-slate-700/40 backdrop-blur-sm shadow-sm">
 				<CardHeader>
 					<CardTitle>Profile Information</CardTitle>
 					<CardDescription>
@@ -94,7 +94,7 @@ export function ProfileSettings() {
 								<div className="space-y-2">
 									<Label htmlFor="name">Full Name</Label>
 									<Input
-										className="bg-slate-100 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:!ring-slate-500 dark:focus:!ring-lime-500 focus:!border-transparent focus:ring-offset-2 dark:ring-offset-lime-700 ring-offset-slate-700"
+										className="bg-slate-100 dark:bg-[#1A103D] border-slate-200 dark:border-slate-700/40 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:!ring-slate-500 dark:focus:!ring-sky-500 focus:!border-transparent focus:ring-offset-2 dark:ring-offset-sky-700 ring-offset-slate-700"
 										id="name"
 										value={userData.name}
 										onChange={(e) =>
@@ -105,7 +105,7 @@ export function ProfileSettings() {
 								<div className="space-y-2">
 									<Label htmlFor="username">Username</Label>
 									<Input
-										className="bg-slate-100 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:!ring-slate-500 dark:focus:!ring-lime-500 focus:!border-transparent focus:ring-offset-2 dark:ring-offset-lime-700 ring-offset-slate-700"
+										className="bg-slate-100 dark:bg-[#1A103D] border-slate-200 dark:border-slate-700/40 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:!ring-slate-500 dark:focus:!ring-sky-500 focus:!border-transparent focus:ring-offset-2 dark:ring-offset-sky-700 ring-offset-slate-700"
 										id="username"
 										value={userData.username}
 										onChange={(e) =>
@@ -123,7 +123,7 @@ export function ProfileSettings() {
 									onChange={(e) =>
 										setUserData({ ...userData, bio: e.target.value })
 									}
-									className="bg-slate-100 resize-none dark:bg-slate-800/50 border-slate-200 dark:border-slate-700 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:!ring-slate-500 dark:focus:!ring-lime-500 focus:!border-transparent focus:ring-offset-2 dark:ring-offset-lime-700 ring-offset-slate-700"
+									className="bg-slate-100 resize-none dark:bg-[#1A103D] border-slate-200 dark:border-slate-700/40 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:!ring-slate-500 dark:focus:!ring-sky-500 focus:!border-transparent focus:ring-offset-2 dark:ring-offset-sky-700 ring-offset-slate-700"
 									rows={4}
 								/>
 								<p className="text-xs text-muted-foreground">
@@ -138,7 +138,7 @@ export function ProfileSettings() {
 							<Label htmlFor="email">Email Address</Label>
 							<Input
 								id="email"
-								className="bg-slate-100 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:!ring-slate-500 dark:focus:!ring-lime-500 focus:!border-transparent focus:ring-offset-2 dark:ring-offset-lime-700 ring-offset-slate-700"
+								className="bg-slate-100 dark:bg-[#1A103D] border-slate-200 dark:border-slate-700/40 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:!ring-slate-500 dark:focus:!ring-sky-500 focus:!border-transparent focus:ring-offset-2 dark:ring-offset-sky-700 ring-offset-slate-700"
 								type="email"
 								value={userData.email}
 								onChange={(e) =>
@@ -155,7 +155,7 @@ export function ProfileSettings() {
 								}
 							>
 								<SelectTrigger
-									className="bg-slate-100 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:!ring-slate-500 dark:focus:!ring-lime-500 focus:!border-transparent focus:ring-offset-2 dark:ring-offset-lime-700 ring-offset-slate-700"
+									className="bg-slate-100 dark:bg-[#1A103D] border-slate-200 dark:border-slate-700/40 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:!ring-slate-500 dark:focus:!ring-sky-500 focus:!border-transparent focus:ring-offset-2 dark:ring-offset-sky-700 ring-offset-slate-700"
 									id="timezone"
 								>
 									<SelectValue placeholder="Select timezone" />

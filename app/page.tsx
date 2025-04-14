@@ -2,16 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import {
-	ArrowRight,
-	BookOpen,
-	GraduationCap,
-	Trophy,
-	Users,
-} from "lucide-react";
+import { ArrowRight, GraduationCap, Trophy, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { useTheme } from "next-themes";
 import Image from "next/image";
@@ -22,14 +15,14 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { cn } from "@/lib/utils";
 import { featuresData } from "@/data/features";
+import Link from "next/link";
 
 export default function Page() {
 	const { theme } = useTheme();
 	const [color, setColor] = useState("#ffffff");
-	const [userType, setUserType] = useState<"student" | "educator">("student");
 
 	useEffect(() => {
-		setColor(theme === "dark" ? "#a3e635" : "#000000");
+		setColor(theme === "dark" ? "#a3e635" : "#1A103D");
 	}, [theme]);
 
 	const [themedDashboardImage, setThemedDashboardImage] = useState(
@@ -48,7 +41,7 @@ export default function Page() {
 		<div className="min-h-screen bg-slate-50 dark:bg-[#0A0B1E] text-slate-900 dark:text-slate-100 transition-colors duration-200">
 			{/* Animated background - only visible in dark mode */}
 			<div className="fixed inset-0 overflow-hidden pointer-events-none dark:block hidden">
-				<div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,#1a365d,#0A0B1E)]"></div>
+				<div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,#1A103D,#0A0B1E)]"></div>
 				<div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-500 to-transparent opacity-20"></div>
 				<div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-500 to-transparent opacity-20"></div>
 			</div>
@@ -74,87 +67,36 @@ export default function Page() {
 									animate={{ opacity: 1, y: 0 }}
 									transition={{ duration: 0.5 }}
 								>
-									<Badge className="mb-4 bg-lime-100 dark:bg-lime-900/30 text-lime-700 dark:text-lime-400 border-lime-200 dark:border-lime-700/30 px-3 py-1">
+									<Badge className="mb-4 bg-sky-100 dark:bg-sky-900/30 text-sky-700 dark:text-sky-400 border-sky-200 dark:border-sky-700/30 px-3 py-1">
 										Web3 Education Reimagined
 									</Badge>
 									<h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-slate-900 dark:text-white">
 										Learn, Stake &{" "}
-										<span className="bg-clip-text text-transparent bg-gradient-to-r from-lime-500 to-yellow-500">
+										<span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-500 to-yellow-500">
 											Earn
 										</span>{" "}
 										in the World of DeFi
 									</h1>
 									<p className="text-lg md:text-xl text-slate-600 dark:text-slate-300 mb-8 max-w-2xl">
 										YieldEdu combines education with real-world DeFi staking,
-										allowing you to earn while you learn. Connect with OCID to
-										start your journey.
+										allowing you to earn while you learn.
 									</p>
 
 									<div className="space-y-6">
-										<Tabs
-											defaultValue={userType}
-											className="w-full max-w-md"
-											onValueChange={(value) =>
-												setUserType(value as "student" | "educator")
-											}
-										>
-											<TabsList className="grid w-full grid-cols-2 dark:bg-slate-800 bg-slate-200">
-												<TabsTrigger
-													disabled
-													value="educator"
-													className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-yellow-500 data-[state=active]:to-yellow-500 data-[state=active]:text-white dark:data-[state=active]:text-slate-900"
-												>
-													<BookOpen className="w-4 h-4 mr-2" />
-													Educator
-												</TabsTrigger>
-												<TabsTrigger
-													value="student"
-													className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-lime-500 data-[state=active]:to-lime-500 data-[state=active]:text-white dark:data-[state=active]:text-slate-900"
-												>
-													<GraduationCap className="w-4 h-4 mr-2" />
-													Student
-												</TabsTrigger>
-											</TabsList>
-										</Tabs>
-
 										<div className="flex flex-col sm:flex-row gap-4">
-											{userType === "student" ? (
+											<Link href="/dashboard">
 												<Button
 													onClick={handleOCIDConnect}
 													size="lg"
 													className={cn(
-														"text-white dark:text-slate-900 font-semibold hover:opacity-90 px-8",
-														{
-															"bg-gradient-to-r from-lime-500 to-lime-600":
-																userType === "student",
-														}
+														"bg-gradient-to-r from-sky-500 to-sky-600 text-white dark:text-slate-900 font-semibold hover:opacity-90 px-8"
 													)}
 												>
-													Connect with OCID
+													Get started
 													<ArrowRight className="ml-2 h-5 w-5" />
 												</Button>
-											) : (
-												<Button
-													disabled
-													size="lg"
-													className={cn(
-														"text-white dark:text-slate-900 font-semibold hover:opacity-90 px-8",
-														{
-															"bg-gradient-to-r from-yellow-500 to-yellow-600":
-																userType === "educator",
-														}
-													)}
-												>
-													Connect Wallet as Educator
-												</Button>
-											)}
+											</Link>
 										</div>
-
-										{userType == "student" && (
-											<p className="text-sm text-slate-500 dark:text-slate-400">
-												Secure authentication via Open Campus ID (OCID)
-											</p>
-										)}
 									</div>
 								</motion.div>
 							</div>
@@ -166,8 +108,8 @@ export default function Page() {
 									transition={{ duration: 0.5, delay: 0.2 }}
 									className="relative"
 								>
-									<div className="absolute -inset-0.5 bg-gradient-to-r from-lime-500 to-yellow-500 rounded-2xl blur opacity-30 dark:opacity-50"></div>
-									<div className="relative bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700/50 shadow-xl">
+									<div className="absolute -inset-0.5 bg-gradient-to-r from-sky-500 to-yellow-500 rounded-2xl blur opacity-30 dark:opacity-50"></div>
+									<div className="relative bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700/40 shadow-xl">
 										<Image
 											src={themedDashboardImage}
 											alt="YieldEDU"
@@ -188,9 +130,9 @@ export default function Page() {
 									</div>
 
 									{/* Floating cards */}
-									<div className="absolute -top-6 -right-6 bg-white dark:bg-slate-800 rounded-lg p-3 shadow-lg border border-slate-200 dark:border-slate-700/50 flex items-center gap-3">
-										<div className="w-10 h-10 rounded-full bg-lime-100 dark:bg-lime-900/30 flex items-center justify-center">
-											<Trophy className="w-5 h-5 text-lime-600 dark:text-lime-400" />
+									<div className="absolute -top-6 -right-6 bg-white dark:bg-slate-800 rounded-lg p-3 shadow-lg border border-slate-200 dark:border-slate-700/40 flex items-center gap-3">
+										<div className="w-10 h-10 rounded-full bg-sky-100 dark:bg-sky-900/30 flex items-center justify-center">
+											<Trophy className="w-5 h-5 text-sky-600 dark:text-sky-400" />
 										</div>
 										<div>
 											<p className="text-sm font-medium text-slate-900 dark:text-white">
@@ -202,7 +144,7 @@ export default function Page() {
 										</div>
 									</div>
 
-									<div className="absolute -bottom-6 -left-6 bg-white dark:bg-slate-800 rounded-lg p-3 shadow-lg border border-slate-200 dark:border-slate-700/50 flex items-center gap-3">
+									<div className="absolute -bottom-6 -left-6 bg-white dark:bg-slate-800 rounded-lg p-3 shadow-lg border border-slate-200 dark:border-slate-700/40 flex items-center gap-3">
 										<div className="w-10 h-10 rounded-full bg-yellow-100 dark:bg-yellow-900/30 flex items-center justify-center">
 											<Users className="w-5 h-5 text-yellow-600 dark:text-yellow-400" />
 										</div>
@@ -233,12 +175,12 @@ export default function Page() {
 							viewport={{ once: true }}
 							className="text-center mb-16"
 						>
-							<Badge className="mb-4 bg-lime-100 dark:bg-lime-900/30 text-lime-700 dark:text-lime-400 border-lime-200 dark:border-lime-700/30 px-3 py-1">
+							<Badge className="mb-4 bg-sky-100 dark:bg-sky-900/30 text-sky-700 dark:text-sky-400 border-sky-200 dark:border-sky-700/30 px-3 py-1">
 								Platform Features
 							</Badge>
 							<h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900 dark:text-white">
 								Why Choose{" "}
-								<span className="bg-clip-text text-transparent bg-gradient-to-r from-lime-500 to-yellow-500">
+								<span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-500 to-yellow-500">
 									YieldEdu
 								</span>
 							</h2>
@@ -278,7 +220,7 @@ export default function Page() {
 							</Badge>
 							<h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900 dark:text-white">
 								How YieldEdu{" "}
-								<span className="bg-clip-text text-transparent bg-gradient-to-r from-lime-500 to-yellow-500">
+								<span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-500 to-yellow-500">
 									Works
 								</span>
 							</h2>
@@ -288,19 +230,14 @@ export default function Page() {
 							</p>
 						</motion.div>
 
-						<div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+						<div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
 							<StepCard
 								number="01"
-								title="Connect with OCID"
-								description="Securely authenticate using OpenID Connect as a student or educator."
-							/>
-							<StepCard
-								number="02"
 								title="Learn DeFi Concepts"
 								description="Complete interactive lessons and quizzes to understand DeFi fundamentals."
 							/>
 							<StepCard
-								number="03"
+								number="02"
 								title="Stake & Earn Rewards"
 								description="Apply your knowledge by staking tokens and earning real yield with APY boosts."
 							/>
@@ -313,14 +250,16 @@ export default function Page() {
 							viewport={{ once: true }}
 							className="mt-16 text-center"
 						>
-							<Button
-								onClick={handleOCIDConnect}
-								size="lg"
-								className="bg-gradient-to-r from-lime-500 to-yellow-500 text-slate-900 font-semibold hover:opacity-90 px-8"
-							>
-								Get started now
-								<ArrowRight className="ml-2 h-5 w-5" />
-							</Button>
+							<Link href={"/dashboard"}>
+								<Button
+									onClick={handleOCIDConnect}
+									size="lg"
+									className="bg-gradient-to-r from-sky-500 to-yellow-500 text-slate-900 font-semibold hover:opacity-90 px-8"
+								>
+									Get started now
+									<ArrowRight className="ml-2 h-5 w-5" />
+								</Button>
+							</Link>
 						</motion.div>
 					</div>
 				</section>
@@ -338,12 +277,12 @@ export default function Page() {
 							viewport={{ once: true }}
 							className="text-center mb-16"
 						>
-							<Badge className="mb-4 bg-lime-100 dark:bg-lime-900/30 text-lime-700 dark:text-lime-400 border-lime-200 dark:border-lime-700/30 px-3 py-1">
+							<Badge className="mb-4 bg-sky-100 dark:bg-sky-900/30 text-sky-700 dark:text-sky-400 border-sky-200 dark:border-sky-700/30 px-3 py-1">
 								Success Stories
 							</Badge>
 							<h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900 dark:text-white">
 								What Our Users{" "}
-								<span className="bg-clip-text text-transparent bg-gradient-to-r from-lime-500 to-yellow-500">
+								<span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-500 to-yellow-500">
 									Say
 								</span>
 							</h2>
@@ -383,7 +322,7 @@ export default function Page() {
 				<section className="py-20">
 					<div className="container mx-auto px-4">
 						<div className="relative overflow-hidden rounded-3xl">
-							<div className="absolute inset-0 bg-gradient-to-r from-lime-500 to-yellow-500 opacity-90"></div>
+							<div className="absolute inset-0 bg-gradient-to-r from-sky-500 to-yellow-500 opacity-90"></div>
 							<div className="absolute inset-0 bg-[url('/placeholder.svg?height=600&width=1200')] mix-blend-overlay opacity-20"></div>
 
 							<motion.div
@@ -394,7 +333,7 @@ export default function Page() {
 								className="relative py-16 px-8 md:py-24 md:px-16 text-center"
 							>
 								<h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
-									Ready to Start Your DeFi Learning Journey?
+									Ready to Start Your DeFi Journey?
 								</h2>
 								<p className="text-lg text-white/90 max-w-2xl mx-auto mb-10">
 									Join thousands of students and educators on YieldEdu and
@@ -402,16 +341,19 @@ export default function Page() {
 									rewards.
 								</p>
 
-								<div className="flex flex-col sm:flex-row gap-4 justify-center">
+								<Link
+									href={"/dashboard"}
+									className="flex flex-col sm:flex-row gap-4 justify-center"
+								>
 									<Button
 										onClick={handleOCIDConnect}
 										size="lg"
 										className="bg-white text-slate-900 font-semibold hover:bg-white/60 px-8"
 									>
 										<GraduationCap className="mr-2 h-5 w-5" />
-										Join as Student
+										Get Started Now
 									</Button>
-								</div>
+								</Link>
 							</motion.div>
 						</div>
 					</div>
@@ -434,7 +376,7 @@ function FeatureCard({
 	description: string;
 }) {
 	return (
-		<Card className="bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50 backdrop-blur-sm shadow-sm hover:shadow-md transition-shadow">
+		<Card className="bg-whitedark:bg-[#1A103D] border-slate-200 dark:border-slate-700/40 backdrop-blur-sm shadow-sm hover:shadow-md transition-shadow">
 			<CardContent className="p-6">
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}
@@ -442,7 +384,7 @@ function FeatureCard({
 					transition={{ duration: 0.7, ease: "easeOut" }}
 					viewport={{ once: true }}
 				>
-					<div className="w-12 h-12 rounded-lg bg-lime-100 dark:bg-lime-900/30 flex items-center justify-center mb-4">
+					<div className="w-12 h-12 rounded-lg bg-sky-100 dark:bg-sky-900/30 flex items-center justify-center mb-4">
 						{icon}
 					</div>
 					<h3 className="text-xl font-semibold mb-2 text-slate-900 dark:text-white">
@@ -472,10 +414,10 @@ function StepCard({
 			transition={{ duration: 0.7, ease: "easeOut" }}
 			viewport={{ once: true }}
 		>
-			<div className="absolute -left-4 top-0 w-8 h-8 rounded-full bg-gradient-to-r from-lime-500 to-yellow-500 flex items-center justify-center text-white font-bold text-sm">
+			<div className="absolute -left-4 top-0 w-8 h-8 rounded-full bg-gradient-to-r from-sky-500 to-yellow-500 flex items-center justify-center text-white font-bold text-sm">
 				{number}
 			</div>
-			<Card className="bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50 backdrop-blur-sm shadow-sm ml-6">
+			<Card className="bg-whitedark:bg-[#1A103D] border-slate-200 dark:border-slate-700/40 backdrop-blur-sm shadow-sm ml-6">
 				<CardContent className="p-6">
 					<h3 className="text-xl font-semibold mb-2 text-slate-900 dark:text-white">
 						{title}
@@ -501,7 +443,7 @@ function TestimonialCard({
 	type: string;
 }) {
 	return (
-		<Card className="bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50 backdrop-blur-sm shadow-sm">
+		<Card className="bg-whitedark:bg-[#1A103D] border-slate-200 dark:border-slate-700/40 backdrop-blur-sm shadow-sm">
 			<CardContent className="p-6">
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}
@@ -511,7 +453,7 @@ function TestimonialCard({
 				>
 					<div
 						className={`w-full h-1 rounded-full ${
-							type === "educator" ? "bg-yellow-500" : "bg-lime-500"
+							type === "educator" ? "bg-yellow-500" : "bg-sky-500"
 						} mb-6`}
 					></div>
 					<p className="text-slate-600 dark:text-slate-300 mb-6 italic">

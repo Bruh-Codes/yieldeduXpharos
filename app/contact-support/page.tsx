@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 };
 
 const page = () => {
-	const MINIMUM_EDU_TOKENS = " 100 EDU tokens";
+	const MINIMUM_PT_TOKENS = " 100  PT tokens";
 	return (
 		<>
 			<div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none dark:block hidden bg-gradient-animated bg-400 animate-gradient">
@@ -29,15 +29,15 @@ const page = () => {
 			<Header />
 			<main className="container mx-auto px-5 py-28 md:max-w-5xl">
 				<section>
-					<h2 className="text-2xl font-bold mb-6 text-lime-500 dark:text-lime-400">
+					<h2 className="text-2xl font-bold mb-6 text-sky-500 dark:text-sky-400">
 						Contact Support
 					</h2>
 
 					<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-						<Card className="bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50 shadow-sm hover:shadow-md transition-shadow">
+						<Card className="bg-whitedark:bg-[#1A103D] border-slate-200 dark:border-slate-700/40 shadow-sm hover:shadow-md transition-shadow">
 							<CardContent className="p-6">
-								<div className="w-12 h-12 rounded-lg bg-lime-100 dark:bg-lime-900/30 flex items-center justify-center mb-4">
-									<Mail className="w-6 h-6 text-lime-500" />
+								<div className="w-12 h-12 rounded-lg bg-sky-100 dark:bg-sky-900/30 flex items-center justify-center mb-4">
+									<Mail className="w-6 h-6 text-sky-500" />
 								</div>
 								<h3 className="text-xl font-semibold mb-2 text-slate-900 dark:text-white">
 									Email Support
@@ -54,7 +54,7 @@ const page = () => {
 							</CardContent>
 						</Card>
 
-						<Card className="bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50 shadow-sm hover:shadow-md transition-shadow">
+						<Card className="bg-whitedark:bg-[#1A103D] border-slate-200 dark:border-slate-700/40 shadow-sm hover:shadow-md transition-shadow">
 							<CardContent className="p-6">
 								<div className="w-12 h-12 rounded-lg bg-yellow-100 dark:bg-yellow-900/30 flex items-center justify-center mb-4">
 									<MessageCircle className="w-6 h-6 text-yellow-500" />
@@ -71,20 +71,20 @@ const page = () => {
 									className="w-full flex justify-between"
 								>
 									Start Chat
-									{/* <Badge className="ml-2 bg-lime-100 dark:bg-lime-900/30 text-lime-700 dark:text-lime-400 border-lime-200 dark:border-lime-700/30">
+									{/* <Badge className="ml-2 bg-sky-100 dark:bg-sky-900/30 text-sky-700 dark:text-sky-400 border-sky-200 dark:border-sky-700/30">
 											Online
 										</Badge> */}
-									<Badge className="ml-2 bg-lime-100 dark:bg-lime-900/30 text-gray-500 dark:border-lime-700/30">
+									<Badge className="ml-2 bg-sky-100 dark:bg-sky-900/30 text-gray-500 dark:border-sky-700/30">
 										offline
 									</Badge>
 								</Button>
 							</CardContent>
 						</Card>
 
-						<Card className="bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50 shadow-sm hover:shadow-md transition-shadow">
+						<Card className="bg-whitedark:bg-[#1A103D] border-slate-200 dark:border-slate-700/40 shadow-sm hover:shadow-md transition-shadow">
 							<CardContent className="p-6">
-								<div className="w-12 h-12 rounded-lg bg-lime-100 dark:bg-lime-900/30 flex items-center justify-center mb-4">
-									<Phone className="w-6 h-6 text-lime-500" />
+								<div className="w-12 h-12 rounded-lg bg-sky-100 dark:bg-sky-900/30 flex items-center justify-center mb-4">
+									<Phone className="w-6 h-6 text-sky-500" />
 								</div>
 								<h3 className="text-xl font-semibold mb-2 text-slate-900 dark:text-white">
 									Phone Support
@@ -100,7 +100,7 @@ const page = () => {
 					</div>
 				</section>
 				<section className="mb-10 py-20">
-					<h2 className="text-2xl font-bold mb-6 text-lime-500 dark:text-lime-400">
+					<h2 className="text-2xl font-bold mb-6 text-sky-500 dark:text-sky-400">
 						Frequently Asked Questions
 					</h2>
 
@@ -115,11 +115,12 @@ const page = () => {
 						/>
 						<FaqItem
 							question="What tokens can I stake on YieldEdu?"
-							answer="Currently, YieldEdu supports staking of EDU tokens and our native platform token. We plan to expand support for additional tokens in the future based on community feedback and governance decisions."
+							answer="Currently, YieldEdu supports staking of  PT
+ tokens and our native platform token. We plan to expand support for additional tokens in the future based on community feedback and governance decisions."
 						/>
 						<FaqItem
 							question="Is there a minimum amount required to stake?"
-							answer={`Yes, the minimum staking amount is ${MINIMUM_EDU_TOKENS}. This minimum helps ensure efficient operation of the staking protocol and meaningful rewards for participants.`}
+							answer={`Yes, the minimum staking amount is ${MINIMUM_PT_TOKENS}. This minimum helps ensure efficient operation of the staking protocol and meaningful rewards for participants.`}
 						/>
 						<FaqItem
 							question="How secure is YieldEdu Protocol?"
@@ -134,10 +135,10 @@ const page = () => {
 					</h2>
 
                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-						<Card className="bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50 shadow-sm">
+						<Card className="bg-whitedark:bg-[#1A103D] border-slate-200 dark:border-slate-700/40 shadow-sm">
 							<CardHeader className="pb-2">
 								<div className="flex items-center gap-2">
-									<BookOpen className="w-5 h-5 text-lime-500" />
+									<BookOpen className="w-5 h-5 text-sky-500" />
 									<CardTitle className="text-xl font-bold text-slate-900 dark:text-white">
 										Learning
 									</CardTitle>
@@ -154,7 +155,7 @@ const page = () => {
 							</CardContent>
 						</Card>
 
-						<Card className="bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50 shadow-sm">
+						<Card className="bg-whitedark:bg-[#1A103D] border-slate-200 dark:border-slate-700/40 shadow-sm">
 							<CardHeader className="pb-2">
 								<div className="flex items-center gap-2">
 									<Wallet className="w-5 h-5 text-yellow-500" />
@@ -174,10 +175,10 @@ const page = () => {
 							</CardContent>
 						</Card>
 
-						<Card className="bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50 shadow-sm">
+						<Card className="bg-whitedark:bg-[#1A103D] border-slate-200 dark:border-slate-700/40 shadow-sm">
 							<CardHeader className="pb-2">
 								<div className="flex items-center gap-2">
-									<Shield className="w-5 h-5 text-lime-500" />
+									<Shield className="w-5 h-5 text-sky-500" />
 									<CardTitle className="text-xl font-bold text-slate-900 dark:text-white">
 										Account & Security
 									</CardTitle>
@@ -194,7 +195,7 @@ const page = () => {
 							</CardContent>
 						</Card>
 
-						<Card className="bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50 shadow-sm">
+						<Card className="bg-whitedark:bg-[#1A103D] border-slate-200 dark:border-slate-700/40 shadow-sm">
 							<CardHeader className="pb-2">
 								<div className="flex items-center gap-2">
 									<Users className="w-5 h-5 text-yellow-500" />

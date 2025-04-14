@@ -41,8 +41,8 @@ export default function CareersPage() {
 					</p>
 
 					<div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-						<div className="bg-white dark:bg-slate-800/50 rounded-xl p-6 border border-slate-200 dark:border-slate-700/50 text-center">
-							<Lightbulb className="w-10 h-10 mx-auto mb-3 text-lime-500" />
+						<div className="bg-whitedark:bg-[#1A103D] rounded-xl p-6 border border-slate-200 dark:border-slate-700/40 text-center">
+							<Lightbulb className="w-10 h-10 mx-auto mb-3 text-sky-500" />
 							<h3 className="text-lg font-semibold mb-2 text-slate-900 dark:text-white">
 								Innovation
 							</h3>
@@ -52,7 +52,7 @@ export default function CareersPage() {
 							</p>
 						</div>
 
-						<div className="bg-white dark:bg-slate-800/50 rounded-xl p-6 border border-slate-200 dark:border-slate-700/50 text-center">
+						<div className="bg-whitedark:bg-[#1A103D] rounded-xl p-6 border border-slate-200 dark:border-slate-700/40 text-center">
 							<Users className="w-10 h-10 mx-auto mb-3 text-yellow-500" />
 							<h3 className="text-lg font-semibold mb-2 text-slate-900 dark:text-white">
 								Collaboration
@@ -63,8 +63,8 @@ export default function CareersPage() {
 							</p>
 						</div>
 
-						<div className="bg-white dark:bg-slate-800/50 rounded-xl p-6 border border-slate-200 dark:border-slate-700/50 text-center">
-							<Map className="w-10 h-10 mx-auto mb-3 text-lime-500" />
+						<div className="bg-whitedark:bg-[#1A103D] rounded-xl p-6 border border-slate-200 dark:border-slate-700/40 text-center">
+							<Map className="w-10 h-10 mx-auto mb-3 text-sky-500" />
 							<h3 className="text-lg font-semibold mb-2 text-slate-900 dark:text-white">
 								Remote-First
 							</h3>
@@ -75,13 +75,13 @@ export default function CareersPage() {
 						</div>
 					</div>
 
-					<div className="bg-gradient-to-r from-lime-50 to-yellow-50 dark:from-lime-500/10 dark:to-yellow-500/10 rounded-xl p-6 border border-lime-200 dark:border-lime-500/30 text-center">
+					<div className="bg-gradient-to-r from-sky-50 to-yellow-50 dark:from-sky-500/10 dark:to-yellow-500/10 rounded-xl p-6 border border-sky-200 dark:border-sky-500/30 text-center">
 						<h2 className="text-2xl font-bold mb-4 text-slate-900 dark:text-white">
 							Why Join YieldEdu?
 						</h2>
 						<div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left max-w-3xl mx-auto">
 							<div className="flex items-start gap-2">
-								<div className="w-5 h-5 rounded-full bg-lime-500 flex items-center justify-center mt-1">
+								<div className="w-5 h-5 rounded-full bg-sky-500 flex items-center justify-center mt-1">
 									<span className="text-white text-xs">✓</span>
 								</div>
 								<span className="text-slate-700 dark:text-slate-300">
@@ -89,7 +89,7 @@ export default function CareersPage() {
 								</span>
 							</div>
 							<div className="flex items-start gap-2">
-								<div className="w-5 h-5 rounded-full bg-lime-500 flex items-center justify-center mt-1">
+								<div className="w-5 h-5 rounded-full bg-sky-500 flex items-center justify-center mt-1">
 									<span className="text-white text-xs">✓</span>
 								</div>
 								<span className="text-slate-700 dark:text-slate-300">
@@ -97,7 +97,7 @@ export default function CareersPage() {
 								</span>
 							</div>
 							<div className="flex items-start gap-2">
-								<div className="w-5 h-5 rounded-full bg-lime-500 flex items-center justify-center mt-1">
+								<div className="w-5 h-5 rounded-full bg-sky-500 flex items-center justify-center mt-1">
 									<span className="text-white text-xs">✓</span>
 								</div>
 								<span className="text-slate-700 dark:text-slate-300">
@@ -105,7 +105,7 @@ export default function CareersPage() {
 								</span>
 							</div>
 							<div className="flex items-start gap-2">
-								<div className="w-5 h-5 rounded-full bg-lime-500 flex items-center justify-center mt-1">
+								<div className="w-5 h-5 rounded-full bg-sky-500 flex items-center justify-center mt-1">
 									<span className="text-white text-xs">✓</span>
 								</div>
 								<span className="text-slate-700 dark:text-slate-300">
@@ -113,7 +113,7 @@ export default function CareersPage() {
 								</span>
 							</div>
 							<div className="flex items-start gap-2">
-								<div className="w-5 h-5 rounded-full bg-lime-500 flex items-center justify-center mt-1">
+								<div className="w-5 h-5 rounded-full bg-sky-500 flex items-center justify-center mt-1">
 									<span className="text-white text-xs">✓</span>
 								</div>
 								<span className="text-slate-700 dark:text-slate-300">
@@ -121,7 +121,7 @@ export default function CareersPage() {
 								</span>
 							</div>
 							<div className="flex items-start gap-2">
-								<div className="w-5 h-5 rounded-full bg-lime-500 flex items-center justify-center mt-1">
+								<div className="w-5 h-5 rounded-full bg-sky-500 flex items-center justify-center mt-1">
 									<span className="text-white text-xs">✓</span>
 								</div>
 								<span className="text-slate-700 dark:text-slate-300">
@@ -143,7 +143,7 @@ export default function CareersPage() {
 							department="Engineering"
 							location="Remote"
 							type="Full-time"
-							icon={<Code className="w-10 h-10 text-lime-500" />}
+							icon={<Code className="w-10 h-10 text-sky-500" />}
 						>
 							<p className="mb-4">
 								We're looking for an experienced Smart Contract Developer to
@@ -198,7 +198,7 @@ export default function CareersPage() {
 							department="Engineering"
 							location="Remote"
 							type="Full-time"
-							icon={<Code className="w-10 h-10 text-lime-500" />}
+							icon={<Code className="w-10 h-10 text-sky-500" />}
 						>
 							<>
 								<p className="mb-4">
@@ -253,7 +253,7 @@ export default function CareersPage() {
 							always looking for talented individuals.
 						</p>
 						<Link href={process.env.NEXT_PUBLIC_SUPPORT_MAIL!}>
-							<Button className="bg-gradient-to-r from-lime-500 to-yellow-500 text-slate-900 font-semibold hover:opacity-90">
+							<Button className="bg-gradient-to-r from-sky-500 to-yellow-500 text-slate-900 font-semibold hover:opacity-90">
 								Submit General Application
 								<ArrowRight className="ml-2 h-4 w-4" />
 							</Button>
@@ -282,11 +282,11 @@ function JobCard({
 	children: React.ReactElement;
 }) {
 	return (
-		<Card className="bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50 shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+		<Card className="bg-whitedark:bg-[#1A103D] border-slate-200 dark:border-slate-700/40 shadow-sm hover:shadow-md transition-shadow overflow-hidden">
 			<CardContent className="p-6">
 				<div className="flex flex-col md:flex-row gap-6">
 					<div className="md:w-16 flex md:flex-col items-center md:items-start gap-4 md:gap-0">
-						<div className="w-16 h-16 rounded-xl bg-lime-100 dark:bg-lime-900/30 flex items-center justify-center shrink-0">
+						<div className="w-16 h-16 rounded-xl bg-sky-100 dark:bg-sky-900/30 flex items-center justify-center shrink-0">
 							{icon}
 						</div>
 					</div>
@@ -296,7 +296,7 @@ function JobCard({
 								{title}
 							</h3>
 							<div className="flex flex-wrap gap-2">
-								<Badge className="bg-lime-100 dark:bg-lime-900/30 text-lime-700 dark:text-lime-400 border-lime-200 dark:border-lime-700/30">
+								<Badge className="bg-sky-100 dark:bg-sky-900/30 text-sky-700 dark:text-sky-400 border-sky-200 dark:border-sky-700/30">
 									{department}
 								</Badge>
 								<Badge className="bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400 border-yellow-200 dark:border-yellow-700/30">
@@ -311,7 +311,7 @@ function JobCard({
 						<div className="text-slate-600 dark:text-slate-300">{children}</div>
 
 						<Link href={process.env.NEXT_PUBLIC_SUPPORT_MAIL!}>
-							<Button className="bg-gradient-to-r from-lime-500 to-yellow-500 text-slate-900 font-semibold hover:opacity-90">
+							<Button className="bg-gradient-to-r from-sky-500 to-yellow-500 text-slate-900 font-semibold hover:opacity-90">
 								Apply Now
 								<ArrowRight className="ml-2 h-4 w-4" />
 							</Button>

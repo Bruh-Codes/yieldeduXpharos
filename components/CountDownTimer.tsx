@@ -91,16 +91,16 @@ const CountDownTimer = ({
 	const formatTimeLeft = () => {
 		if (timeLeft <= 0) {
 			return (
-				<div className="flex items-center text-lime-600 gap-3">
+				<div className="flex items-center text-sky-600 gap-3">
 					<Timer className="w-5 h-5" />
-					<p className="text-lime-600 font-medium text-md">
+					<p className="text-sky-600 font-medium text-md">
 						Your position is available for withdrawal
 					</p>
 					<Button
 						onClick={handleWithdrawClick}
 						type="button"
 						variant={"default"}
-						className="w-fit bg-gradient-to-r from-lime-500 to-yellow-500 text-slate-800 font-semibold hover:opacity-90"
+						className="w-fit bg-gradient-to-r from-sky-500 to-yellow-500 text-slate-800 font-semibold hover:opacity-90"
 					>
 						Withdraw
 					</Button>
@@ -160,7 +160,7 @@ const CountDownTimer = ({
 	return (
 		<p
 			className={cn(
-				"font-normal text-md flex items-center flex-wrap justify-between text-center dark:text-white text-lime-700"
+				"font-normal text-md flex items-center flex-wrap justify-between text-center dark:text-white text-sky-700"
 			)}
 		>
 			{!isConnected ? "Connect your wallet!" : formatTimeLeft()}

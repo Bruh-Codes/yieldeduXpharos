@@ -14,7 +14,7 @@ export default function TermsOfServicePage() {
 			<Header />
 			<main className="space-y-6 container mx-auto p-5 md:max-w-5xl py-28">
 				<section className="mb-8">
-					<p className="mb-4 text-lime-500 dark:text-lime-400">
+					<p className="mb-4 text-sky-500 dark:text-sky-400">
 						<strong>Last Updated:</strong> March 11, 2025
 					</p>
 					<p className="mb-4">
@@ -30,7 +30,7 @@ export default function TermsOfServicePage() {
 				</section>
 
 				<section className="mb-8">
-					<h2 className="text-2xl font-bold mb-4 text-lime-500 dark:text-lime-400">
+					<h2 className="text-2xl font-bold mb-4 text-sky-500 dark:text-sky-400">
 						1. Acceptance of Terms
 					</h2>
 					<p className="mb-4">
@@ -47,7 +47,7 @@ export default function TermsOfServicePage() {
 				</section>
 
 				<section className="mb-8">
-					<h2 className="text-2xl font-bold mb-4 text-lime-500 dark:text-lime-400">
+					<h2 className="text-2xl font-bold mb-4 text-sky-500 dark:text-sky-400">
 						2. Eligibility
 					</h2>
 					<p className="mb-4">
@@ -63,7 +63,7 @@ export default function TermsOfServicePage() {
 				</section>
 
 				<section className="mb-8">
-					<h2 className="text-2xl font-bold mb-4 text-lime-500 dark:text-lime-400">
+					<h2 className="text-2xl font-bold mb-4 text-sky-500 dark:text-sky-400">
 						3. User Accounts
 					</h2>
 					<p className="mb-4">
@@ -85,7 +85,7 @@ export default function TermsOfServicePage() {
 				</section>
 
 				<section className="mb-8">
-					<h2 className="text-2xl font-bold mb-4 text-lime-500 dark:text-lime-400">
+					<h2 className="text-2xl font-bold mb-4 text-sky-500 dark:text-sky-400">
 						4. Educational Content and Staking
 					</h2>
 					<p className="mb-4">
@@ -111,7 +111,7 @@ export default function TermsOfServicePage() {
 				</section>
 
 				<section className="mb-8">
-					<h2 className="text-2xl font-bold mb-4 text-lime-500 dark:text-lime-400">
+					<h2 className="text-2xl font-bold mb-4 text-sky-500 dark:text-sky-400">
 						5. Intellectual Property Rights
 					</h2>
 					<p className="mb-4">
@@ -133,7 +133,7 @@ export default function TermsOfServicePage() {
 				</section>
 
 				<section className="mb-8">
-					<h2 className="text-2xl font-bold mb-4 text-lime-500 dark:text-lime-400">
+					<h2 className="text-2xl font-bold mb-4 text-sky-500 dark:text-sky-400">
 						6. User Conduct
 					</h2>
 					<p className="mb-4">You agree not to use the Service:</p>
@@ -160,7 +160,7 @@ export default function TermsOfServicePage() {
 				</section>
 
 				<section className="mb-8">
-					<h2 className="text-2xl font-bold mb-4 text-lime-500 dark:text-lime-400">
+					<h2 className="text-2xl font-bold mb-4 text-sky-500 dark:text-sky-400">
 						7. Limitation of Liability
 					</h2>
 					<p className="mb-4">
@@ -179,7 +179,7 @@ export default function TermsOfServicePage() {
 				</section>
 
 				<section className="mb-8">
-					<h2 className="text-2xl font-bold mb-4 text-lime-500 dark:text-lime-400">
+					<h2 className="text-2xl font-bold mb-4 text-sky-500 dark:text-sky-400">
 						8. Modifications to Terms
 					</h2>
 					<p>

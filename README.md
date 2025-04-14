@@ -1,8 +1,8 @@
 # Getting started Solidity
 
-# 🌟 EDU Fixed Yield Protocol
+## 🌟 YieldEdu X Pharos
 
-A decentralized fixed-yield protocol built on EDU Chain that enables users to earn guaranteed yields through staking and participating in educational activities. Stack your knowledge with your tokens - learn, earn, and earn FYT tokens on your EDU holdings through staking rewards and educational achievements.
+YieldEdu is a Web3 protocol built on Pharos that lets you earn guaranteed yields on your tokens while learning about Web3.
 
 ![EDU](https://github.com/user-attachments/assets/6e7cd216-f018-4f28-8485-1ab3669e9927)
 
@@ -11,7 +11,7 @@ A decentralized fixed-yield protocol built on EDU Chain that enables users to ea
 - Node.js v18+
 - pnpm
 - Git
-- EDU testnet wallet
+- Pharos testnet wallet
 - IDE (VS Code recommended)
 
 ## 🚀 Quick Start
@@ -19,8 +19,8 @@ A decentralized fixed-yield protocol built on EDU Chain that enables users to ea
 1. **Clone the repository**
 
 ```bash
-git clone https://github.com/Bruh-Codes/EDU-chain-hackathon.git
-cd EDU-chain-hackathon
+git clone https://github.com/Bruh-Codes/yieldeduXpharos.git
+cd yieldeduXpharos
 ```
 
 1. **Install dependencies for hardhat**
@@ -29,25 +29,26 @@ cd EDU-chain-hackathon
 # Install root dependencies
 pnpm install
 
-# Install frontend dependencies
-cd frontend
+# Install smart contract dependencies
+cd solidity
 pnpm install
 ```
 
 1. **Set up environment variables**
 
 ```bash
-cd .. # // from frontend
+cd solidity # // from frontend
 
-# In the root directory
 npx hardhat vars set ACCOUNT_PRIVATE_KEY
 # Enter your wallet's private key when prompted
+# do same for
+#  ACCOUNT_PRIVATE_KEY=
+#  PHAROS_API_KEY=
 ```
 
 1. **Compile Smart Contracts**
 
 ```bash
-# In the root directory
 npx hardhat compile
 
 # //it has already been deploy so there is no need. you can skip this step
@@ -72,8 +73,7 @@ npx hardhat coverage
 1. **Start Frontend Development Server**
 
 ```bash
-# In the frontend directory
-cd frontend
+# In the root directory
 pnpm install
 pnpm run dev
 ```

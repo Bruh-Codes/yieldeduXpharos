@@ -12,7 +12,7 @@ export default function CookiePolicyPage() {
 			<Header />
 			<main className="space-y-6 container py-28 mx-auto md:max-w-5xl p-5">
 				<section className="mb-8">
-					<p className="mb-4 text-lime-500 dark:text-lime-400">
+					<p className="mb-4 text-sky-500 dark:text-sky-400">
 						<strong>Last Updated:</strong> March 11, 2025
 					</p>
 					<p className="mb-4">
@@ -27,7 +27,7 @@ export default function CookiePolicyPage() {
 				</section>
 
 				<section className="mb-8">
-					<h2 className="text-2xl font-bold mb-4 text-lime-500 dark:text-lime-400">
+					<h2 className="text-2xl font-bold mb-4 text-sky-500 dark:text-sky-400">
 						What Are Cookies?
 					</h2>
 					<p className="mb-4">
@@ -46,12 +46,12 @@ export default function CookiePolicyPage() {
 				</section>
 
 				<section className="mb-8">
-					<h2 className="text-2xl font-bold mb-4 text-lime-500 dark:text-lime-400">
+					<h2 className="text-2xl font-bold mb-4 text-sky-500 dark:text-sky-400">
 						Types of Cookies We Use
 					</h2>
 					<p className="mb-4">We use the following types of cookies:</p>
 
-					<h3 className="text-xl font-semibold mb-2 text-lime-500 dark:text-lime-400">
+					<h3 className="text-xl font-semibold mb-2 text-sky-500 dark:text-sky-400">
 						Essential Cookies
 					</h3>
 					<p className="mb-4">
@@ -61,7 +61,7 @@ export default function CookiePolicyPage() {
 						function properly without these cookies.
 					</p>
 
-					<h3 className="text-xl font-semibold mb-2 text-lime-500 dark:text-lime-400">
+					<h3 className="text-xl font-semibold mb-2 text-sky-500 dark:text-sky-400">
 						Functional Cookies
 					</h3>
 					<p className="mb-4">
@@ -71,7 +71,7 @@ export default function CookiePolicyPage() {
 						cookies, some or all of these services may not function properly.
 					</p>
 
-					<h3 className="text-xl font-semibold mb-2 text-lime-500 dark:text-lime-400">
+					<h3 className="text-xl font-semibold mb-2 text-sky-500 dark:text-sky-400">
 						Performance Cookies
 					</h3>
 					<p className="mb-4">
@@ -81,7 +81,7 @@ export default function CookiePolicyPage() {
 						user behavior.
 					</p>
 
-					<h3 className="text-xl font-semibold mb-2 text-lime-500 dark:text-lime-400">
+					<h3 className="text-xl font-semibold mb-2 text-sky-500 dark:text-sky-400">
 						Targeting/Advertising Cookies
 					</h3>
 					<p>
@@ -94,7 +94,7 @@ export default function CookiePolicyPage() {
 				</section>
 
 				<section className="mb-8">
-					<h2 className="text-2xl font-bold mb-4 text-lime-500 dark:text-lime-400">
+					<h2 className="text-2xl font-bold mb-4 text-sky-500 dark:text-sky-400">
 						How We Use Cookies
 					</h2>
 					<p className="mb-4">
@@ -111,7 +111,7 @@ export default function CookiePolicyPage() {
 				</section>
 
 				<section className="mb-8">
-					<h2 className="text-2xl font-bold mb-4 text-lime-500 dark:text-lime-400">
+					<h2 className="text-2xl font-bold mb-4 text-sky-500 dark:text-sky-400">
 						Third-Party Cookies
 					</h2>
 					<p className="mb-4">
@@ -128,7 +128,7 @@ export default function CookiePolicyPage() {
 				</section>
 
 				<section className="mb-8">
-					<h2 className="text-2xl font-bold mb-4 text-lime-500 dark:text-lime-400">
+					<h2 className="text-2xl font-bold mb-4 text-sky-500 dark:text-sky-400">
 						Managing Cookies
 					</h2>
 					<p className="mb-4">
@@ -150,7 +150,7 @@ export default function CookiePolicyPage() {
 				</section>
 
 				<section className="mb-8">
-					<h2 className="text-2xl font-bold mb-4 text-lime-500 dark:text-lime-400">
+					<h2 className="text-2xl font-bold mb-4 text-sky-500 dark:text-sky-400">
 						Changes to This Cookie Policy
 					</h2>
 					<p>

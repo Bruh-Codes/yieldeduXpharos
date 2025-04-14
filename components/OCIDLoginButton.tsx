@@ -17,7 +17,7 @@ export default function OCIDLoginButton() {
 		<Button
 			// disabled={isLoading}
 			onClick={handleLogin}
-			className="bg-gradient-to-r from-lime-500 to-yellow-500 text-slate-900 font-semibold hover:opacity-90"
+			className="bg-gradient-to-r from-sky-500 to-yellow-500 text-slate-900 font-semibold hover:opacity-90"
 			type="button"
 		>
 			{isLoading ? (

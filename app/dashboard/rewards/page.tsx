@@ -40,26 +40,32 @@ const Page = () => {
 	const rewardsData: Irewards[] = [
 		// {
 		// 	id: "1234",
-		// 	amount: "1,000 EDU",
+		// 	amount: "1,000  PT
+",
 		// 	duration: "30 Days",
 		// 	apy: "12.5%",
-		// 	earned: "10.27 EDU",
+		// 	earned: "10.27  PT
+",
 		// 	status: "Claimable",
 		// },
 		// {
 		// 	id: "2345",
-		// 	amount: "500 EDU",
+		// 	amount: "500  PT
+",
 		// 	duration: "60 Days",
 		// 	apy: "15.0%",
-		// 	earned: "12.33 EDU",
+		// 	earned: "12.33  PT
+",
 		// 	status: "Accruing",
 		// },
 		// {
 		// 	id: "3456",
-		// 	amount: "2,000 EDU",
+		// 	amount: "2,000  PT
+",
 		// 	duration: "90 Days",
 		// 	apy: "18.5%",
-		// 	earned: "23.10 EDU",
+		// 	earned: "23.10  PT
+",
 		// 	status: "Accruing",
 		// },
 	];
@@ -75,7 +81,7 @@ const Page = () => {
 						Track and claim your staking rewards
 					</p>
 				</div>
-				{/* <Button className="bg-gradient-to-r from-lime-500 to-yellow-500 text-slate-900 font-semibold hover:opacity-90">
+				{/* <Button className="bg-gradient-to-r from-sky-500 to-yellow-500 text-slate-900 font-semibold hover:opacity-90">
 					<DollarSign className="w-4 h-4 mr-2" />
 					Claim All Rewards
 				</Button> */}
@@ -87,10 +93,10 @@ const Page = () => {
 					No rewards available to claim
 				</Button>
 			</div>
-			<div className="bg-gradient-to-r from-lime-50 to-yellow-50 dark:from-lime-500/10 dark:to-yellow-500/10 rounded-xl p-5 border border-lime-200 dark:border-lime-500/30 mb-6">
+			<div className="bg-gradient-to-r from-sky-50 to-yellow-50 dark:from-sky-500/10 dark:to-yellow-500/10 rounded-xl p-5 border border-sky-200 dark:border-sky-500/30 mb-6">
 				<div className="flex flex-wrap items-center gap-3 mb-3">
 					<div className="p-2 bg-white dark:bg-slate-800 rounded-lg shadow-sm">
-						<GraduationCap className="w-5 h-5 text-lime-600 dark:text-lime-400" />
+						<GraduationCap className="w-5 h-5 text-sky-600 dark:text-sky-400" />
 					</div>
 					<div>
 						<h3 className="font-medium text-slate-900 dark:text-white">
@@ -105,23 +111,21 @@ const Page = () => {
 					<Progress
 						value={1}
 						className="flex-1 bg-white/50 dark:bg-slate-700/50"
-						// indicatorClassName="bg-gradient-to-r from-lime-500 to-yellow-500"
+						// indicatorClassName="bg-gradient-to-r from-sky-500 to-yellow-500"
 					/>
-					<span className="text-lime-600 dark:text-lime-400 font-medium">
-						1%
-					</span>
+					<span className="text-sky-600 dark:text-sky-400 font-medium">1%</span>
 				</div>
 				<div className="flex justify-between text-sm">
 					<span className="text-slate-500 dark:text-slate-400">
 						Current Boost: +1.0% APY
 					</span>
-					<span className="text-lime-600 dark:text-lime-400">
+					<span className="text-sky-600 dark:text-sky-400">
 						Next Level: +0% APY
 					</span>
 				</div>
 			</div>
 			<div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-				<Card className="col-span-3 bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50 backdrop-blur-sm shadow-sm">
+				<Card className="col-span-3 bg-whitedark:bg-[#1A103D] border-slate-200 dark:border-slate-700/40 backdrop-blur-sm shadow-sm">
 					<CardHeader>
 						<CardTitle className="text-slate-900 dark:text-white">
 							Rewards Summary
@@ -132,7 +136,7 @@ const Page = () => {
 					</CardHeader>
 					<CardContent>
 						<div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-							<div className="bg-slate-100 dark:bg-slate-900/50 rounded-xl p-4 border border-slate-200 dark:border-slate-700/50">
+							<div className="bg-slate-100 dark:bg-[#1A103D] rounded-xl p-4 border border-slate-200 dark:border-slate-700/40">
 								<div className="flex justify-between items-start mb-2">
 									<span className="text-slate-500 dark:text-slate-400 text-sm">
 										Available to Claim
@@ -144,18 +148,19 @@ const Page = () => {
 								<div className="text-2xl font-bold text-slate-900 dark:text-white mb-1">
 									0
 								</div>
-								{/* <div className="text-xs text-lime-600 dark:text-lime-400">
-									+3.21 EDU since yesterday
+								{/* <div className="text-xs text-sky-600 dark:text-sky-400">
+									+3.21  PT
+ since yesterday
 								</div> */}
 							</div>
 
-							<div className="bg-slate-100 dark:bg-slate-900/50 rounded-xl p-4 border border-slate-200 dark:border-slate-700/50">
+							<div className="bg-slate-100 dark:bg-[#1A103D] rounded-xl p-4 border border-slate-200 dark:border-slate-700/40">
 								<div className="flex justify-between items-start mb-2">
 									<span className="text-slate-500 dark:text-slate-400 text-sm">
 										Total Earned
 									</span>
-									<div className="p-1.5 bg-lime-100 dark:bg-lime-400/20 rounded-md">
-										<Trophy className="w-4 h-4 text-lime-600 dark:text-lime-400" />
+									<div className="p-1.5 bg-sky-100 dark:bg-sky-400/20 rounded-md">
+										<Trophy className="w-4 h-4 text-sky-600 dark:text-sky-400" />
 									</div>
 								</div>
 								<div className="text-2xl font-bold text-slate-900 dark:text-white mb-1">
@@ -166,7 +171,7 @@ const Page = () => {
 								</div>
 							</div>
 
-							<div className="bg-slate-100 dark:bg-slate-900/50 rounded-xl p-4 border border-slate-200 dark:border-slate-700/50">
+							<div className="bg-slate-100 dark:bg-[#1A103D] rounded-xl p-4 border border-slate-200 dark:border-slate-700/40">
 								<div className="flex justify-between items-start mb-2">
 									<span className="text-slate-500 dark:text-slate-400 text-sm">
 										Daily Earnings
@@ -178,15 +183,16 @@ const Page = () => {
 								<div className="text-2xl font-bold text-slate-900 dark:text-white mb-1">
 									0
 								</div>
-								{/* <div className="text-xs text-lime-600 dark:text-lime-400">
-									+0.45 EDU from learning bonus
+								{/* <div className="text-xs text-sky-600 dark:text-sky-400">
+									+0.45  PT
+ from learning bonus
 								</div> */}
 							</div>
 						</div>
 
 						<Table>
 							<TableHeader>
-								<TableRow className="border-slate-200 dark:border-slate-700/50 hover:bg-transparent">
+								<TableRow className="border-slate-200 dark:border-slate-700/40 hover:bg-transparent">
 									<TableHead className="text-slate-500 dark:text-slate-400">
 										Position ID
 									</TableHead>
@@ -219,14 +225,14 @@ const Page = () => {
 									rewardsData?.map((reward, index) => (
 										<TableRow
 											key={index}
-											className="border-slate-200 dark:border-slate-700/50"
+											className="border-slate-200 dark:border-slate-700/40"
 										>
 											<TableCell className="font-medium text-slate-900 dark:text-white">
 												#{reward.id}
 											</TableCell>
 											<TableCell>{reward.amount}</TableCell>
 											<TableCell>{reward.duration}</TableCell>
-											<TableCell className="text-lime-600 dark:text-lime-400">
+											<TableCell className="text-sky-600 dark:text-sky-400">
 												{reward.apy}
 											</TableCell>
 											<TableCell>{reward.earned}</TableCell>
@@ -234,7 +240,7 @@ const Page = () => {
 												<Badge
 													className={
 														reward.status === "Claimable"
-															? "bg-lime-100 dark:bg-lime-400/20 text-lime-600 dark:text-lime-400 border-lime-200 dark:border-lime-400/30"
+															? "bg-sky-100 dark:bg-sky-400/20 text-sky-600 dark:text-sky-400 border-sky-200 dark:border-sky-400/30"
 															: "bg-yellow-100 dark:bg-yellow-400/20 text-yellow-600 dark:text-yellow-400 border-yellow-200 dark:border-yellow-400/30"
 													}
 												>
@@ -248,8 +254,8 @@ const Page = () => {
 													disabled={reward.status !== "Claimable"}
 													className={
 														reward.status === "Claimable"
-															? "border-lime-200 dark:border-lime-500/30 text-lime-600 dark:text-lime-400 hover:bg-lime-50 dark:hover:bg-lime-500/10"
-															: "border-slate-200 dark:border-slate-700 text-slate-400 dark:text-slate-500"
+															? "border-sky-200 dark:border-sky-500/30 text-sky-600 dark:text-sky-400 hover:bg-sky-50 dark:hover:bg-sky-500/10"
+															: "border-slate-200 dark:border-slate-700/40 text-slate-400 dark:text-slate-500"
 													}
 												>
 													Claim

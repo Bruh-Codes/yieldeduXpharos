@@ -41,7 +41,7 @@ export default async function CoursePage({ params }: CoursePageProps) {
 						<ArrowLeft className="mr-2 h-4 w-4" /> Back to Courses
 					</Link>
 
-					<Card className="relative overflow-hidden dark:bg-gradient-to-r from-slate-800/50 to-slate-800/30 rounded-2xl border border-slate-200 dark:border-slate-700/50 shadow-sm p-8  border-border/20 mb-8">
+					<Card className="relative overflow-hidden dark:bg-gradient-to-r from-slate-800/50 to-slate-800/30 rounded-2xl border border-slate-200 dark:dark:border-slate-700/40 shadow-sm p-8  border-border/20 mb-8">
 						<div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
 							<div>
 								<h1 className="text-3xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent">
@@ -65,7 +65,7 @@ export default async function CoursePage({ params }: CoursePageProps) {
 								</h2>
 
 								<div className="space-y-4 mb-6">
-									<div className="bg-slate-100 dark:bg-slate-900/50  border-slate-200 dark:border-slate-700 rounded-lg p-4 border border-border/10">
+									<div className="bg-slate-100 dark:bg-[#1A103D]  border-slate-200 dark:dark:border-slate-700/40 rounded-lg p-4 border border-border/10">
 										<div className="grid grid-cols-2 gap-4">
 											<div>
 												<p className="text-sm text-gray-400">Duration</p>
@@ -92,7 +92,7 @@ export default async function CoursePage({ params }: CoursePageProps) {
 									</div>
 								</div>
 
-								<div className="bg-slate-100 dark:bg-slate-900/50  border-slate-200 dark:border-slate-700 rounded-lg p-4 border border-border/10">
+								<div className="bg-slate-100 dark:bg-[#1A103D]  border-slate-200 dark:dark:border-slate-700/40 rounded-lg p-4 border border-border/10">
 									<h3 className="font-bold mb-3 text-primary">
 										How This Course Works
 									</h3>

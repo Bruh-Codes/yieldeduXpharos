@@ -62,7 +62,7 @@ export default async function ReviewLessonPage({
 				</div>
 			</div>
 
-			<Card className="mb-8 dark:!border-lime-400/20 bg-lime-400/10">
+			<Card className="mb-8 dark:!border-sky-400/20 bg-sky-400/10">
 				<CardHeader>
 					<CardTitle>Lesson Content</CardTitle>
 					<CardDescription>

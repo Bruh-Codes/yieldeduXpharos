@@ -77,7 +77,7 @@ const Sidebar = () => {
 				{/* Sidebar - Desktop */}
 				<aside
 					className={cn(
-						"fixed inset-y-0 left-0 z-50 bg-white dark:bg-slate-900/90 border-r border-slate-200 dark:border-slate-800/60 transform transition-all duration-100 ease-in-out lg:translate-x-0 lg:static lg:inset-auto lg:flex backdrop-blur-md",
+						"fixed inset-y-0 left-0 z-50 bg-white dark:bg-[#1A103D95] border-r border-slate-200 dark:border-slate-800/60 transform transition-all duration-100 ease-in-out lg:translate-x-0 lg:static lg:inset-auto lg:flex backdrop-blur-md",
 						{
 							"-translate-x-full w-24": !sidebarOpen,
 							"translate-x-0 w-3/4 sm:w-1/2 md:w-1/3 lg:w-full": sidebarOpen,
@@ -97,7 +97,7 @@ const Sidebar = () => {
 								</Link>
 								{sidebarOpen && (
 									<div>
-										<h1 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-lime-500 to-yellow-500">
+										<h1 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-sky-500 to-yellow-500">
 											YieldEdu
 										</h1>
 										<p className="text-xs text-slate-500 dark:text-slate-400">
@@ -227,8 +227,8 @@ const Sidebar = () => {
 									"gap-0 justify-center": !sidebarOpen,
 								})}
 							>
-								<div className="w-8 h-8 rounded-full bg-lime-100 dark:bg-lime-900/30 flex items-center justify-center">
-									<Crown className="w-4 h-4 text-lime-600 dark:text-lime-400" />
+								<div className="w-8 h-8 rounded-full bg-sky-100 dark:bg-sky-900/30 flex items-center justify-center">
+									<Crown className="w-4 h-4 text-sky-600 dark:text-sky-400" />
 								</div>
 								{sidebarOpen && (
 									<div>
@@ -286,9 +286,9 @@ function SidebarLink({
 					className={cn(
 						"flex items-center gap-3 w-full px-3 overflow-x-clip py-2 rounded-lg transition-colors",
 						{
-							"bg-lime-100 dark:bg-lime-500/10 text-lime-700 dark:text-lime-400":
+							"bg-sky-100 dark:bg-sky-500/10 text-sky-700 dark:text-sky-400":
 								active,
-							"text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/60":
+							"text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-sky-800/15":
 								!active,
 							"gap-0 justify-center w-fit mx-auto": !sidebarOpen,
 						}
@@ -296,7 +296,7 @@ function SidebarLink({
 				>
 					<span
 						className={cn({
-							"text-lime-600 dark:text-lime-400": active,
+							"text-sky-600 dark:text-sky-400": active,
 							"text-slate-500 dark:text-slate-400": !active,
 						})}
 					>

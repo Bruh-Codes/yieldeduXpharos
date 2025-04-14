@@ -8,25 +8,25 @@ if (!projectId) {
 }
 
 export const eduTestnet = defineChain({
-	id: 656476,
-	name: "EDU Chain Testnet",
+	id: 50002,
+	name: "pharos Devnet",
 	chainNamespace: "eip155",
-	caipNetworkId: "eip155:656476",
+	caipNetworkId: "eip155:50002",
 	nativeCurrency: {
-		name: "EDU Chain Testnet",
-		symbol: "EDU",
+		name: "pharos",
+		symbol: "PTT",
 		decimals: 18,
 	},
 
 	testnet: true,
 	rpcUrls: {
 		default: {
-			http: ["https://rpc.open-campus-codex.gelato.digital"],
+			http: ["https://devnet.dplabs-internal.com/"],
 		},
 	},
 	blockExplorers: {
 		default: {
-			name: "EDU Explorer",
+			name: "Pharos",
 			url: "https://edu-chain-testnet.blockscout.com",
 		},
 	},

@@ -32,9 +32,9 @@ function FeatureCard({
 	description: string;
 }) {
 	return (
-		<Card className="bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50 backdrop-blur-sm shadow-sm hover:shadow-md transition-shadow">
+		<Card className="bg-whitedark:bg-[#1A103D] border-slate-200 dark:border-slate-700/40 backdrop-blur-sm shadow-sm hover:shadow-md transition-shadow">
 			<CardContent className="p-6">
-				<div className="w-12 h-12 rounded-lg bg-lime-100 dark:bg-lime-900/30 flex items-center justify-center mb-4">
+				<div className="w-12 h-12 rounded-lg bg-sky-100 dark:bg-sky-900/30 flex items-center justify-center mb-4">
 					{icon}
 				</div>
 				<h3 className="text-xl font-semibold mb-2 text-slate-900 dark:text-white">
@@ -57,7 +57,7 @@ const FeaturesPage = () => {
 			<Header />
 			<main className="space-y-20 container py-28 px-5 md:max-w-5xl mx-auto">
 				<section className="mb-10">
-					<h2 className="text-3xl font-bold mb-4 text-lime-500 dark:text-lime-400">
+					<h2 className="text-3xl font-bold mb-4 text-sky-500 dark:text-sky-400">
 						Overview
 					</h2>
 					<p className="mb-4">
@@ -73,7 +73,7 @@ const FeaturesPage = () => {
 				</section>
 
 				<section className="mb-10">
-					<h2 className="text-3xl font-bold mb-6 text-lime-500 dark:text-lime-400">
+					<h2 className="text-3xl font-bold mb-6 text-sky-500 dark:text-sky-400">
 						Core Features
 					</h2>
 
@@ -92,18 +92,18 @@ const FeaturesPage = () => {
 				</section>
 
 				<section className="mb-10">
-					<h2 className="text-3xl font-bold mb-6 text-lime-500 dark:text-lime-400">
+					<h2 className="text-3xl font-bold mb-6 text-sky-500 dark:text-sky-400">
 						For Students
 					</h2>
 
-					<div className="bg-white dark:bg-slate-800/60 rounded-xl p-6 border border-slate-200 dark:border-slate-700/50 mb-6">
+					<div className="bg-white dark:bg-slate-800/60 rounded-xl p-6 border border-slate-200 dark:border-slate-700/40 mb-6">
 						<h3 className="text-xl font-semibold mb-4 text-slate-900 dark:text-white flex items-center gap-2">
-							<GraduationCap className="w-5 h-5 text-lime-500" />
+							<GraduationCap className="w-5 h-5 text-sky-500" />
 							Learning Experience
 						</h3>
 						<ul className="space-y-3">
 							<li className="flex items-start gap-2">
-								<Badge className="mt-1 bg-lime-100 dark:bg-lime-900/30 text-lime-700 dark:text-lime-400 border-lime-200 dark:border-lime-700/30">
+								<Badge className="mt-1 bg-sky-100 dark:bg-sky-900/30 text-sky-700 dark:text-sky-400 border-sky-200 dark:border-sky-700/30">
 									Interactive
 								</Badge>
 								<span className="text-slate-700 dark:text-slate-300">
@@ -111,7 +111,7 @@ const FeaturesPage = () => {
 								</span>
 							</li>
 							<li className="flex items-start gap-2">
-								<Badge className="mt-1 bg-lime-100 dark:bg-lime-900/30 text-lime-700 dark:text-lime-400 border-lime-200 dark:border-lime-700/30">
+								<Badge className="mt-1 bg-sky-100 dark:bg-sky-900/30 text-sky-700 dark:text-sky-400 border-sky-200 dark:border-sky-700/30">
 									Structured
 								</Badge>
 								<span className="text-slate-700 dark:text-slate-300">
@@ -119,7 +119,7 @@ const FeaturesPage = () => {
 								</span>
 							</li>
 							<li className="flex items-start gap-2">
-								<Badge className="mt-1 bg-lime-100 dark:bg-lime-900/30 text-lime-700 dark:text-lime-400 border-lime-200 dark:border-lime-700/30">
+								<Badge className="mt-1 bg-sky-100 dark:bg-sky-900/30 text-sky-700 dark:text-sky-400 border-sky-200 dark:border-sky-700/30">
 									Tracked
 								</Badge>
 								<span className="text-slate-700 dark:text-slate-300">
@@ -127,7 +127,7 @@ const FeaturesPage = () => {
 								</span>
 							</li>
 							<li className="flex items-start gap-2">
-								<Badge className="mt-1 bg-lime-100 dark:bg-lime-900/30 text-lime-700 dark:text-lime-400 border-lime-200 dark:border-lime-700/30">
+								<Badge className="mt-1 bg-sky-100 dark:bg-sky-900/30 text-sky-700 dark:text-sky-400 border-sky-200 dark:border-sky-700/30">
 									Certified
 								</Badge>
 								<span className="text-slate-700 dark:text-slate-300">
@@ -137,7 +137,7 @@ const FeaturesPage = () => {
 						</ul>
 					</div>
 
-					<div className="bg-white dark:bg-slate-800/60 rounded-xl p-6 border border-slate-200 dark:border-slate-700/50">
+					<div className="bg-white dark:bg-slate-800/60 rounded-xl p-6 border border-slate-200 dark:border-slate-700/40">
 						<h3 className="text-xl font-semibold mb-4 text-slate-900 dark:text-white flex items-center gap-2">
 							<Wallet className="w-5 h-5 text-yellow-500" />
 							Staking & Rewards
@@ -183,18 +183,18 @@ const FeaturesPage = () => {
 				</section>
 
 				<section className="mb-10">
-					<h2 className="text-3xl font-bold mb-6 text-lime-500 dark:text-lime-400">
+					<h2 className="text-3xl font-bold mb-6 text-sky-500 dark:text-sky-400">
 						For Educators
 					</h2>
 
-					<div className="bg-white dark:bg-slate-800/60 rounded-xl p-6 border border-slate-200 dark:border-slate-700/50 mb-6">
+					<div className="bg-white dark:bg-slate-800/60 rounded-xl p-6 border border-slate-200 dark:border-slate-700/40 mb-6">
 						<h3 className="text-xl font-semibold mb-4 text-slate-900 dark:text-white flex items-center gap-2">
-							<BookOpen className="w-5 h-5 text-lime-500" />
+							<BookOpen className="w-5 h-5 text-sky-500" />
 							Course Creation
 						</h3>
 						<ul className="space-y-3">
 							<li className="flex items-start gap-2">
-								<Badge className="mt-1 bg-lime-100 dark:bg-lime-900/30 text-lime-700 dark:text-lime-400 border-lime-200 dark:border-lime-700/30">
+								<Badge className="mt-1 bg-sky-100 dark:bg-sky-900/30 text-sky-700 dark:text-sky-400 border-sky-200 dark:border-sky-700/30">
 									Intuitive
 								</Badge>
 								<span className="text-slate-700 dark:text-slate-300">
@@ -202,7 +202,7 @@ const FeaturesPage = () => {
 								</span>
 							</li>
 							<li className="flex items-start gap-2">
-								<Badge className="mt-1 bg-lime-100 dark:bg-lime-900/30 text-lime-700 dark:text-lime-400 border-lime-200 dark:border-lime-700/30">
+								<Badge className="mt-1 bg-sky-100 dark:bg-sky-900/30 text-sky-700 dark:text-sky-400 border-sky-200 dark:border-sky-700/30">
 									Multimedia
 								</Badge>
 								<span className="text-slate-700 dark:text-slate-300">
@@ -211,7 +211,7 @@ const FeaturesPage = () => {
 								</span>
 							</li>
 							<li className="flex items-start gap-2">
-								<Badge className="mt-1 bg-lime-100 dark:bg-lime-900/30 text-lime-700 dark:text-lime-400 border-lime-200 dark:border-lime-700/30">
+								<Badge className="mt-1 bg-sky-100 dark:bg-sky-900/30 text-sky-700 dark:text-sky-400 border-sky-200 dark:border-sky-700/30">
 									Templates
 								</Badge>
 								<span className="text-slate-700 dark:text-slate-300">
@@ -220,7 +220,7 @@ const FeaturesPage = () => {
 								</span>
 							</li>
 							<li className="flex items-start gap-2">
-								<Badge className="mt-1 bg-lime-100 dark:bg-lime-900/30 text-lime-700 dark:text-lime-400 border-lime-200 dark:border-lime-700/30">
+								<Badge className="mt-1 bg-sky-100 dark:bg-sky-900/30 text-sky-700 dark:text-sky-400 border-sky-200 dark:border-sky-700/30">
 									Analytics
 								</Badge>
 								<span className="text-slate-700 dark:text-slate-300">
@@ -230,7 +230,7 @@ const FeaturesPage = () => {
 						</ul>
 					</div>
 
-					<div className="bg-white dark:bg-slate-800/60 rounded-xl p-6 border border-slate-200 dark:border-slate-700/50">
+					<div className="bg-white dark:bg-slate-800/60 rounded-xl p-6 border border-slate-200 dark:border-slate-700/40">
 						<h3 className="text-xl font-semibold mb-4 text-slate-900 dark:text-white flex items-center gap-2">
 							<Sparkles className="w-5 h-5 text-yellow-500" />
 							Revenue Generation
@@ -275,15 +275,15 @@ const FeaturesPage = () => {
 				</section>
 
 				<section className="mb-10">
-					<h2 className="text-3xl font-bold mb-6 text-lime-500 dark:text-lime-400">
+					<h2 className="text-3xl font-bold mb-6 text-sky-500 dark:text-sky-400">
 						Security & Compliance
 					</h2>
 
-					<div className="bg-white dark:bg-slate-800/60 rounded-xl p-6 border border-slate-200 dark:border-slate-700/50">
+					<div className="bg-white dark:bg-slate-800/60 rounded-xl p-6 border border-slate-200 dark:border-slate-700/40">
 						<ul className="space-y-5">
 							<li>
 								<h3 className="text-lg font-semibold mb-2 text-slate-900 dark:text-white flex items-center gap-2">
-									<Shield className="w-5 h-5 text-lime-500" />
+									<Shield className="w-5 h-5 text-sky-500" />
 									OCID Authentication
 								</h3>
 								<p className="text-slate-700 dark:text-slate-300">
@@ -294,7 +294,7 @@ const FeaturesPage = () => {
 							</li>
 							<li>
 								<h3 className="text-lg font-semibold mb-2 text-slate-900 dark:text-white flex items-center gap-2">
-									<Lock className="w-5 h-5 text-lime-500" />
+									<Lock className="w-5 h-5 text-sky-500" />
 									Smart Contract Security
 								</h3>
 								<p className="text-slate-700 dark:text-slate-300">
@@ -305,7 +305,7 @@ const FeaturesPage = () => {
 							</li>
 							<li>
 								<h3 className="text-lg font-semibold mb-2 text-slate-900 dark:text-white flex items-center gap-2">
-									<Users className="w-5 h-5 text-lime-500" />
+									<Users className="w-5 h-5 text-sky-500" />
 									Data Protection
 								</h3>
 								<p className="text-slate-700 dark:text-slate-300">
@@ -316,7 +316,7 @@ const FeaturesPage = () => {
 							</li>
 							<li>
 								<h3 className="text-lg font-semibold mb-2 text-slate-900 dark:text-white flex items-center gap-2">
-									<Sparkles className="w-5 h-5 text-lime-500" />
+									<Sparkles className="w-5 h-5 text-sky-500" />
 									Regulatory Compliance
 								</h3>
 								<p className="text-slate-700 dark:text-slate-300">

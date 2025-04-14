@@ -18,7 +18,7 @@ const Footer = () => {
 								/>
 							</Link>
 							<div>
-								<h1 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-lime-500 to-yellow-500">
+								<h1 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-sky-500 to-yellow-500">
 									YieldEdu
 								</h1>
 							</div>
@@ -30,7 +30,7 @@ const Footer = () => {
 						<div className="flex gap-4">
 							<a
 								href={process.env.NEXT_PUBLIC_TWITTER_URL}
-								className="text-slate-400 hover:text-lime-500"
+								className="text-slate-400 hover:text-sky-500"
 							>
 								<svg
 									className="w-5 h-5"
@@ -43,7 +43,7 @@ const Footer = () => {
 							</a>
 							<a
 								href={process.env.NEXT_PUBLIC_GITHUB_URL}
-								className="text-slate-400 hover:text-lime-500"
+								className="text-slate-400 hover:text-sky-500"
 							>
 								<svg
 									className="w-5 h-5"
@@ -69,7 +69,7 @@ const Footer = () => {
 							<li>
 								<a
 									href="/features"
-									className="text-slate-500 dark:text-slate-400 hover:text-lime-500 dark:hover:text-lime-500"
+									className="text-slate-500 dark:text-slate-400 hover:text-sky-500 dark:hover:text-sky-500"
 								>
 									Features
 								</a>
@@ -77,7 +77,7 @@ const Footer = () => {
 							<li>
 								<a
 									href="/contact-support"
-									className="text-slate-500 dark:text-slate-400 hover:text-lime-500 dark:hover:text-lime-500"
+									className="text-slate-500 dark:text-slate-400 hover:text-sky-500 dark:hover:text-sky-500"
 								>
 									Support
 								</a>
@@ -93,7 +93,7 @@ const Footer = () => {
 							<li>
 								<a
 									href="/blogs"
-									className="text-slate-500 dark:text-slate-400 hover:text-lime-500 dark:hover:text-lime-500"
+									className="text-slate-500 dark:text-slate-400 hover:text-sky-500 dark:hover:text-sky-500"
 								>
 									Blogs
 								</a>
@@ -101,7 +101,7 @@ const Footer = () => {
 							<li>
 								<a
 									href="/community"
-									className="text-slate-500 dark:text-slate-400 hover:text-lime-500 dark:hover:text-lime-500"
+									className="text-slate-500 dark:text-slate-400 hover:text-sky-500 dark:hover:text-sky-500"
 								>
 									Community
 								</a>
@@ -117,7 +117,7 @@ const Footer = () => {
 							<li>
 								<a
 									href="/about-us"
-									className="text-slate-500 dark:text-slate-400 hover:text-lime-500 dark:hover:text-lime-500"
+									className="text-slate-500 dark:text-slate-400 hover:text-sky-500 dark:hover:text-sky-500"
 								>
 									About Us
 								</a>
@@ -125,7 +125,7 @@ const Footer = () => {
 							<li>
 								<a
 									href="/careers"
-									className="text-slate-500 dark:text-slate-400 hover:text-lime-500 dark:hover:text-lime-500"
+									className="text-slate-500 dark:text-slate-400 hover:text-sky-500 dark:hover:text-sky-500"
 								>
 									Careers
 								</a>
@@ -141,19 +141,19 @@ const Footer = () => {
 					<div className="mt-4 md:mt-0 flex gap-6">
 						<a
 							href="/privacy-policy"
-							className="text-sm text-slate-500 dark:text-slate-400 hover:text-lime-500 dark:hover:text-lime-500"
+							className="text-sm text-slate-500 dark:text-slate-400 hover:text-sky-500 dark:hover:text-sky-500"
 						>
 							Privacy Policy
 						</a>
 						<a
 							href="/cookie-policy"
-							className="text-sm text-slate-500 dark:text-slate-400 hover:text-lime-500 dark:hover:text-lime-500"
+							className="text-sm text-slate-500 dark:text-slate-400 hover:text-sky-500 dark:hover:text-sky-500"
 						>
 							Cookie policy
 						</a>
 						<a
 							href="/terms-of-service"
-							className="text-sm text-slate-500 dark:text-slate-400 hover:text-lime-500 dark:hover:text-lime-500"
+							className="text-sm text-slate-500 dark:text-slate-400 hover:text-sky-500 dark:hover:text-sky-500"
 						>
 							Terms of Service
 						</a>

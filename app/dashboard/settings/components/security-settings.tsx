@@ -94,7 +94,7 @@ export function SecuritySettings() {
 
 	return (
 		<div className="space-y-6">
-			<Card className="bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50 backdrop-blur-sm shadow-sm">
+			<Card className="bg-whitedark:bg-[#1A103D] border-slate-200 dark:dark:border-slate-700/40 backdrop-blur-sm shadow-sm">
 				<CardHeader>
 					<CardTitle>Two-Factor Authentication (2FA)</CardTitle>
 					<CardDescription>
@@ -102,7 +102,7 @@ export function SecuritySettings() {
 					</CardDescription>
 				</CardHeader>
 				<CardContent className="space-y-4">
-					<div className="flex items-center justify-between  border border-slate-200 dark:border-slate-700/50 backdrop-blur-sm shadow-sm bg-slate-100 dark:bg-slate-800/50 rounded-xl p-4 space-y-2">
+					<div className="flex items-center justify-between  border border-slate-200 dark:dark:bor700/40-700/40 backdrop-blur-sm shadow-sm bg-slate-100 dark:bg-[#1A103D] rounded-xl p-4 space-y-2">
 						<div className="space-y-0.5">
 							<div className="flex items-center">
 								<Smartphone className="mr-2 h-4 w-4" />

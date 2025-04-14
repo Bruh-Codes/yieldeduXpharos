@@ -41,7 +41,7 @@ const MobileHeader = ({
 					variant="ghost"
 					size="icon"
 					onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-					className="text-slate-600 dark:text-slate-300 hover:text-lime-500 hover:bg-lime-500/10"
+					className="text-slate-600 dark:text-slate-300 hover:text-sky-500 hover:bg-sky-500/10"
 				>
 					<Moon className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
 					<Sun className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
@@ -58,32 +58,32 @@ const MobileHeader = ({
 				<nav className="flex flex-col items-center gap-6">
 					<a
 						href="/about-us"
-						className="text-slate-600 dark:text-slate-300 hover:text-lime-500 dark:hover:text-lime-500 transition-colors"
+						className="text-slate-600 dark:text-slate-300 hover:text-sky-500 dark:hover:text-sky-500 transition-colors"
 					>
 						About
 					</a>
 					<a
 						href="/features"
-						className="text-slate-600 dark:text-slate-300 hover:text-lime-500 dark:hover:text-lime-500 transition-colors"
+						className="text-slate-600 dark:text-slate-300 hover:text-sky-500 dark:hover:text-sky-500 transition-colors"
 					>
 						Features
 					</a>
 					<a
 						href="/blogs"
-						className="text-slate-600 dark:text-slate-300 hover:text-lime-500 dark:hover:text-lime-500 transition-colors"
+						className="text-slate-600 dark:text-slate-300 hover:text-sky-500 dark:hover:text-sky-500 transition-colors"
 					>
 						Blogs
 					</a>
 					<a
 						href="/contact-support"
-						className="text-slate-600 dark:text-slate-300 hover:text-lime-500 dark:hover:text-lime-500 transition-colors"
+						className="text-slate-600 dark:text-slate-300 hover:text-sky-500 dark:hover:text-sky-500 transition-colors"
 					>
 						Support
 					</a>
 				</nav>
 				<Feedback>
 					<Button
-						className="hover:bg-transparent border-none bg-transparent text-slate-600 font-semibold dark:text-white hover:text-lime-500 dark:hover:text-lime-500"
+						className="hover:bg-transparent border-none bg-transparent text-slate-600 font-semibold dark:text-white hover:text-sky-500 dark:hover:text-sky-500"
 						variant="outline"
 					>
 						Feedback
@@ -91,7 +91,7 @@ const MobileHeader = ({
 				</Feedback>
 				<a
 					href="/dashboard"
-					className="text-slate-600 dark:text-lime-400 hover:text-lime-500 dark:hover:text-lime-500 transition-colors"
+					className="text-slate-600 dark:text-sky-400 hover:text-sky-500 dark:hover:text-sky-500 transition-colors"
 				>
 					Dashboard
 				</a>

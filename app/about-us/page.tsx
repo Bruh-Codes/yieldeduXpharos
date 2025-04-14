@@ -22,7 +22,7 @@ export default function Page() {
 			<main className="space-y-20 py-28 px-5 container mx-auto md:max-w-4xl">
 				<section className="mb-10">
 					<div className=" mt-6">
-						<h2 className="text-3xl font-bold mb-4 text-lime-500 dark:text-lime-400">
+						<h2 className="text-3xl font-bold mb-4 text-sky-500 dark:text-sky-400">
 							Kamasah Dickson Founder & CEO
 						</h2>
 						<p className="text-md text-slate-600 italic dark:text-slate-300">
@@ -35,7 +35,7 @@ export default function Page() {
 					</div>
 				</section>
 				<section className="mb-10">
-					<h2 className="text-3xl font-bold mb-4 text-lime-500 dark:text-lime-400">
+					<h2 className="text-3xl font-bold mb-4 text-sky-500 dark:text-sky-400">
 						Our Mission
 					</h2>
 					<p className="mb-4">
@@ -53,7 +53,7 @@ export default function Page() {
 				</section>
 
 				<section className="mb-10">
-					<h2 className="text-3xl font-bold mb-4 text-lime-500 dark:text-lime-400">
+					<h2 className="text-3xl font-bold mb-4 text-sky-500 dark:text-sky-400">
 						Our Story
 					</h2>
 					<p className="mb-4">
@@ -70,7 +70,7 @@ export default function Page() {
 						<a
 							href="https://x.com/educhain_xyz"
 							target="_blank"
-							className="text-lime-400 underline"
+							className="text-sky-400 underline"
 						>
 							EduChain{" "}
 						</a>{" "}
@@ -85,7 +85,7 @@ export default function Page() {
 				</section>
 
 				<section className="mb-10">
-					<h2 className="text-3xl font-bold mb-4 text-lime-500 dark:text-lime-400">
+					<h2 className="text-3xl font-bold mb-4 text-sky-500 dark:text-sky-400">
 						Join the Community
 					</h2>
 					<p className="mb-4">
@@ -93,7 +93,7 @@ export default function Page() {
 						educational resources. 📢 Follow us on{" "}
 						<a
 							target="_blank"
-							className="text-lime-400 underline"
+							className="text-sky-400 underline"
 							href={process.env.NEXT_PUBLIC_TWITTER_URL}
 						>
 							Twitter/X
@@ -102,12 +102,12 @@ export default function Page() {
 					</p>
 				</section>
 				<section className="mb-10">
-					<h2 className="text-3xl font-bold mb-4 text-lime-500 dark:text-lime-400">
+					<h2 className="text-3xl font-bold mb-4 text-sky-500 dark:text-sky-400">
 						Our Values
 					</h2>
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-						<div className="bg-white dark:bg-slate-800/60 p-6 rounded-xl border border-slate-200 dark:border-slate-700/50">
-							<h3 className="text-lg font-semibold mb-2 text-slate-900 dark:text-lime-400">
+						<div className="bg-white dark:bg-slate-800/60 p-6 rounded-xl border border-slate-200 dark:border-slate-700/40">
+							<h3 className="text-lg font-semibold mb-2 text-slate-900 dark:text-sky-400">
 								Education First
 							</h3>
 							<p className="text-slate-600 dark:text-slate-300">
@@ -117,8 +117,8 @@ export default function Page() {
 							</p>
 						</div>
 
-						<div className="bg-white dark:bg-slate-800/60 p-6 rounded-xl border border-slate-200 dark:border-slate-700/50">
-							<h3 className="text-lg font-semibold mb-2 text-slate-900 dark:text-lime-400">
+						<div className="bg-white dark:bg-slate-800/60 p-6 rounded-xl border border-slate-200 dark:border-slate-700/40">
+							<h3 className="text-lg font-semibold mb-2 text-slate-900 dark:text-sky-400">
 								Rewarding Excellence
 							</h3>
 							<p className="text-slate-600 dark:text-slate-300">
@@ -128,8 +128,8 @@ export default function Page() {
 							</p>
 						</div>
 
-						<div className="bg-white dark:bg-slate-800/60 p-6 rounded-xl border border-slate-200 dark:border-slate-700/50">
-							<h3 className="text-lg font-semibold mb-2 text-slate-900 dark:text-lime-400">
+						<div className="bg-white dark:bg-slate-800/60 p-6 rounded-xl border border-slate-200 dark:border-slate-700/40">
+							<h3 className="text-lg font-semibold mb-2 text-slate-900 dark:text-sky-400">
 								Community Driven
 							</h3>
 							<p className="text-slate-600 dark:text-slate-300">
@@ -139,8 +139,8 @@ export default function Page() {
 							</p>
 						</div>
 
-						<div className="bg-white dark:bg-slate-800/60 p-6 rounded-xl border border-slate-200 dark:border-slate-700/50">
-							<h3 className="text-lg font-semibold mb-2 text-slate-900 dark:text-lime-400">
+						<div className="bg-white dark:bg-slate-800/60 p-6 rounded-xl border border-slate-200 dark:border-slate-700/40">
+							<h3 className="text-lg font-semibold mb-2 text-slate-900 dark:text-sky-400">
 								Transparency
 							</h3>
 							<p className="text-slate-600 dark:text-slate-300">

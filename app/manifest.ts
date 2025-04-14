@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
 		name: "YieldEdu",
 		short_name: "YieldEdu",
 		description:
-			"A Web3 protocol that lets you earn guaranteed yields on your EDU tokens while learning about Web3.",
+			"A Web3 protocol that lets you earn guaranteed yields on your Pharos tokens while learning about Web3.",
 		start_url: "/",
 		display: "standalone",
 		background_color: "#f0f4f8",

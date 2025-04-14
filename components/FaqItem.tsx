@@ -12,7 +12,7 @@ const FaqItem = ({
 	const [isOpen, setIsOpen] = useState(false);
 
 	return (
-		<div className="bg-white dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700/50 overflow-hidden">
+		<div className="bg-whitedark:bg-[#1A103D] rounded-xl border border-slate-200 dark:border-slate-700/40 overflow-hidden">
 			<button
 				className="w-full flex items-center justify-between p-4 text-left focus:outline-none"
 				onClick={() => setIsOpen(!isOpen)}
@@ -27,7 +27,7 @@ const FaqItem = ({
 				/>
 			</button>
 			{isOpen && (
-				<div className="px-4 pb-4 text-slate-600 dark:text-slate-300 border-t border-slate-200 dark:border-slate-700/50">
+				<div className="px-4 pb-4 text-slate-600 dark:text-slate-300 border-t border-slate-200 dark:border-slate-700/40">
 					<p>{answer}</p>
 				</div>
 			)}

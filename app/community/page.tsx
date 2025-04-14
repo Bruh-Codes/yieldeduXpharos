@@ -53,7 +53,7 @@ export default function CommunityPage() {
 
 					<div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
 						<CommunityStatCard
-							icon={<Users className="w-8 h-8 text-lime-500" />}
+							icon={<Users className="w-8 h-8 text-sky-500" />}
 							title="1,000+"
 							description="Active Members"
 						/>
@@ -63,7 +63,7 @@ export default function CommunityPage() {
 							description="Forum Posts"
 						/>
 						<CommunityStatCard
-							icon={<Globe className="w-8 h-8 text-lime-500" />}
+							icon={<Globe className="w-8 h-8 text-sky-500" />}
 							title="120+"
 							description="Countries Represented"
 						/>
@@ -71,15 +71,15 @@ export default function CommunityPage() {
 				</section>
 
 				<section className="mb-10">
-					<h2 className="text-2xl font-bold mb-6 text-lime-500 dark:text-lime-400">
+					<h2 className="text-2xl font-bold mb-6 text-sky-500 dark:text-sky-400">
 						Join Our Community
 					</h2>
 
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-						<Card className="bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50 shadow-sm hover:shadow-md transition-shadow">
+						<Card className="bg-whitedark:bg-[#1A103D] border-slate-200 dark:border-slate-700/40 shadow-sm hover:shadow-md transition-shadow">
 							<CardHeader className="pb-2">
 								<div className="flex items-center gap-2 mb-1">
-									<MessageSquare className="w-5 h-5 text-lime-500" />
+									<MessageSquare className="w-5 h-5 text-sky-500" />
 									<CardTitle className="text-xl font-bold text-slate-900 dark:text-white">
 										Discussion Forum
 									</CardTitle>
@@ -91,12 +91,12 @@ export default function CommunityPage() {
 							</CardHeader>
 							<CardContent>
 								<div className="space-y-4">
-									<div className="bg-slate-50 dark:bg-slate-900/50 rounded-lg p-4 border border-slate-200 dark:border-slate-700/50">
+									<div className="bg-slate-50 dark:bg-[#1A103D] rounded-lg p-4 border border-slate-200 dark:border-slate-700/40">
 										<div className="flex justify-between items-start mb-2">
 											<h4 className="font-medium text-slate-900 dark:text-white">
 												Latest Discussions
 											</h4>
-											<Badge className="bg-lime-100 dark:bg-lime-900/30 text-lime-700 dark:text-lime-400 border-lime-200 dark:border-lime-700/30">
+											<Badge className="bg-sky-100 dark:bg-sky-900/30 text-sky-700 dark:text-sky-400 border-sky-200 dark:border-sky-700/30">
 												Active
 											</Badge>
 										</div>
@@ -114,7 +114,7 @@ export default function CommunityPage() {
 										</ul>
 									</div>
 									<a href={process.env.NEXT_PUBLIC_TELEGRAM} target="_blank">
-										<Button className="w-full bg-gradient-to-r from-lime-500 to-yellow-500 text-slate-900 font-semibold hover:opacity-90">
+										<Button className="w-full bg-gradient-to-r from-sky-500 to-yellow-500 text-slate-900 font-semibold hover:opacity-90">
 											Visit Forum
 											<ArrowRight className="ml-2 h-4 w-4" />
 										</Button>
@@ -123,7 +123,7 @@ export default function CommunityPage() {
 							</CardContent>
 						</Card>
 
-						<Card className="bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50 shadow-sm hover:shadow-md transition-shadow">
+						<Card className="bg-whitedark:bg-[#1A103D] border-slate-200 dark:border-slate-700/40 shadow-sm hover:shadow-md transition-shadow">
 							<CardHeader className="pb-2">
 								<div className="flex items-center gap-2 mb-1">
 									<Calendar className="w-5 h-5 text-yellow-500" />
@@ -138,7 +138,7 @@ export default function CommunityPage() {
 							</CardHeader>
 							<CardContent>
 								<div className="space-y-4">
-									<div className="bg-slate-50 dark:bg-slate-900/50 rounded-lg p-4 border border-slate-200 dark:border-slate-700/50">
+									<div className="bg-slate-50 dark:bg-[#1A103D] rounded-lg p-4 border border-slate-200 dark:border-slate-700/40">
 										<div className="flex justify-between items-start mb-2">
 											<h4 className="font-medium text-slate-900 dark:text-white">
 												Upcoming Events
@@ -164,7 +164,7 @@ export default function CommunityPage() {
 									</div>
 									<Button
 										disabled
-										className="w-full bg-gradient-to-r from-lime-500 to-yellow-500 text-slate-900 font-semibold hover:opacity-90"
+										className="w-full bg-gradient-to-r from-sky-500 to-yellow-500 text-slate-900 font-semibold hover:opacity-90"
 									>
 										View All Events
 										<ArrowRight className="ml-2 h-4 w-4" />
@@ -176,7 +176,7 @@ export default function CommunityPage() {
 				</section>
 
 				<section className="mb-10">
-					<h2 className="text-2xl font-bold mb-6 text-lime-500 dark:text-lime-400">
+					<h2 className="text-2xl font-bold mb-6 text-sky-500 dark:text-sky-400">
 						Connect With Us
 					</h2>
 
@@ -207,11 +207,11 @@ export default function CommunityPage() {
 				</section>
 
 				<section className="mb-10">
-					<h2 className="text-2xl font-bold mb-6 text-lime-500 dark:text-lime-400">
+					<h2 className="text-2xl font-bold mb-6 text-sky-500 dark:text-sky-400">
 						Ambassador Program
 					</h2>
 
-					<Card className="bg-gradient-to-r from-lime-50 to-yellow-50 dark:from-lime-500/10 dark:to-yellow-500/10 border border-lime-200 dark:border-lime-500/30">
+					<Card className="bg-gradient-to-r from-sky-50 to-yellow-50 dark:from-sky-500/10 dark:to-yellow-500/10 border border-sky-200 dark:border-sky-500/30">
 						<CardContent className="p-6">
 							<div className="flex flex-col md:flex-row gap-6">
 								<div className="md:w-1/3">
@@ -227,14 +227,14 @@ export default function CommunityPage() {
 									</p>
 									<Button
 										disabled
-										className="bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700"
+										className="bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-700/40 hover:bg-slate-100 dark:hover:bg-slate-700"
 									>
 										Learn More
 										<ArrowRight className="ml-2 h-4 w-4" />
 									</Button>
 								</div>
 
-								<div className="md:w-2/3 bg-white dark:bg-slate-800/60 rounded-xl p-5 border border-slate-200 dark:border-slate-700/50">
+								<div className="md:w-2/3 bg-white dark:bg-slate-800/60 rounded-xl p-5 border border-slate-200 dark:border-slate-700/40">
 									<h4 className="font-semibold text-slate-900 dark:text-white mb-4">
 										Ambassador Benefits
 									</h4>
@@ -251,7 +251,7 @@ export default function CommunityPage() {
 											</div>
 										</div>
 										<div className="flex items-start gap-2">
-											<BookOpen className="w-5 h-5 text-lime-500 mt-0.5" />
+											<BookOpen className="w-5 h-5 text-sky-500 mt-0.5" />
 											<div>
 												<h5 className="font-medium text-slate-900 dark:text-white">
 													Early Access
@@ -273,7 +273,7 @@ export default function CommunityPage() {
 											</div>
 										</div>
 										<div className="flex items-start gap-2">
-											<Heart className="w-5 h-5 text-lime-500 mt-0.5" />
+											<Heart className="w-5 h-5 text-sky-500 mt-0.5" />
 											<div>
 												<h5 className="font-medium text-slate-900 dark:text-white">
 													Community Impact
@@ -291,15 +291,15 @@ export default function CommunityPage() {
 				</section>
 
 				<section>
-					<h2 className="text-2xl font-bold mb-6 text-lime-500 dark:text-lime-400">
+					<h2 className="text-2xl font-bold mb-6 text-sky-500 dark:text-sky-400">
 						Community Contributions
 					</h2>
 
 					<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-						<Card className="bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50 shadow-sm hover:shadow-md transition-shadow">
+						<Card className="bg-whitedark:bg-[#1A103D] border-slate-200 dark:border-slate-700/40 shadow-sm hover:shadow-md transition-shadow">
 							<CardContent className="p-6">
-								<div className="w-12 h-12 rounded-lg bg-lime-100 dark:bg-lime-900/30 flex items-center justify-center mb-4">
-									<Github className="w-6 h-6 text-lime-500" />
+								<div className="w-12 h-12 rounded-lg bg-sky-100 dark:bg-sky-900/30 flex items-center justify-center mb-4">
+									<Github className="w-6 h-6 text-sky-500" />
 								</div>
 								<h3 className="text-xl font-semibold mb-2 text-slate-900 dark:text-white">
 									Open Source
@@ -317,7 +317,7 @@ export default function CommunityPage() {
 							</CardContent>
 						</Card>
 
-						<Card className="bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50 shadow-sm hover:shadow-md transition-shadow">
+						<Card className="bg-whitedark:bg-[#1A103D] border-slate-200 dark:border-slate-700/40 shadow-sm hover:shadow-md transition-shadow">
 							<CardContent className="p-6">
 								<div className="w-12 h-12 rounded-lg bg-yellow-100 dark:bg-yellow-900/30 flex items-center justify-center mb-4">
 									<BookOpen className="w-6 h-6 text-yellow-500" />
@@ -336,10 +336,10 @@ export default function CommunityPage() {
 							</CardContent>
 						</Card>
 
-						<Card className="bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50 shadow-sm hover:shadow-md transition-shadow">
+						<Card className="bg-whitedark:bg-[#1A103D] border-slate-200 dark:border-slate-700/40 shadow-sm hover:shadow-md transition-shadow">
 							<CardContent className="p-6">
-								<div className="w-12 h-12 rounded-lg bg-lime-100 dark:bg-lime-900/30 flex items-center justify-center mb-4">
-									<Globe className="w-6 h-6 text-lime-500" />
+								<div className="w-12 h-12 rounded-lg bg-sky-100 dark:bg-sky-900/30 flex items-center justify-center mb-4">
+									<Globe className="w-6 h-6 text-sky-500" />
 								</div>
 								<h3 className="text-xl font-semibold mb-2 text-slate-900 dark:text-white">
 									Translations
@@ -372,7 +372,7 @@ function CommunityStatCard({
 	description: string;
 }) {
 	return (
-		<div className="bg-white dark:bg-slate-800/50 rounded-xl p-6 border border-slate-200 dark:border-slate-700/50 text-center">
+		<div className="bg-whitedark:bg-[#1A103D] rounded-xl p-6 border border-slate-200 dark:border-slate-700/40 text-center">
 			<div className="flex justify-center mb-4">{icon}</div>
 			<h3 className="text-2xl font-bold mb-1 text-slate-900 dark:text-white">
 				{title}
@@ -397,7 +397,7 @@ function SocialCard({
 }) {
 	return (
 		<Link href={url!} target="_blank">
-			<div className="bg-white dark:bg-slate-800/50 rounded-xl p-4 border border-slate-200 dark:border-slate-700/50 hover:shadow-md transition-shadow flex items-center gap-3">
+			<div className="bg-whitedark:bg-[#1A103D] rounded-xl p-4 border border-slate-200 dark:border-slate-700/40 hover:shadow-md transition-shadow flex items-center gap-3">
 				<div
 					className={`w-10 h-10 rounded-full ${color} flex items-center justify-center text-white`}
 				>

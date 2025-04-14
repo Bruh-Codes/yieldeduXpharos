@@ -18,7 +18,7 @@ export function AppearanceSettings() {
 
 	return (
 		<div className="space-y-6">
-			<Card className="bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50 backdrop-blur-sm shadow-sm">
+			<Card className="bg-whitedark:bg-[#1A103D] border-slate-200 dark:dark:border-slate-700/40 backdrop-blur-sm shadow-sm">
 				<CardHeader>
 					<CardTitle>Theme</CardTitle>
 					<CardDescription>
@@ -33,7 +33,7 @@ export function AppearanceSettings() {
 					>
 						<Label
 							htmlFor="light"
-							className="flex flex-col dark:!bg-slate-800 !bg-slate-100  border-slate-200 dark:border-slate-700/50 items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:!bg-opacity-90 transition-all ease-in-out dark:hover:!bg-opacity-90 cursor-pointer hover:text-accent-foreground [&:has([data-state=checked])]:border-primary dark:border-slate-700"
+							className="flex flex-col dark:!bg-slate-800 !bg-slate-100  border-slate-200 dark:dark:bor700/40-700/40 items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:!bg-opacity-90 transition-all ease-in-out dark:hover:!bg-opacity-90 cursor-pointer hover:text-accent-foreground [&:has([data-state=checked])]:border-primary dark:dark:border-slate-700/40"
 						>
 							<RadioGroupItem value="light" id="light" className="sr-only" />
 							<Sun className="mb-3 h-6 w-6" />
@@ -46,7 +46,7 @@ export function AppearanceSettings() {
 						</Label>
 						<Label
 							htmlFor="dark"
-							className="flex flex-col dark:!bg-slate-950 !bg-slate-700  hover:!bg-opacity-90 transition-all ease-in-out dark:hover:!bg-opacity-90 cursor-pointer border-slate-200 dark:border-slate-700/50 items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground [&:has([data-state=checked])]:border-slate-400"
+							className="flex flex-col dark:!bg-slate-950 !bg-slate-700  hover:!bg-opacity-90 transition-all ease-in-out dark:hover:!bg-opacity-90 cursor-pointer border-slate-200 dark:dark:bor700/40-700/40 items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground [&:has([data-state=checked])]:border-slate-400"
 						>
 							<RadioGroupItem value="dark" id="dark" className="sr-only" />
 							<Moon className="mb-3 h-6 w-6 text-white" />
@@ -59,7 +59,7 @@ export function AppearanceSettings() {
 						</Label>
 						<Label
 							htmlFor="system"
-							className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-gradient-to-tr from-transparent to-slate-900 from-0% to-90% p-4 [&:has([data-state=checked])]:border-slate-800 cursor-pointer hover:opacity-90 border-slate-200 dark:border-slate-700/50"
+							className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-gradient-to-tr from-transparent to-slate-900 from-0% to-90% p-4 [&:has([data-state=checked])]:border-slate-800 cursor-pointer hover:opacity-90 border-slate-200 dark:dark:bor700/40-700/40"
 						>
 							<RadioGroupItem value="system" id="system" className="sr-only" />
 							<div className="mb-3 flex items-center">

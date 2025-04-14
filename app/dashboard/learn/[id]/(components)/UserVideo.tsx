@@ -28,9 +28,9 @@ const UserVideo = ({
 		<Card
 			className={cn(
 				className,
-				"relative grid place-content-center w-full h-full dark:bg-slate-900/50 border-lime-400/30 overflow-hidden rounded-xl p-5 border shadow-sm",
+				"relative grid place-content-center w-full h-full dark:bg-[#1A103D] border-sky-400/30 overflow-hidden rounded-xl p-5 border shadow-sm",
 				{
-					"border-lime-400/50 shadow-[0_0_15px_-3px_rgb(163,230,53,0.4)]":
+					"border-sky-400/50 shadow-[0_0_15px_-3px_rgb(163,230,53,0.4)]":
 						isSpeaking,
 				}
 			)}
@@ -40,15 +40,15 @@ const UserVideo = ({
 					<MicOff className="w-5 h-5 text-white" />
 				</div>
 			)}
-			<div className="absolute inset-0 bg-gradient-to-r from-lime-400/5 to-yellow-400/5 dark:from-lime-400/5 dark:to-emerald-400/5"></div>
+			<div className="absolute inset-0 bg-gradient-to-r from-sky-400/5 to-yellow-400/5 dark:from-sky-400/5 dark:to-emerald-400/5"></div>
 
 			<div className="aspect-video w-full flex items-center justify-center">
 				<div className="text-center">
 					<div className="relative">
 						{isSpeaking && (
 							<>
-								<div className="absolute inset-0 rounded-full animate-ping-slow opacity-20 bg-lime-400 dark:bg-lime-500 scale-150" />
-								<div className="absolute inset-0 rounded-full animate-ping-slower opacity-10 bg-lime-400 dark:bg-lime-500 scale-200" />
+								<div className="absolute inset-0 rounded-full animate-ping-slow opacity-20 bg-sky-400 dark:bg-sky-500 scale-150" />
+								<div className="absolute inset-0 rounded-full animate-ping-slower opacity-10 bg-sky-400 dark:bg-sky-500 scale-200" />
 							</>
 						)}
 						<Avatar className="w-24 h-24 mx-auto mb-4 border-2 border-black/10 dark:border-slate-400/20 shadow-lg">
@@ -72,11 +72,11 @@ const UserVideo = ({
 				</div>
 			</div>
 
-			<div className="absolute bottom-4 left-4 flex items-center gap-2 px-3 py-1.5 rounded-full bg-lime-400/20 border-lime-500/30 backdrop-blur-sm border">
+			<div className="absolute bottom-4 left-4 flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-400/20 border-sky-500/30 backdrop-blur-sm border">
 				<span
 					className={cn("h-2 w-2 rounded-full", {
-						"bg-lime-500 animate-pulse-soft": isSpeaking,
-						"bg-lime-500": !isSpeaking,
+						"bg-sky-500 animate-pulse-soft": isSpeaking,
+						"bg-sky-500": !isSpeaking,
 					})}
 				></span>
 				<span className="text-sm text-gray-700 dark:text-gray-300">

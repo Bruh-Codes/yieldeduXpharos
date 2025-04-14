@@ -30,7 +30,7 @@ const Page = () => {
 					</p>
 				</div>
 				{/* <div className="flex flex-wrap items-center gap-3">
-					<Badge className="bg-lime-100 dark:bg-lime-400/20 text-lime-600 dark:text-lime-400 border-lime-200 dark:border-lime-400/30 px-3 py-1">
+					<Badge className="bg-sky-100 dark:bg-sky-400/20 text-sky-600 dark:text-sky-400 border-sky-200 dark:border-sky-400/30 px-3 py-1">
 						<GraduationCap className="w-4 h-4 mr-1" />
 						Level 2 Scholar
 					</Badge>
@@ -41,7 +41,7 @@ const Page = () => {
 				</div> */}
 			</div>
 			{/* Rewards for Learning */}
-			{/* <Card className="bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50 backdrop-blur-sm shadow-sm">
+			{/* <Card className="bg-whitedark:bg-[#1A103D] border-slate-200 dark:border-slate-700/40 backdrop-blur-sm shadow-sm">
 				<CardHeader>
 					<CardTitle className="text-slate-900 dark:text-white">
 						Learning Rewards
@@ -52,7 +52,7 @@ const Page = () => {
 				</CardHeader>
 				<CardContent>
 					<div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-						<div className="bg-gradient-to-br from-lime-50 to-yellow-50 dark:from-lime-500/10 dark:to-yellow-500/10 rounded-xl p-5 border border-lime-200 dark:border-lime-500/30">
+						<div className="bg-gradient-to-br from-sky-50 to-yellow-50 dark:from-sky-500/10 dark:to-yellow-500/10 rounded-xl p-5 border border-sky-200 dark:border-sky-500/30">
 							<div className="flex justify-between items-start mb-4">
 								<div className="p-2 bg-white dark:bg-slate-800 rounded-lg shadow-sm">
 									<Sparkles className="w-5 h-5 text-yellow-500" />
@@ -77,12 +77,12 @@ const Page = () => {
 							</div>
 						</div>
 
-						<div className="bg-gradient-to-br from-lime-50 to-yellow-50 dark:from-lime-500/10 dark:to-yellow-500/10 rounded-xl p-5 border border-lime-200 dark:border-lime-500/30">
+						<div className="bg-gradient-to-br from-sky-50 to-yellow-50 dark:from-sky-500/10 dark:to-yellow-500/10 rounded-xl p-5 border border-sky-200 dark:border-sky-500/30">
 							<div className="flex justify-between items-start mb-4">
 								<div className="p-2 bg-white dark:bg-slate-800 rounded-lg shadow-sm">
-									<Lock className="w-5 h-5 text-lime-500" />
+									<Lock className="w-5 h-5 text-sky-500" />
 								</div>
-								<Badge className="bg-lime-100 dark:bg-lime-400/20 text-lime-600 dark:text-lime-400 border-lime-200 dark:border-lime-400/30">
+								<Badge className="bg-sky-100 dark:bg-sky-400/20 text-sky-600 dark:text-sky-400 border-sky-200 dark:border-sky-400/30">
 									Level 4-6
 								</Badge>
 							</div>
@@ -93,7 +93,7 @@ const Page = () => {
 								Shorter lock periods with the same rewards
 							</p>
 							<div className="flex items-baseline">
-								<span className="text-2xl font-bold text-lime-600 dark:text-lime-400">
+								<span className="text-2xl font-bold text-sky-600 dark:text-sky-400">
 									-20%
 								</span>
 								<span className="text-slate-500 dark:text-slate-400 text-sm ml-1">
@@ -102,7 +102,7 @@ const Page = () => {
 							</div>
 						</div>
 
-						<div className="bg-gradient-to-br from-lime-50 to-yellow-50 dark:from-lime-500/10 dark:to-yellow-500/10 rounded-xl p-5 border border-lime-200 dark:border-lime-500/30">
+						<div className="bg-gradient-to-br from-sky-50 to-yellow-50 dark:from-sky-500/10 dark:to-yellow-500/10 rounded-xl p-5 border border-sky-200 dark:border-sky-500/30">
 							<div className="flex justify-between items-start mb-4">
 								<div className="p-2 bg-white dark:bg-slate-800 rounded-lg shadow-sm">
 									<Trophy className="w-5 h-5 text-yellow-500" />
@@ -115,14 +115,16 @@ const Page = () => {
 								Bonus Tokens
 							</h3>
 							<p className="text-slate-500 dark:text-slate-400 text-sm mb-3">
-								Earn bonus EDU tokens for completing all lessons
+								Earn bonus  Pharos
+ tokens for completing all lessons
 							</p>
 							<div className="flex items-baseline">
 								<span className="text-2xl font-bold text-yellow-600 dark:text-yellow-400">
 									50
 								</span>
 								<span className="text-slate-500 dark:text-slate-400 text-sm ml-1">
-									EDU Tokens
+									 Pharos
+ Tokens
 								</span>
 							</div>
 						</div>
@@ -131,7 +133,7 @@ const Page = () => {
 			</Card> */}
 
 			{/* Learning Progress */}
-			<Card className="bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50 backdrop-blur-sm shadow-sm">
+			<Card className="bg-whitedark:bg-[#1A103D] border-slate-200 dark:border-slate-700/40 backdrop-blur-sm shadow-sm">
 				<CardHeader>
 					<CardTitle className="text-slate-900 dark:text-white text-2xl">
 						Your Learning Journey

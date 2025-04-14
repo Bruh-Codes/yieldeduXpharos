@@ -81,7 +81,7 @@ const Performance = () => {
 	}, [activeTab, userPositions]);
 
 	return (
-		<Card className="col-span-2 bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50 backdrop-blur-sm shadow-sm">
+		<Card className="col-span-2 bg-whitedark:bg-[#1A103D] border-slate-200 dark:border-slate-700/40 backdrop-blur-sm shadow-sm">
 			<CardHeader>
 				<div className="flex flex-wrap gap-2 justify-between items-start">
 					<div>
@@ -96,19 +96,19 @@ const Performance = () => {
 						<TabsList>
 							<TabsTrigger
 								value="apy"
-								className="data-[state=active]:bg-lime-500 data-[state=active]:text-white dark:data-[state=active]:text-slate-900"
+								className="data-[state=active]:bg-sky-500 data-[state=active]:text-white dark:data-[state=active]:text-slate-900"
 							>
 								APY
 							</TabsTrigger>
 							<TabsTrigger
 								value="rewards"
-								className="data-[state=active]:bg-lime-500 data-[state=active]:text-white dark:data-[state=active]:text-slate-900"
+								className="data-[state=active]:bg-sky-500 data-[state=active]:text-white dark:data-[state=active]:text-slate-900"
 							>
 								Rewards
 							</TabsTrigger>
 							<TabsTrigger
 								value="tvl"
-								className="data-[state=active]:bg-lime-500 data-[state=active]:text-white dark:data-[state=active]:text-slate-900"
+								className="data-[state=active]:bg-sky-500 data-[state=active]:text-white dark:data-[state=active]:text-slate-900"
 							>
 								TVL
 							</TabsTrigger>
@@ -125,7 +125,7 @@ const Performance = () => {
 							</p>
 							<Button
 								onClick={() => open({ view: "Connect" })}
-								className="bg-gradient-to-r from-lime-500 to-yellow-500 hover:to-yellow-500/60 text-white dark:text-slate-900"
+								className="bg-gradient-to-r from-sky-500 to-yellow-500 hover:to-yellow-500/60 text-white dark:text-slate-900"
 							>
 								Connect Wallet
 							</Button>

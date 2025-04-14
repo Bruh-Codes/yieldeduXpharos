@@ -75,7 +75,7 @@ export function DataTableColumnHeader<TData, TValue>({
 					<Button
 						variant="ghost"
 						size="sm"
-						className="-ml-3 h-8 data-[state=open]:bg-lime-400/20 hover:bg-transparent"
+						className="-ml-3 h-8 data-[state=open]:bg-sky-400/20 hover:bg-transparent"
 					>
 						<span>{title}</span>
 						{column.getIsSorted() === "desc" ? (
@@ -218,7 +218,7 @@ const ActivePositions = ({
 			cell: ({ row }) => {
 				const expectedYield = row.getValue("expectedYield") as number;
 				return (
-					<div className="font-medium dark:text-yellow-400 text-lime-600">
+					<div className="font-medium dark:text-yellow-400 text-sky-600">
 						{expectedYield.toFixed(8)}
 					</div>
 				);
@@ -236,7 +236,7 @@ const ActivePositions = ({
 					<Badge
 						className={
 							status === "Active"
-								? "bg-lime-100 dark:bg-lime-400/20 text-lime-600 dark:text-lime-400 border-lime-200 dark:border-lime-400/30"
+								? "bg-sky-100 dark:bg-sky-400/20 text-sky-600 dark:text-sky-400 border-sky-200 dark:border-sky-400/30"
 								: "bg-yellow-100 dark:bg-yellow-400/20 text-yellow-600 dark:text-yellow-400 border-yellow-200 dark:border-yellow-400/30"
 						}
 					>
@@ -259,7 +259,7 @@ const ActivePositions = ({
 							<DropdownMenuTrigger asChild>
 								<Button
 									variant="ghost"
-									className="h-8 w-8 p-0 group dark:hover:bg-slate-900 hover:bg-lime-500"
+									className="h-8 w-8 p-0 group dark:hover:bg-slate-900 hover:bg-sky-500"
 								>
 									<span className="sr-only">Open menu</span>
 									<MoreHorizontal className="h-4 w-4 group-hover:text-white" />
@@ -271,20 +271,20 @@ const ActivePositions = ({
 
 						{row.original.positionAddress === address && (
 							<DropdownMenuContent
-								className="border-slate-200  dark:border-slate-700 !bg-white dark:!bg-slate-900 flex flex-col gap-2 p-2 text-white"
+								className="border-slate-200  dark:border-slate-700/40 !bg-white dark:!bg-slate-900 flex flex-col gap-2 p-2 text-white"
 								align="end"
 							>
 								{row.original.transactionHash && (
 									<ExploreTransactionButton
 										transaction_hash={row.original.transactionHash}
-										className="bg-slate-800 text-white w-full dark:hover:bg-lime-400/30 rounded-sm p-2 justify-center ml-0 shadow hover:bg-primary/90"
+										className="bg-slate-800 text-white w-full dark:hover:bg-sky-400/30 rounded-sm p-2 justify-center ml-0 shadow hover:bg-primary/90"
 									/>
 								)}
 								<Button
 									onClick={() => handleUnstake(row.original.id)}
 									type="button"
 									variant={"default"}
-									className="bg-slate-800 text-white w-full dark:hover:bg-lime-400/30"
+									className="bg-slate-800 text-white w-full dark:hover:bg-sky-400/30"
 								>
 									Unstake
 								</Button>
@@ -319,7 +319,7 @@ const ActivePositions = ({
 	const sortedRows = table.getSortedRowModel().rows;
 
 	return (
-		<Card className="bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50 backdrop-blur-sm shadow-sm">
+		<Card className="bg-white dark:bg-[#1A103D50] border-slate-200 dark:border-slate-700/40 backdrop-blur-sm shadow-sm">
 			<CardHeader>
 				<CardTitle className="text-slate-900 dark:text-white">
 					Active Positions
@@ -360,8 +360,7 @@ const ActivePositions = ({
 										}
 										key={row.id}
 										className={cn("", {
-											"bg-lime-500/20":
-												row.original.positionAddress === address,
+											"bg-sky-500/20": row.original.positionAddress === address,
 										})}
 										data-state={row.getIsSelected() && "selected"}
 									>

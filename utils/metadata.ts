@@ -5,7 +5,7 @@ import { Metadata } from "next";
 export const yieldEduMetadata: Metadata = {
 	title: "YieldEdu",
 	description:
-		"A Web3 protocol that lets you earn guaranteed yields on your EDU tokens while learning about Web3.",
+		"A Web3 protocol that lets you earn guaranteed yields on your Pharos tokens while learning about Web3.",
 	applicationName: "YieldEdu",
 	icons: [icon.src],
 
@@ -15,7 +15,7 @@ export const yieldEduMetadata: Metadata = {
 		"Yield",
 		"Blockchain",
 		"Crypto",
-		"EDU tokens",
+		"Pharos tokens",
 		"Decentralized Finance",
 		"Defi",
 		"Guaranteed Yields",
@@ -30,7 +30,7 @@ export const yieldEduMetadata: Metadata = {
 		emails: ["kamasahdickson@gmail.com"],
 		siteName: "YieldEdu",
 		description:
-			"A Web3 protocol that lets you earn guaranteed yields on your EDU tokens while learning about Web3.",
+			"A Web3 protocol that lets you earn guaranteed yields on your  Pharos tokens while learning about Web3.",
 		images: [openGraphImage.src, icon.src],
 	},
 
@@ -38,7 +38,7 @@ export const yieldEduMetadata: Metadata = {
 		card: "summary_large_image",
 		title: "YieldEdu",
 		description:
-			"A Web3 protocol that lets you earn guaranteed yields on your EDU tokens while learning about Web3.",
+			"A Web3 protocol that lets you earn guaranteed yields on your Pharos tokens while learning about Web3.",
 		images: [openGraphImage.src, icon.src],
 		creator: "@bruh_codes",
 	},

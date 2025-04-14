@@ -56,64 +56,64 @@ const FixedYieldDashboard = () => {
 			{/* className="" */}
 			<AchievementBanner />
 			<div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
-				<Card className="relative overflow-hidden dark:bg-gradient-to-r from-slate-800/50 to-slate-800/30 rounded-2xl border border-slate-200 dark:border-slate-700/50 shadow-sm">
-					<div className="absolute inset-0 bg-gradient-to-r from-lime-400/10 to-yellow-400/10 dark:opacity-10"></div>
+				<Card className="relative overflow-hidden dark:bg-gradient-to-r from-[#1A103D50] to-[#1A103D30] rounded-2xl border border-slate-200 dark:border-slate-700/40 shadow-sm">
+					<div className="absolute inset-0 bg-gradient-to-r from-sky-400/10 to-yellow-400/10 dark:opacity-10"></div>
 					<CardContent className="p-6">
 						<div className="flex items-center justify-between">
-							<div className="p-3 bg-lime-500/20 rounded-xl">
-								<ShieldCheck className="size-8 text-lime-400" />{" "}
+							<div className="p-3 bg-sky-500/20 rounded-xl">
+								<ShieldCheck className="size-8 text-sky-400" />{" "}
 							</div>
 							<div>
 								<p className="text-md text-slate-400">TVL</p>
-								<p className="text-4xl font-bold text-lime-400">
+								<p className="text-4xl font-bold text-sky-400">
 									{parseFloat(formattedTVL).toFixed(2)} FYT
 								</p>
 							</div>
 						</div>
 					</CardContent>
 				</Card>
-				<Card className="relative overflow-hidden dark:bg-gradient-to-r from-slate-800/50 to-slate-800/30 rounded-2xl border border-slate-200 dark:border-slate-700/50 shadow-sm">
-					<div className="absolute inset-0 bg-gradient-to-r from-lime-400/10 to-yellow-400/10 dark:opacity-10"></div>
+				<Card className="relative overflow-hidden dark:bg-gradient-to-r from-[#1A103D50] to-[#1A103D30] rounded-2xl border border-slate-200 dark:border-slate-700/40 shadow-sm">
+					<div className="absolute inset-0 bg-gradient-to-r from-sky-400/10 to-yellow-400/10 dark:opacity-10"></div>
 					<CardContent className="p-6">
 						<div className="flex items-center justify-between">
-							<div className="p-3 bg-lime-500/20 rounded-xl">
-								<Percent className="size-8 text-lime-400" />
+							<div className="p-3 bg-sky-500/20 rounded-xl">
+								<Percent className="size-8 text-sky-400" />
 							</div>
 							<div>
 								<p className="text-md text-slate-400">Base APY</p>
-								<p className="text-4xl font-bold text-lime-400">{BASE_APY}%</p>
+								<p className="text-4xl font-bold text-sky-400">{BASE_APY}%</p>
 							</div>
 						</div>
 					</CardContent>
 				</Card>
-				<Card className="relative overflow-hidden dark:bg-gradient-to-r from-slate-800/50 to-slate-800/30 rounded-2xl border border-slate-200 dark:border-slate-700/50 shadow-sm">
-					<div className="absolute inset-0 bg-gradient-to-r from-lime-400/10 to-yellow-400/10 dark:opacity-10"></div>
+				<Card className="relative overflow-hidden dark:bg-gradient-to-r from-[#1A103D50] to-[#1A103D30] rounded-2xl border border-slate-200 dark:border-slate-700/40 shadow-sm">
+					<div className="absolute inset-0 bg-gradient-to-r from-sky-400/10 to-yellow-400/10 dark:opacity-10"></div>
 
 					<CardContent className="p-6">
 						<div className="flex items-center justify-between">
-							<div className="p-3 bg-lime-500/20 rounded-xl">
-								<Vault className="size-8 text-lime-400" />
+							<div className="p-3 bg-sky-500/20 rounded-xl">
+								<Vault className="size-8 text-sky-400" />
 							</div>
 
 							<div>
 								<p className="text-md text-slate-400">Total Stakers</p>
-								<p className="text-4xl font-bold text-lime-400">
+								<p className="text-4xl font-bold text-sky-400">
 									{totalStakers ? Number(totalStakers).toString() : "0"}
 								</p>
 							</div>
 						</div>
 					</CardContent>
 				</Card>
-				<Card className="relative overflow-hidden dark:bg-gradient-to-r from-slate-800/50 to-slate-800/30 rounded-2xl border border-slate-200 dark:border-slate-700/50 shadow-sm">
-					<div className="absolute inset-0 bg-gradient-to-r from-lime-400/10 to-yellow-400/10 dark:opacity-10"></div>
+				<Card className="relative overflow-hidden dark:bg-gradient-to-r from-[#1A103D50] to-[#1A103D30] rounded-2xl border border-slate-200 dark:border-slate-700/40 shadow-sm">
+					<div className="absolute inset-0 bg-gradient-to-r from-sky-400/10 to-yellow-400/10 dark:opacity-10"></div>
 					<CardContent className="p-6">
 						<div className="flex items-center justify-between">
-							<div className="p-3 bg-lime-500/20 rounded-xl">
-								<Coins className="size-8 text-lime-400" />
+							<div className="p-3 bg-sky-500/20 rounded-xl">
+								<Coins className="size-8 text-sky-400" />
 							</div>
 							<div>
 								<p className="text-md text-slate-400">Token Balance (YDU)</p>
-								<p className="text-4xl font-bold text-lime-400">
+								<p className="text-4xl font-bold text-sky-400">
 									{results?.data?.formatted
 										? parseFloat(results.data.formatted).toFixed(2)
 										: "0.00"}

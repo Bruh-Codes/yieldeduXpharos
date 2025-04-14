@@ -88,7 +88,7 @@ const WithDrawScreen = ({
 	return (
 		// <Card >
 
-		<DialogContent className="m-2 bg-slate-100 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700/50">
+		<DialogContent className="m-2 bg-slate-100 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700/40">
 			<DialogHeader>
 				<DialogTitle className="text-foreground">Withdraw</DialogTitle>
 				<DialogDescription className="space-y-4 pt-3">
@@ -96,20 +96,20 @@ const WithDrawScreen = ({
 				</DialogDescription>
 			</DialogHeader>
 			<div className="flex items-center gap-3 w-full">
-				<div className="bg-slate-200 dark:bg-slate-900/50 w-full p-4 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500">
+				<div className="bg-slate-200 dark:bg-[#1A103D] w-full p-4 rounded-lg border border-slate-200 dark:border-slate-700/40 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500">
 					<p className="text-sm text-slate-400">Deposited</p>
 					<p className="text-xl font-bold">
 						{amount ? `${amount} FYT` : "N/A"}
 					</p>
 				</div>
-				<div className="bg-slate-200 dark:bg-slate-900/50 w-full p-4 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500">
+				<div className="bg-slate-200 dark:bg-[#1A103D] w-full p-4 rounded-lg border border-slate-200 dark:border-slate-700/40 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500">
 					<p className="text-sm  text-slate-400">Current Yield</p>
 					<p className="text-xl font-bold">
 						{expectedYield ? `${Number(expectedYield).toFixed(8)} FYT` : "N/A"}
 					</p>
 				</div>
 			</div>
-			<div className="bg-slate-300 dark:bg-slate-700/50 w-full p-4 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500">
+			<div className="bg-slate-300 dark:bg-slate-700/50 w-full p-4 rounded-lg border border-slate-200 dark:border-slate-700/40 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500">
 				<p className="text-sm  text-slate-400">Expected Earn</p>
 				<p className="text-xl font-bold">
 					{expectedYield && amount
@@ -122,7 +122,7 @@ const WithDrawScreen = ({
 				onClick={handleWithdraw}
 				type="button"
 				variant={"default"}
-				className="w-full bg-gradient-to-r from-lime-500 to-yellow-500 text-slate-800 font-semibold hover:opacity-90"
+				className="w-full bg-gradient-to-r from-sky-500 to-yellow-500 text-slate-800 font-semibold hover:opacity-90"
 			>
 				<>
 					{isPendingWithDraw && (

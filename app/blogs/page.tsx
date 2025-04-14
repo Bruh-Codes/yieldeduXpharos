@@ -58,7 +58,7 @@ export default function BlogPage() {
 									key={cat.name}
 									type="button"
 									variant="ghost"
-									className="bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700/50 cursor-pointer px-3 py-1"
+									className="bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700/40 hover:bg-slate-100 dark:hover:bg-slate-700/50 cursor-pointer px-3 py-1"
 								>
 									<Badge className="bg-transparent hover:bg-transparent text-slate-500">
 										{cat.name}{" "}
@@ -76,7 +76,7 @@ export default function BlogPage() {
 					No new blogs
 				</p>
 				{/* <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-					<Card className="bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50 shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+					<Card className="bg-whitedark:bg-[#1A103D] border-slate-200 dark:border-slate-700/40 shadow-sm hover:shadow-md transition-shadow overflow-hidden">
 						<div className="aspect-video relative">
 							<img
 								src="/placeholder.svg?height=300&width=600"
@@ -86,7 +86,7 @@ export default function BlogPage() {
 						</div>
 						<CardContent className="p-6">
 							<div className="mb-4">
-								<Badge className="bg-lime-100 dark:bg-lime-900/30 text-lime-700 dark:text-lime-400 border-lime-200 dark:border-lime-700/30">
+								<Badge className="bg-sky-100 dark:bg-sky-900/30 text-sky-700 dark:text-sky-400 border-sky-200 dark:border-sky-700/30">
 									DeFi
 								</Badge>
 								<span className="text-xs text-slate-500 dark:text-slate-400 ml-3">
@@ -103,7 +103,7 @@ export default function BlogPage() {
 							<Link href="/blog/apy-boosts">
 								<Button
 									variant="link"
-									className="p-0 h-auto font-semibold text-lime-600 dark:text-lime-400 hover:text-lime-800 dark:hover:text-lime-300"
+									className="p-0 h-auto font-semibold text-sky-600 dark:text-sky-400 hover:text-sky-800 dark:hover:text-sky-300"
 								>
 									Read More <ArrowRight className="ml-1 h-4 w-4" />
 								</Button>
@@ -111,7 +111,7 @@ export default function BlogPage() {
 						</CardContent>
 					</Card>
 
-					<Card className="bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50 shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+					<Card className="bg-whitedark:bg-[#1A103D] border-slate-200 dark:border-slate-700/40 shadow-sm hover:shadow-md transition-shadow overflow-hidden">
 						<div className="aspect-video relative">
 							<img
 								src="/placeholder.svg?height=300&width=600"
@@ -139,7 +139,7 @@ export default function BlogPage() {
 							<Link href="/blog/learn-to-earn">
 								<Button
 									variant="link"
-									className="p-0 h-auto font-semibold text-lime-600 dark:text-lime-400 hover:text-lime-800 dark:hover:text-lime-300"
+									className="p-0 h-auto font-semibold text-sky-600 dark:text-sky-400 hover:text-sky-800 dark:hover:text-sky-300"
 								>
 									Read More <ArrowRight className="ml-1 h-4 w-4" />
 								</Button>
@@ -149,7 +149,7 @@ export default function BlogPage() {
 				</div>
 
 				<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-					<Card className="bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50 shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+					<Card className="bg-whitedark:bg-[#1A103D] border-slate-200 dark:border-slate-700/40 shadow-sm hover:shadow-md transition-shadow overflow-hidden">
 						<div className="aspect-video relative">
 							<img
 								src="/placeholder.svg?height=200&width=400"
@@ -159,7 +159,7 @@ export default function BlogPage() {
 						</div>
 						<CardContent className="p-4">
 							<div className="mb-2">
-								<Badge className="bg-lime-100 dark:bg-lime-900/30 text-lime-700 dark:text-lime-400 border-lime-200 dark:border-lime-700/30 text-xs">
+								<Badge className="bg-sky-100 dark:bg-sky-900/30 text-sky-700 dark:text-sky-400 border-sky-200 dark:border-sky-700/30 text-xs">
 									Tutorial
 								</Badge>
 								<span className="text-xs text-slate-500 dark:text-slate-400 ml-2">
@@ -176,7 +176,7 @@ export default function BlogPage() {
 							<Link href="/blog/beginners-guide">
 								<Button
 									variant="link"
-									className="p-0 h-auto text-sm font-semibold text-lime-600 dark:text-lime-400 hover:text-lime-800 dark:hover:text-lime-300"
+									className="p-0 h-auto text-sm font-semibold text-sky-600 dark:text-sky-400 hover:text-sky-800 dark:hover:text-sky-300"
 								>
 									Read More <ArrowRight className="ml-1 h-3 w-3" />
 								</Button>
@@ -184,7 +184,7 @@ export default function BlogPage() {
 						</CardContent>
 					</Card>
 
-					<Card className="bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50 shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+					<Card className="bg-whitedark:bg-[#1A103D] border-slate-200 dark:border-slate-700/40 shadow-sm hover:shadow-md transition-shadow overflow-hidden">
 						<div className="aspect-video relative">
 							<img
 								src="/placeholder.svg?height=200&width=400"
@@ -211,7 +211,7 @@ export default function BlogPage() {
 							<Link href="/blog/q1-2025-analysis">
 								<Button
 									variant="link"
-									className="p-0 h-auto text-sm font-semibold text-lime-600 dark:text-lime-400 hover:text-lime-800 dark:hover:text-lime-300"
+									className="p-0 h-auto text-sm font-semibold text-sky-600 dark:text-sky-400 hover:text-sky-800 dark:hover:text-sky-300"
 								>
 									Read More <ArrowRight className="ml-1 h-3 w-3" />
 								</Button>
@@ -219,7 +219,7 @@ export default function BlogPage() {
 						</CardContent>
 					</Card>
 
-					<Card className="bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50 shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+					<Card className="bg-whitedark:bg-[#1A103D] border-slate-200 dark:border-slate-700/40 shadow-sm hover:shadow-md transition-shadow overflow-hidden">
 						<div className="aspect-video relative">
 							<img
 								src="/placeholder.svg?height=200&width=400"
@@ -229,7 +229,7 @@ export default function BlogPage() {
 						</div>
 						<CardContent className="p-4">
 							<div className="mb-2">
-								<Badge className="bg-lime-100 dark:bg-lime-900/30 text-lime-700 dark:text-lime-400 border-lime-200 dark:border-lime-700/30 text-xs">
+								<Badge className="bg-sky-100 dark:bg-sky-900/30 text-sky-700 dark:text-sky-400 border-sky-200 dark:border-sky-700/30 text-xs">
 									News
 								</Badge>
 								<span className="text-xs text-slate-500 dark:text-slate-400 ml-2">
@@ -246,7 +246,7 @@ export default function BlogPage() {
 							<Link href="/blog/educator-rewards">
 								<Button
 									variant="link"
-									className="p-0 h-auto text-sm font-semibold text-lime-600 dark:text-lime-400 hover:text-lime-800 dark:hover:text-lime-300"
+									className="p-0 h-auto text-sm font-semibold text-sky-600 dark:text-sky-400 hover:text-sky-800 dark:hover:text-sky-300"
 								>
 									Read More <ArrowRight className="ml-1 h-3 w-3" />
 								</Button>

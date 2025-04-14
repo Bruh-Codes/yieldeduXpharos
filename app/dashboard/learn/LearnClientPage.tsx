@@ -93,7 +93,7 @@ const LearnClientPage = () => {
 									<div
 										className={`absolute -left-9 top-0 flex items-center justify-center w-6 h-6 rounded-full border-2 ${
 											lesson.completed
-												? "bg-lime-500 border-lime-500"
+												? "bg-sky-500 border-sky-500"
 												: "bg-white dark:bg-slate-800 border-slate-300 dark:border-slate-600"
 										}`}
 									>
@@ -105,22 +105,22 @@ const LearnClientPage = () => {
 										className={cn(
 											"absolute -left-6 top-6 min-h-full h-48 md:h-36 w-0.5 bg-slate-200 dark:bg-slate-700/50",
 											{
-												"bg-lime-500 dark:bg-lime-500": lesson.completed,
+												"bg-sky-500 dark:bg-sky-500": lesson.completed,
 											}
 										)}
 									></div>
 									<div
 										className={`p-4 rounded-xl border ${
 											lesson.completed
-												? "bg-lime-50 dark:bg-lime-500/10 border-lime-200 dark:border-lime-500/30"
-												: "bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50"
+												? "bg-sky-50 dark:bg-sky-500/10 border-sky-200 dark:border-sky-500/30"
+												: "bg-whitedark:bg-[#1A103D] border-slate-200 dark:border-slate-700/40"
 										}`}
 									>
 										<div className="flex justify-between gap-2 md:flex-nowrap flex-wrap-reverse items-start mb-2">
 											<h3
 												className={`font-medium ${
 													lesson.completed
-														? "text-lime-700 dark:text-lime-400"
+														? "text-sky-700 dark:text-sky-400"
 														: "text-slate-900 dark:text-white"
 												}`}
 											>
@@ -129,7 +129,7 @@ const LearnClientPage = () => {
 											<Badge
 												className={
 													lesson.completed
-														? "bg-lime-100 dark:bg-lime-400/20 text-lime-600 dark:text-lime-400 border-lime-200 dark:border-lime-400/30"
+														? "bg-sky-100 dark:bg-sky-400/20 text-sky-600 dark:text-sky-400 border-sky-200 dark:border-sky-400/30"
 														: "bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-600"
 												}
 											>
@@ -152,7 +152,7 @@ const LearnClientPage = () => {
 													className={cn(
 														"transition-all  ease-linear duration-75",
 														{
-															"border-lime-200 dark:border-lime-500/30 hover:border-slate-900 text-lime-600 dark:text-lime-400 hover:bg-lime-50 dark:hover:bg-lime-500/10":
+															"border-sky-200 dark:border-sky-500/30 hover:border-slate-900 text-sky-600 dark:text-sky-400 hover:bg-sky-50 dark:hover:bg-sky-500/10":
 																lesson.completed,
 														}
 													)}
@@ -167,7 +167,7 @@ const LearnClientPage = () => {
 													className={cn(
 														"transition-all  ease-linear duration-75",
 														{
-															"bg-gradient-to-r from-lime-500 to-yellow-500 hover:to-yellow-500/60 text-white dark:text-slate-900":
+															"bg-gradient-to-r from-sky-500 to-yellow-500 hover:to-yellow-500/60 text-white dark:text-slate-900":
 																!lesson.completed,
 														}
 													)}
@@ -190,7 +190,7 @@ const LearnClientPage = () => {
 					</p>
 					<Button
 						onClick={() => open({ view: "Connect" })}
-						className="bg-gradient-to-r from-lime-500 to-yellow-500 hover:to-yellow-500/60 text-white dark:text-slate-900"
+						className="bg-gradient-to-r from-sky-500 to-yellow-500 hover:to-yellow-500/60 text-white dark:text-slate-900"
 					>
 						Connect Wallet
 					</Button>

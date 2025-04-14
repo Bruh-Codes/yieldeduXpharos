@@ -29,12 +29,12 @@ function StatsCard({
 }) {
 	const isPositive = change.startsWith("+");
 	return (
-		<div className="bg-slate-100 dark:bg-slate-900/50 rounded-xl p-4 border border-slate-200 dark:border-slate-700/50">
+		<div className="bg-slate-100 dark:bg-[#1A103D] rounded-xl p-4 border border-slate-200 dark:border-slate-700/40">
 			<div className="flex justify-between items-start mb-2">
 				<span className="text-slate-500 dark:text-slate-400 text-sm">
 					{title}
 				</span>
-				<div className="p-2 bg-white dark:bg-slate-800/50 rounded-lg border border-slate-200 dark:border-slate-700/50">
+				<div className="p-2 bg-whitedark:bg-[#1A103D] rounded-lg border border-slate-200 dark:border-slate-700/40">
 					{icon}
 				</div>
 			</div>
@@ -45,7 +45,7 @@ function StatsCard({
 				<span
 					className={`text-sm ${
 						isPositive
-							? "text-lime-600 dark:text-lime-400"
+							? "text-sky-600 dark:text-sky-400"
 							: "text-red-500 dark:text-red-400"
 					}`}
 				>
@@ -70,7 +70,7 @@ const page = () => {
 				</div>
 			</div>
 
-			<Card className="bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50 backdrop-blur-sm shadow-sm">
+			<Card className="bg-whitedark:bg-[#1A103D] border-slate-200 dark:border-slate-700/40 backdrop-blur-sm shadow-sm">
 				<CardHeader>
 					<CardTitle className="text-slate-900 dark:text-white">
 						Protocol Overview
@@ -101,7 +101,7 @@ const page = () => {
 						/>
 					</div>
 
-					<div className="flex items-center justify-center h-64 bg-slate-100 dark:bg-slate-900/50 rounded-xl border border-slate-200 dark:border-slate-700/50">
+					<div className="flex items-center justify-center h-64 bg-slate-100 dark:bg-[#1A103D] rounded-xl border border-slate-200 dark:border-slate-700/40">
 						<p className="text-slate-500 dark:text-slate-400">
 							Protocol statistics charts will appear here
 						</p>

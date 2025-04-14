@@ -23,7 +23,7 @@ export default function SettingsPage() {
 					</p>
 				</div>
 
-				<Separator />
+				<Separator className="dark:bg-gray-700" />
 
 				<Tabs defaultValue="profile" className="w-full">
 					<TabsList className="grid w-full grid-cols-2 md:grid-cols-5 lg:w-auto">

@@ -14,7 +14,7 @@ export default function PrivacyPolicyPage() {
 			<Header />
 			<main className="space-y-6 py-28 px-5 mx-auto container md:max-w-5xl">
 				<section className="mb-8">
-					<p className="mb-4 text-lime-500 dark:text-lime-400">
+					<p className="mb-4 text-sky-500 dark:text-sky-400">
 						<strong>Last Updated:</strong> March 11, 2025
 					</p>
 					<p className="mb-4">
@@ -29,7 +29,7 @@ export default function PrivacyPolicyPage() {
 				</section>
 
 				<section className="mb-8">
-					<h2 className="text-2xl font-bold mb-4 text-lime-500 dark:text-lime-400">
+					<h2 className="text-2xl font-bold mb-4 text-sky-500 dark:text-sky-400">
 						Information We Collect
 					</h2>
 					<p className="mb-4">We collect the following types of information:</p>
@@ -65,7 +65,7 @@ export default function PrivacyPolicyPage() {
 				</section>
 
 				<section className="mb-8">
-					<h2 className="text-2xl font-bold mb-4 text-lime-500 dark:text-lime-400">
+					<h2 className="text-2xl font-bold mb-4 text-sky-500 dark:text-sky-400">
 						How We Use Your Information
 					</h2>
 					<p className="mb-4">
@@ -93,7 +93,7 @@ export default function PrivacyPolicyPage() {
 				</section>
 
 				<section className="mb-8">
-					<h2 className="text-2xl font-bold mb-4 text-lime-500 dark:text-lime-400">
+					<h2 className="text-2xl font-bold mb-4 text-sky-500 dark:text-sky-400">
 						Data Sharing and Disclosure
 					</h2>
 					<p className="mb-4">We may share your information with:</p>
@@ -118,7 +118,7 @@ export default function PrivacyPolicyPage() {
 				</section>
 
 				<section className="mb-8">
-					<h2 className="text-2xl font-bold mb-4 text-lime-500 dark:text-lime-400">
+					<h2 className="text-2xl font-bold mb-4 text-sky-500 dark:text-sky-400">
 						Your Rights and Choices
 					</h2>
 					<p className="mb-4">
@@ -135,7 +135,7 @@ export default function PrivacyPolicyPage() {
 				</section>
 
 				<section className="mb-8">
-					<h2 className="text-2xl font-bold mb-4 text-lime-500 dark:text-lime-400">
+					<h2 className="text-2xl font-bold mb-4 text-sky-500 dark:text-sky-400">
 						Data Security
 					</h2>
 					<p className="mb-4">
@@ -152,7 +152,7 @@ export default function PrivacyPolicyPage() {
 				</section>
 
 				<section className="mb-8">
-					<h2 className="text-2xl font-bold mb-4 text-lime-500 dark:text-lime-400">
+					<h2 className="text-2xl font-bold mb-4 text-sky-500 dark:text-sky-400">
 						Changes to This Privacy Policy
 					</h2>
 					<p>

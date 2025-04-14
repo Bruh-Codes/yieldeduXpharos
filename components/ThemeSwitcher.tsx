@@ -19,7 +19,7 @@ export function ThemeSwitcher({
 			size="icon"
 			onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
 			className={cn(
-				"text-slate-600 dark:text-slate-300 hover:text-lime-500 hover:bg-lime-500/10",
+				"text-slate-600 dark:text-slate-300 hover:text-sky-500 hover:bg-sky-500/10",
 				className
 			)}
 		>

@@ -70,13 +70,13 @@ export function AccountSettings() {
 
 	return (
 		<div className="space-y-6">
-			<Card className="bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50 backdrop-blur-sm shadow-sm">
+			<Card className="bg-whitedark:bg-[#1A103D] border-slate-200 dark:dark:border-slate-700/40 backdrop-blur-sm shadow-sm">
 				<CardHeader>
 					<CardTitle>Wallet Connection</CardTitle>
 					<CardDescription>Manage your connected wallet</CardDescription>
 				</CardHeader>
 				<CardContent className="space-y-4">
-					<div className="flex items-center justify-between  border border-slate-200 dark:border-slate-700/50 backdrop-blur-sm shadow-sm bg-slate-100 dark:bg-slate-800/50 rounded-xl p-4 space-y-2">
+					<div className="flex items-center justify-between  border border-slate-200 dark:border-slate-700/50 backdrop-blur-sm shadow-sm bg-slate-100 dark:bg-[#1A103D] rounded-xl p-4 space-y-2">
 						<div className="space-y-1">
 							<p className="text-sm font-medium">Connected Wallet</p>
 							<div className="flex items-center gap-2">
@@ -99,7 +99,7 @@ export function AccountSettings() {
 				</CardContent>
 			</Card>
 
-			<Card className="bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50 backdrop-blur-sm shadow-sm">
+			<Card className="bg-whitedark:bg-[#1A103D] border-slate-200 dark:border-slate-700/50 backdrop-blur-sm shadow-sm">
 				<CardHeader>
 					<CardTitle>Account Information</CardTitle>
 					<CardDescription>
@@ -107,7 +107,7 @@ export function AccountSettings() {
 					</CardDescription>
 				</CardHeader>
 				<CardContent className="space-y-4">
-					<div className="grid grid-cols-1 gap-4 sm:grid-cols-2   border border-slate-200 dark:border-slate-700/50 backdrop-blur-sm shadow-sm bg-slate-100 dark:bg-slate-800/50 rounded-xl p-4">
+					<div className="grid grid-cols-1 gap-4 sm:grid-cols-2 border border-slate-200 dark:border-slate-700/50 backdrop-blur-sm shadow-sm bg-slate-100 dark:bg-[#1A103D] rounded-xl p-4">
 						<div className="space-y-1">
 							<p className="text-sm text-muted-foreground">Account Level</p>
 							<p className="font-medium">Level {accountData.level} Scholar</p>
@@ -139,7 +139,7 @@ export function AccountSettings() {
 				</CardContent>
 			</Card>
 
-			<Card className="bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50 backdrop-blur-sm shadow-sm">
+			<Card className="bg-white dark:bg-[#1A103D] border-slate-200 dark:border-slate-700/50 backdrop-blur-sm shadow-sm">
 				<CardHeader>
 					<CardTitle>Email Settings</CardTitle>
 					<CardDescription>Update your email address</CardDescription>
@@ -151,7 +151,7 @@ export function AccountSettings() {
 							id="current-email"
 							value="alex@example.com"
 							disabled
-							className="bg-slate-100 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:!ring-slate-500 dark:focus:!ring-lime-500 focus:!border-transparent focus:ring-offset-2 dark:ring-offset-lime-700 ring-offset-slate-700"
+							className="bg-slate-100 dark:bg-[#1A103D] border-slate-200 dark:dark:border-slate-700/40 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:!ring-slate-500 dark:focus:!ring-sky-500 focus:!border-transparent focus:ring-offset-2 dark:ring-offset-sky-700 ring-offset-slate-700"
 						/>
 					</div>
 					<div className="space-y-2">
@@ -160,7 +160,7 @@ export function AccountSettings() {
 							id="new-email"
 							type="email"
 							placeholder="Enter your new email"
-							className="bg-slate-100 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:!ring-slate-500 dark:focus:!ring-lime-500 focus:!border-transparent focus:ring-offset-2 dark:ring-offset-lime-700 ring-offset-slate-700"
+							className="bg-slate-100 dark:bg-[#1A103D] border-slate-200 dark:dark:border-slate-700/40 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:!ring-slate-500 dark:focus:!ring-sky-500 focus:!border-transparent focus:ring-offset-2 dark:ring-offset-sky-700 ring-offset-slate-700"
 						/>
 					</div>
 				</CardContent>

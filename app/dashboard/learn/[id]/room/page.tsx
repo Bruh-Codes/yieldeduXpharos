@@ -311,7 +311,7 @@ const VideoInterface: React.FC = () => {
 					<h1 className="text-2xl font-bold">Meeting Room</h1>
 					<Button
 						onClick={onToggleFullscreen}
-						className="ml-auto w-fit dark:bg-lime-400/20 hover:dark:bg-lime-400/30 bg-blue-400/20 hover:bg-blue-400/40"
+						className="ml-auto w-fit dark:bg-sky-400/20 hover:dark:bg-sky-400/30 bg-blue-400/20 hover:bg-blue-400/40"
 						variant="ghost"
 					>
 						{isFullscreen ? <Minimize2 size={18} /> : <Maximize2 size={18} />}
@@ -329,7 +329,7 @@ const VideoInterface: React.FC = () => {
 				</div>
 
 				{messages.length > 0 && (
-					<p className="sticky bottom-36 md:relative md:bottom-0 text-sm text-center p-4 text-lime-700 font-medium dark:text-gray-300 select-none ">
+					<p className="sticky bottom-36 md:relative md:bottom-0 text-sm text-center p-4 text-sky-700 font-medium dark:text-gray-300 select-none ">
 						{messages.at(-1)!.content}
 					</p>
 				)}

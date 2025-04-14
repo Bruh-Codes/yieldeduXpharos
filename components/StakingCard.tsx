@@ -325,16 +325,16 @@ const StakingCard = ({
 			<Card
 				className={cn(
 					className,
-					"bg-white mb-6 pb-0 xl:mb-0 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50 backdrop-blur-sm shadow-sm"
+					"bg-white mb-6 pb-0 xl:mb-0 dark:bg-[#1A103D50] border-slate-200 dark:border-slate-700/40 backdrop-blur-sm shadow-sm"
 				)}
 			>
 				<CardHeader>
 					<CardTitle className="flex items-center gap-2 text-slate-900 dark:text-white">
-						<GraduationCap className="w-5 h-5 text-lime-500" />
-						Stake EDU
+						<GraduationCap className="w-5 h-5 text-sky-500" />
+						Stake PT
 					</CardTitle>
 					<CardDescription className="text-slate-500 dark:text-slate-400">
-						Stake your EDU tokens to earn rewards
+						Stake your PT tokens to earn rewards
 					</CardDescription>
 				</CardHeader>
 				<CardContent>
@@ -347,10 +347,11 @@ const StakingCard = ({
 								disabled={isTransactionInProgress}
 								type="text"
 								required
-								placeholder="Enter EDU amount"
+								placeholder="Enter  PT
+ amount"
 								value={amount}
 								onChange={(e) => setAmount(e.target.value)}
-								className="bg-slate-100 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:!ring-slate-500 dark:focus:!ring-lime-500 focus:!border-transparent focus:ring-offset-2 dark:ring-offset-lime-700 ring-offset-slate-700"
+								className="bg-slate-100 dark:bg-[#1A103D] border-slate-200 dark:border-slate-700/40 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:!ring-slate-500 dark:focus:!ring-sky-500 focus:!border-transparent focus:ring-offset-2 dark:ring-offset-sky-700 ring-offset-slate-700"
 							/>
 						</div>
 						<div>
@@ -367,10 +368,10 @@ const StakingCard = ({
 										disabled={isTransactionInProgress}
 										key={days}
 										variant="outline"
-										className={cn("border-slate-200 dark:border-slate-700", {
-											"bg-gradient-to-r from-lime-500 hover:text-slate-900 to-yellow-500 text-slate-900 border-transparent":
+										className={cn("border-slate-200 dark:border-slate-700/40", {
+											"bg-gradient-to-r from-sky-500 hover:text-slate-900 to-yellow-500 text-slate-900 border-transparent":
 												lockDuration === parseFloat(days),
-											"bg-white dark:bg-slate-900/50 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800":
+											"bg-white dark:bg-[#1A103D] text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800":
 												lockDuration !== parseFloat(days),
 										})}
 										onClick={() => (
@@ -386,7 +387,7 @@ const StakingCard = ({
 									<Button
 										variant="outline"
 										className={cn(
-											"bg-white border-slate-200 dark:border-slate-700  dark:bg-slate-900/50 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
+											"bg-white border-slate-200 dark:border-slate-700/40  dark:bg-[#1A103D] text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
 										)}
 										onClick={() => (
 											setLockDuration(1),
@@ -411,12 +412,12 @@ const StakingCard = ({
 											setLockDurationCustom(parseFloat(e.target.value))
 										}
 										className={cn(
-											"bg-slate-100 dark:bg-slate-900/50 border-slate-200 dark:border-slate-700 text-slate-900 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:ring-2 focus:!ring-slate-500 dark:focus:!ring-lime-500 focus:!border-transparent dark:caret-white hover:bg-slate-100 dark:hover:bg-slate-800 dark:text-slate-200 focus:ring-offset-2 dark:ring-offset-lime-700 ring-offset-slate-700",
+											"bg-slate-100 dark:bg-[#1A103D] border-slate-200 dark:border-slate-700/40 text-slate-900 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:ring-2 focus:!ring-slate-500 dark:focus:!ring-sky-500 focus:!border-transparent dark:caret-white hover:bg-slate-100 dark:hover:bg-slate-800 dark:text-slate-200 focus:ring-offset-2 dark:ring-offset-sky-700 ring-offset-slate-700",
 											{
-												"bg-gradient-to-tr !text-slate-900 from-lime-500 to-yellow-500":
+												"bg-gradient-to-tr !text-slate-900 from-sky-500 to-yellow-500":
 													lockDurationCustom && customInputActive,
 
-												"bg-white dark:bg-slate-900/50 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800":
+												"bg-white dark:bg-[#1A103D] text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800":
 													!lockDurationCustom,
 											}
 										)}
@@ -424,7 +425,7 @@ const StakingCard = ({
 								)}
 							</div>
 						</div>
-						<div className="bg-slate-100 dark:bg-slate-800/50 rounded-xl p-4 space-y-2">
+						<div className="bg-slate-100 dark:bg-[#1A103D] rounded-xl p-4 space-y-2">
 							<div className="flex justify-between text-sm">
 								<span className="text-slate-500 dark:text-slate-400">
 									Duration
@@ -438,15 +439,15 @@ const StakingCard = ({
 								<span className="text-slate-500 dark:text-slate-400">
 									Base APY
 								</span>
-								<span className="text-lime-600 dark:text-lime-400">10.0%</span>
+								<span className="text-sky-600 dark:text-sky-400">10.0%</span>
 							</div>
 							<div className="flex justify-between text-sm">
 								<span className="text-slate-500 dark:text-slate-400">
 									Bonus APY
 								</span>
-								<span className="text-lime-600 dark:text-lime-400">+2.5%</span>
+								<span className="text-sky-600 dark:text-sky-400">+2.5%</span>
 							</div>
-							<div className="border-t border-slate-200 dark:border-slate-700/50 pt-2 mt-2">
+							<div className="border-t border-slate-200 dark:border-slate-700/40 pt-2 mt-2">
 								<div className="flex justify-between font-medium">
 									<span className="text-slate-700 dark:text-slate-300">
 										Total APY
@@ -460,7 +461,7 @@ const StakingCard = ({
 						<Button
 							type="submit"
 							disabled={isTransactionInProgress}
-							className="w-full bg-gradient-to-r from-lime-500 to-yellow-500 text-slate-800 font-semibold hover:opacity-90"
+							className="w-full bg-gradient-to-r from-sky-500 to-yellow-500 text-slate-800 font-semibold hover:opacity-90"
 						>
 							{isTransactionInProgress ? (
 								<>

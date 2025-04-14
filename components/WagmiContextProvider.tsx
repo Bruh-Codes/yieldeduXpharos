@@ -24,7 +24,7 @@ const clientFromReactQuery = new QueryClient({
 const metadata = {
 	name: "YieldEdu",
 	description:
-		"A decentralized education and a fixed-yield protocol that earns users guaranteed yields on their EDU tokens.",
+		"A decentralized education and a fixed-yield protocol that earns users guaranteed yields on their Pharos tokens.",
 	url: "https://edu-chain-hackathon.vercel.app/",
 	icons: ["https://avatars.githubusercontent.com/u/179229932"],
 };
