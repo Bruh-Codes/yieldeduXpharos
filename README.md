@@ -1,10 +1,10 @@
 # Getting started Solidity
 
-# 🌟 EDU Fixed Yield Protocol
+# 🌟YieldPharos Protocol
 
-A decentralized fixed-yield protocol built on EDU Chain that enables users to earn guaranteed yields through staking and participating in educational activities. Stack your knowledge with your tokens - learn, earn, and earn FYT tokens on your EDU holdings through staking rewards and educational achievements.
+A decentralized fixed-yield protocol built on the pharos L1 Chain that enables users to earn guaranteed yields through staking and participating in educational activities. Stack your knowledge with your tokens - learn, earn, and earn FYT tokens on your EDU holdings through staking rewards and educational achievements.
 
-![EDU](https://github.com/user-attachments/assets/6e7cd216-f018-4f28-8485-1ab3669e9927)
+![YieldPharos](https://github.com/user-attachments/assets/f97d88aa-0468-40f4-aaf0-c4977d47ccf1)
 
 ## 🔧 Prerequisites
 
