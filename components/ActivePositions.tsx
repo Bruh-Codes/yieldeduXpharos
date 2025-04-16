@@ -355,7 +355,7 @@ const ActivePositions = ({
 									<TableRow
 										onDoubleClick={() =>
 											router.push(
-												`${process.env.NEXT_PUBLIC_EDU_BLOCKSCOUT_URL}/${row.original.transactionHash}`
+												`${process.env.NEXT_PUBLIC_PHAROS_BLOCKSCOUT_URL}/${row.original.transactionHash}`
 											)
 										}
 										key={row.id}

@@ -4,11 +4,7 @@ import YieldTokenModule from "./YieldTokenModule";
 const YieldPoolModule = buildModule("YieldPoolModule", (m) => {
 	const { YieldToken } = m.useModule(YieldTokenModule);
 
-	const YieldPool = m.contract("YieldPool", [
-		YieldToken.address,
-		"Fixed Yield Token",
-		"FYT",
-	]);
+	const YieldPool = m.contract("YieldPool", [YieldToken, 10, 86400, 31536000]);
 
 	return {
 		YieldPool,

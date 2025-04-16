@@ -22,7 +22,7 @@ export default function Page() {
 	const [color, setColor] = useState("#ffffff");
 
 	useEffect(() => {
-		setColor(theme === "dark" ? "#a3e635" : "#1A103D");
+		setColor(theme === "dark" ? "#0ea5e9" : "#1A103D");
 	}, [theme]);
 
 	const [themedDashboardImage, setThemedDashboardImage] = useState(
@@ -112,7 +112,7 @@ export default function Page() {
 									<div className="relative bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700/40 shadow-xl">
 										<Image
 											src={themedDashboardImage}
-											alt="YieldEDU"
+											alt="YieldPharos"
 											className="w-full h-auto"
 											priority
 										/>

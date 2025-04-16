@@ -13,6 +13,7 @@ import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import {
 	cn,
+	getDynamicGasPrice,
 	getYieldPoolConfig,
 	getYieldTokenConfig,
 	YieldPoolAddress,
@@ -134,11 +135,12 @@ const StakingCard = ({
 		if (!validateInput()) {
 			return;
 		}
+
 		const balance = results?.data?.formatted;
 		if (Number(balance) < Number(amount)) {
 			toast({
 				variant: "destructive",
-				title: "Transaction Rejected",
+				title: "Insufficient Balance",
 				description: "You don't have enough FYT tokens for the transaction",
 			});
 			return;
@@ -147,101 +149,96 @@ const StakingCard = ({
 		try {
 			const amountInWei = parseEther(amount);
 
+			// Ensure allowance data is fresh
+			await refetchAllowance();
+
 			// Check if we need approval
-			if (!allowance || Number(allowance) < Number(amountInWei)) {
-				if (approveSimulator?.request) {
-					approve(approveSimulator.request, {
-						onError(error) {
-							console.log(error);
-							toast({
-								variant: "destructive",
-								title: "Transaction Rejected",
-								description: "You rejected the transaction",
-							});
-							return;
-						},
-						onSuccess: () => {
-							toast({
-								title: "Transaction Successful",
-								description: "Transaction Approved",
-							});
-							// After approval succeeds, proceed with deposit
-							// console.log("success open deposit");
-							deposit(
-								{
-									...getYieldPoolConfig("deposit", [
-										parseEther(amount),
-										durationInSeconds,
-									]),
-								},
-								{
-									async onSuccess(data) {
-										await queryClient.invalidateQueries();
-
-										try {
-											// Store transaction with the new position ID if found
-											const { error } = await storeTransaction({
-												transaction_hash: data,
-												owner: address!,
-												amount: Number(parseEther(amount)),
-											});
-
-											if (error) {
-												console.error("Database error:", error);
-												toast({
-													variant: "destructive",
-													title: "Database Error",
-													description: "Failed to store transaction",
-												});
-											}
-										} catch (err) {
-											console.error("Error storing transaction:", err);
-										}
-
-										toast({
-											title: "Deposit Successful",
-											description: "Transaction Successful",
-										});
-										setAmount("");
-										await queryClient.refetchQueries({
-											queryKey: ["transactions"],
-										});
-									},
-									onError(error) {
-										console.log(error);
-										if (error.message.includes("User rejected the request")) {
-											toast({
-												variant: "destructive",
-												title: "Transaction Rejected",
-												description: "You rejected the transaction",
-											});
-										}
-									},
-								}
-							);
-						},
+			if (!allowance || Number(allowance) < BigInt(amountInWei)) {
+				if (!approveSimulator?.request) {
+					toast({
+						variant: "destructive",
+						title: "Approval Simulation Failed",
+						description: "Failed to simulate the approval transaction",
 					});
+					return;
 				}
-				refetchAllowance();
+
+				// Execute approval
+				approve(approveSimulator.request, {
+					onError(error) {
+						console.error("Approval error:", error);
+						toast({
+							variant: "destructive",
+							title: "Approval Failed",
+							description: error.message.includes("User rejected")
+								? "You rejected the transaction"
+								: `Approval failed: ${error.message}`,
+						});
+					},
+					onSuccess: async () => {
+						toast({
+							title: "Approval Successful",
+							description: "Transaction Approved. Proceeding with deposit...",
+						});
+						await refetchAllowance();
+						// Now proceed with deposit
+						executeDeposit();
+					},
+				});
 			} else {
-				// If already approved deposit
+				// Already approved, proceed with deposit
+				executeDeposit();
+			}
+
+			async function executeDeposit() {
+				const depositConfig = getYieldPoolConfig("deposit", [
+					YieldTokenAddress,
+					amountInWei,
+					durationInSeconds,
+				]);
+
+				const gas = await getDynamicGasPrice();
+
 				deposit(
 					{
-						...getYieldPoolConfig("deposit", [
-							parseEther(amount),
-							durationInSeconds,
-						]),
+						...depositConfig,
+						gas,
 					},
 					{
+						async onError(error) {
+							console.error("Deposit error:", error);
+							// Check for specific error types from the contract
+							if (error.message.includes("User rejected")) {
+								toast({
+									variant: "destructive",
+									title: "Transaction Rejected",
+									description: "You rejected the transaction",
+								});
+							} else if (error.message.includes("Still locked")) {
+								toast({
+									variant: "destructive",
+									title: "Lock Period Error",
+									description:
+										"The tokens are still locked for the specified duration",
+								});
+							} else {
+								toast({
+									variant: "destructive",
+									title: "Deposit Failed",
+									description: `Error: ${error.message}`,
+								});
+							}
+						},
 						async onSuccess(data) {
+							// Invalidate queries to refresh data
 							await queryClient.invalidateQueries();
 
 							try {
-								// Store transaction with the new position ID if found
+								// Store transaction data
 								const { error } = await storeTransaction({
 									transaction_hash: data,
 									owner: address!,
-									amount: Number(parseEther(amount)),
+									amount: Number(amountInWei), // Be careful with this conversion
 								});
 
 								if (error) {
@@ -249,7 +246,7 @@ const StakingCard = ({
 									toast({
 										variant: "destructive",
 										title: "Database Error",
-										description: "Failed to store transaction",
+										description: "Failed to store transaction details",
 									});
 								}
 							} catch (err) {
@@ -258,33 +255,20 @@ const StakingCard = ({
 
 							toast({
 								title: "Deposit Successful",
-								description: "Transaction Successful",
+								description: "Your tokens have been successfully staked",
 							});
 
-							// Explicitly invalidate the transactions query
-							await queryClient.invalidateQueries({
-								queryKey: ["transactions"],
-							});
 							setAmount("");
-						},
-						onError(error) {
-							console.log(error);
-							if (error.message.includes("User rejected the request")) {
-								toast({
-									variant: "destructive",
-									title: "Transaction Rejected",
-									description: "You rejected the transaction",
-								});
-							}
+							await queryClient.refetchQueries({ queryKey: ["transactions"] });
 						},
 					}
 				);
 			}
 		} catch (error) {
-			console.error("Transaction failed:", error);
+			console.error("Transaction setup failed:", error);
 			toast({
 				variant: "destructive",
-				title: "Transaction failed",
+				title: "Transaction Failed",
 				description:
 					error instanceof Error ? error.message : "Unknown error occurred",
 			});

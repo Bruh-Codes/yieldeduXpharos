@@ -1,7 +1,7 @@
 "use client";
 
 import { toast } from "@/hooks/use-toast";
-import { getYieldPoolConfig } from "@/lib/utils";
+import { getDynamicGasPrice, getYieldPoolConfig } from "@/lib/utils";
 import { useQueryClient } from "@tanstack/react-query";
 import { Dispatch, SetStateAction } from "react";
 import { useWriteContract } from "wagmi";
@@ -36,8 +36,10 @@ const WithDrawScreen = ({
 
 	const handleWithdraw = async () => {
 		try {
+			const gas = await getDynamicGasPrice();
+
 			withDraw(
-				{ ...getYieldPoolConfig("withdraw", [position_id]) },
+				{ ...getYieldPoolConfig("withdraw", [position_id]), gas },
 				{
 					async onSuccess() {
 						toast({

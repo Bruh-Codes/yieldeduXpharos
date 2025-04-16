@@ -16,6 +16,7 @@ import { GlobalContext } from "@/context/globalContext";
 import AppKitButton from "./AppKitButton";
 import Feedback from "./Feedback";
 import { handleUserUpdate } from "@/utils/supabase/helpers";
+import FaucetButton from "./ui/FaucetButton";
 const DashboardHeader = () => {
 	const { open } = useAppKit();
 	const { theme } = useTheme();
@@ -89,6 +90,7 @@ const DashboardHeader = () => {
 								Feedback
 							</Button>
 						</Feedback>
+						<FaucetButton userAddress={address} />
 						<Button
 							variant="ghost"
 							className="hidden md:flex items-center gap-2 text-slate-600 dark:text-slate-300 hover:text-sky-500 hover:bg-sky-500/10"

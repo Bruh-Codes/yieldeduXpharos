@@ -1,5 +1,5 @@
 {
-	"name": "YieldEDU",
+	"name": "YieldPharos",
 	"version": "1.0.0",
 	"scripts": {
 		"test": "pnpm hardhat test",

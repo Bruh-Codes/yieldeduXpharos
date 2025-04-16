@@ -7,6 +7,7 @@ import { cookieToInitialState, WagmiProvider, type Config } from "wagmi";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { yieldEduMetadata } from "@/utils/metadata";
 
 if (!projectId) {
 	throw new Error("Project ID is not defined");
@@ -22,10 +23,11 @@ const clientFromReactQuery = new QueryClient({
 });
 
 const metadata = {
+	...yieldEduMetadata,
 	name: " YieldPharos",
 	description:
 		"A decentralized education and a fixed-yield protocol that earns users guaranteed yields on their Pharos tokens.",
-	url: "https://edu-chain-hackathon.vercel.app/",
+	url: "https://yieldpharos.vercel.app",
 	icons: ["https://avatars.githubusercontent.com/u/179229932"],
 };
 
@@ -46,7 +48,7 @@ createAppKit({
 	themeMode: "dark",
 	allWallets: "SHOW",
 	themeVariables: {
-		"--w3m-accent": "#00ff00",
+		"--w3m-accent": "#0ea5e9",
 	},
 });
 

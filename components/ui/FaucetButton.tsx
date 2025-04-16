@@ -10,7 +10,7 @@ import { useEffect } from "react";
 
 const FaucetButton = ({ userAddress }: { userAddress?: string }) => {
 	const { data: mintSimulator, error: simulateError } = useSimulateContract({
-		...getYieldTokenConfig("mint", [userAddress, parseEther("1.0")]),
+		...getYieldTokenConfig("mint", [userAddress, parseEther("1")]),
 		query: {
 			enabled: !!userAddress,
 		},

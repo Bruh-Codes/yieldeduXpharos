@@ -14,7 +14,7 @@ export const ExploreTransactionButton = ({
 	transaction_hash: string;
 	className?: ClassValue;
 }) => {
-	const blockScout = process.env.NEXT_PUBLIC_EDU_BLOCKSCOUT_URL;
+	const blockScout = process.env.NEXT_PUBLIC_PHAROS_BLOCKSCOUT_URL;
 	return (
 		<a
 			href={`${blockScout}/${transaction_hash}`}

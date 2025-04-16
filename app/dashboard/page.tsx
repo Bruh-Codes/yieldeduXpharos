@@ -17,6 +17,8 @@ import PositionOverview from "@/components/PositionOverview";
 // import Performance from "@/components/Performance";
 import ActivePositions from "@/components/ActivePositions";
 import usePositions from "@/hooks/usePositions";
+import AddToAllowedTokens from "@/components/AddToAllowedTokens";
+import Performance from "@/components/Performance";
 
 const FixedYieldDashboard = () => {
 	const { address } = useAppKitAccount();
@@ -45,6 +47,11 @@ const FixedYieldDashboard = () => {
 	// Base APY from YieldPool's YIELD_RATE
 	const BASE_APY = 10;
 
+	const { data } = useReadContract({
+		...getYieldPoolConfig("getAllowedTokens", []),
+	});
+	const allowedTokens = (data as string[]) || [];
+
 	return (
 		<>
 			{/* <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
@@ -55,7 +62,10 @@ const FixedYieldDashboard = () => {
                         </div> */}
 			{/* className="" */}
 			<AchievementBanner />
-			<div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+			{address === process.env.NEXT_PUBLIC_OWNER_ADDRESS && (
+				<AddToAllowedTokens />
+			)}
+			<div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-4">
 				<Card className="relative overflow-hidden dark:bg-gradient-to-r from-[#1A103D50] to-[#1A103D30] rounded-2xl border border-slate-200 dark:border-slate-700/40 shadow-sm">
 					<div className="absolute inset-0 bg-gradient-to-r from-sky-400/10 to-yellow-400/10 dark:opacity-10"></div>
 					<CardContent className="p-6">
@@ -88,6 +98,22 @@ const FixedYieldDashboard = () => {
 				</Card>
 				<Card className="relative overflow-hidden dark:bg-gradient-to-r from-[#1A103D50] to-[#1A103D30] rounded-2xl border border-slate-200 dark:border-slate-700/40 shadow-sm">
 					<div className="absolute inset-0 bg-gradient-to-r from-sky-400/10 to-yellow-400/10 dark:opacity-10"></div>
+					<CardContent className="p-6">
+						<div className="flex items-center justify-between">
+							<div className="p-3 bg-sky-500/20 rounded-xl">
+								<Percent className="size-8 text-sky-400" />
+							</div>
+							<div>
+								<p className="text-md text-slate-400">Allowed Tokens</p>
+								<p className="text-4xl font-bold text-sky-400">
+									{allowedTokens.length}
+								</p>
+							</div>
+						</div>
+					</CardContent>
+				</Card>
+				<Card className="relative overflow-hidden dark:bg-gradient-to-r from-[#1A103D50] to-[#1A103D30] rounded-2xl border border-slate-200 dark:border-slate-700/40 shadow-sm">
+					<div className="absolute inset-0 bg-gradient-to-r from-sky-400/10 to-yellow-400/10 dark:opacity-10"></div>
 
 					<CardContent className="p-6">
 						<div className="flex items-center justify-between">
@@ -112,7 +138,7 @@ const FixedYieldDashboard = () => {
 								<Coins className="size-8 text-sky-400" />
 							</div>
 							<div>
-								<p className="text-md text-slate-400">Token Balance (YDU)</p>
+								<p className="text-md text-slate-400">Token Balance (FYT)</p>
 								<p className="text-4xl font-bold text-sky-400">
 									{results?.data?.formatted
 										? parseFloat(results.data.formatted).toFixed(2)
@@ -136,6 +162,7 @@ const FixedYieldDashboard = () => {
 				setShowWithDrawModal={setShowWithDrawModal}
 				positions={positions}
 			/>
+			<Performance />
 
 			<WithdrawModal
 				modalType={modalType}

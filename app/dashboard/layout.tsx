@@ -19,7 +19,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-	title: "YieldEDU - Earn Guaranteed Yields",
+	title: "YieldPharos - Earn Guaranteed Yields",
 	description:
 		"A decentralized fixed-yield protocol that earns users guaranteed yields on their Pharos tokens.",
 	icons: [YieldEDUIcon.src],

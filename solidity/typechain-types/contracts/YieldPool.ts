@@ -26,6 +26,7 @@ import type {
 export declare namespace YieldPool {
   export type PositionStruct = {
     positionAddress: AddressLike;
+    token: AddressLike;
     id: BigNumberish;
     amount: BigNumberish;
     startTime: BigNumberish;
@@ -35,6 +36,7 @@ export declare namespace YieldPool {
 
   export type PositionStructOutput = [
     positionAddress: string,
+    token: string,
     id: bigint,
     amount: bigint,
     startTime: bigint,
@@ -42,6 +44,7 @@ export declare namespace YieldPool {
     withdrawn: boolean
   ] & {
     positionAddress: string;
+    token: string;
     id: bigint;
     amount: bigint;
     startTime: bigint;
@@ -53,39 +56,61 @@ export declare namespace YieldPool {
 export interface YieldPoolInterface extends Interface {
   getFunction(
     nameOrSignature:
-      | "calculateYield"
-      | "calculateYieldTokens"
+      | "addAllowedTokens"
+      | "calculateExpectedYield"
       | "deposit"
       | "getActivePositions"
-      | "getEduToken"
+      | "getAllowedTokens"
+      | "getMaxStakeDuration"
+      | "getMinStakeDuration"
       | "getPosition"
       | "getTotalStakers"
       | "getTotalValueLocked"
+      | "getUserTokenBalances"
+      | "getYieldRate"
       | "getYieldToken"
+      | "isTokenAllowed"
+      | "modifyAllowedTokens"
+      | "removeAllowedToken"
       | "unstake"
+      | "updateYieldParameters"
       | "withdraw"
   ): FunctionFragment;
 
-  getEvent(nameOrSignatureOrTopic: "Deposited" | "Withdrawn"): EventFragment;
+  getEvent(
+    nameOrSignatureOrTopic:
+      | "Deposited"
+      | "TokenAllowedStatusChanged"
+      | "Withdrawn"
+      | "YieldParametersUpdated"
+  ): EventFragment;
 
   encodeFunctionData(
-    functionFragment: "calculateYield",
-    values: [YieldPool.PositionStruct]
+    functionFragment: "addAllowedTokens",
+    values: [AddressLike]
   ): string;
   encodeFunctionData(
-    functionFragment: "calculateYieldTokens",
+    functionFragment: "calculateExpectedYield",
     values: [BigNumberish, BigNumberish]
   ): string;
   encodeFunctionData(
     functionFragment: "deposit",
-    values: [BigNumberish, BigNumberish]
+    values: [AddressLike, BigNumberish, BigNumberish]
   ): string;
   encodeFunctionData(
     functionFragment: "getActivePositions",
     values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "getEduToken",
+    functionFragment: "getAllowedTokens",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "getMaxStakeDuration",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "getMinStakeDuration",
     values?: undefined
   ): string;
   encodeFunctionData(
@@ -101,12 +126,36 @@ export interface YieldPoolInterface extends Interface {
     values?: undefined
   ): string;
   encodeFunctionData(
+    functionFragment: "getUserTokenBalances",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "getYieldRate",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
     functionFragment: "getYieldToken",
     values?: undefined
   ): string;
   encodeFunctionData(
+    functionFragment: "isTokenAllowed",
+    values: [AddressLike]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "modifyAllowedTokens",
+    values: [AddressLike, boolean]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "removeAllowedToken",
+    values: [AddressLike]
+  ): string;
+  encodeFunctionData(
     functionFragment: "unstake",
     values: [BigNumberish]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "updateYieldParameters",
+    values: [BigNumberish, BigNumberish, BigNumberish]
   ): string;
   encodeFunctionData(
     functionFragment: "withdraw",
@@ -114,11 +163,11 @@ export interface YieldPoolInterface extends Interface {
   ): string;
 
   decodeFunctionResult(
-    functionFragment: "calculateYield",
+    functionFragment: "addAllowedTokens",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "calculateYieldTokens",
+    functionFragment: "calculateExpectedYield",
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "deposit", data: BytesLike): Result;
@@ -127,7 +176,15 @@ export interface YieldPoolInterface extends Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "getEduToken",
+    functionFragment: "getAllowedTokens",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "getMaxStakeDuration",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "getMinStakeDuration",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -143,24 +200,68 @@ export interface YieldPoolInterface extends Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
+    functionFragment: "getUserTokenBalances",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "getYieldRate",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
     functionFragment: "getYieldToken",
     data: BytesLike
   ): Result;
+  decodeFunctionResult(
+    functionFragment: "isTokenAllowed",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "modifyAllowedTokens",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "removeAllowedToken",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(functionFragment: "unstake", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "updateYieldParameters",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(functionFragment: "withdraw", data: BytesLike): Result;
 }
 
 export namespace DepositedEvent {
   export type InputTuple = [
     user: AddressLike,
+    token: AddressLike,
     amount: BigNumberish,
     duration: BigNumberish
   ];
-  export type OutputTuple = [user: string, amount: bigint, duration: bigint];
+  export type OutputTuple = [
+    user: string,
+    token: string,
+    amount: bigint,
+    duration: bigint
+  ];
   export interface OutputObject {
     user: string;
+    token: string;
     amount: bigint;
     duration: bigint;
+  }
+  export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+  export type Filter = TypedDeferredTopicFilter<Event>;
+  export type Log = TypedEventLog<Event>;
+  export type LogDescription = TypedLogDescription<Event>;
+}
+
+export namespace TokenAllowedStatusChangedEvent {
+  export type InputTuple = [token: AddressLike, allowed: boolean];
+  export type OutputTuple = [token: string, allowed: boolean];
+  export interface OutputObject {
+    token: string;
+    allowed: boolean;
   }
   export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
   export type Filter = TypedDeferredTopicFilter<Event>;
@@ -171,14 +272,43 @@ export namespace DepositedEvent {
 export namespace WithdrawnEvent {
   export type InputTuple = [
     user: AddressLike,
+    token: AddressLike,
     amount: BigNumberish,
     yield_: BigNumberish
   ];
-  export type OutputTuple = [user: string, amount: bigint, yield_: bigint];
+  export type OutputTuple = [
+    user: string,
+    token: string,
+    amount: bigint,
+    yield_: bigint
+  ];
   export interface OutputObject {
     user: string;
+    token: string;
     amount: bigint;
     yield: bigint;
+  }
+  export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+  export type Filter = TypedDeferredTopicFilter<Event>;
+  export type Log = TypedEventLog<Event>;
+  export type LogDescription = TypedLogDescription<Event>;
+}
+
+export namespace YieldParametersUpdatedEvent {
+  export type InputTuple = [
+    yieldRate: BigNumberish,
+    minDuration: BigNumberish,
+    maxDuration: BigNumberish
+  ];
+  export type OutputTuple = [
+    yieldRate: bigint,
+    minDuration: bigint,
+    maxDuration: bigint
+  ];
+  export interface OutputObject {
+    yieldRate: bigint;
+    minDuration: bigint;
+    maxDuration: bigint;
   }
   export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
   export type Filter = TypedDeferredTopicFilter<Event>;
@@ -229,20 +359,20 @@ export interface YieldPool extends BaseContract {
     event?: TCEvent
   ): Promise<this>;
 
-  calculateYield: TypedContractMethod<
-    [position: YieldPool.PositionStruct],
-    [bigint],
-    "view"
+  addAllowedTokens: TypedContractMethod<
+    [_tokenAddress: AddressLike],
+    [void],
+    "nonpayable"
   >;
 
-  calculateYieldTokens: TypedContractMethod<
-    [amount: BigNumberish, duration: BigNumberish],
+  calculateExpectedYield: TypedContractMethod<
+    [_amount: BigNumberish, _lockDuration: BigNumberish],
     [bigint],
     "view"
   >;
 
   deposit: TypedContractMethod<
-    [amount: BigNumberish, duration: BigNumberish],
+    [_token: AddressLike, _amount: BigNumberish, duration: BigNumberish],
     [void],
     "nonpayable"
   >;
@@ -253,7 +383,11 @@ export interface YieldPool extends BaseContract {
     "view"
   >;
 
-  getEduToken: TypedContractMethod<[], [string], "view">;
+  getAllowedTokens: TypedContractMethod<[], [string[]], "view">;
+
+  getMaxStakeDuration: TypedContractMethod<[], [bigint], "view">;
+
+  getMinStakeDuration: TypedContractMethod<[], [bigint], "view">;
 
   getPosition: TypedContractMethod<
     [positionId: BigNumberish],
@@ -265,10 +399,42 @@ export interface YieldPool extends BaseContract {
 
   getTotalValueLocked: TypedContractMethod<[], [bigint], "view">;
 
+  getUserTokenBalances: TypedContractMethod<
+    [],
+    [[string[], bigint[]] & { tokens: string[]; balances: bigint[] }],
+    "view"
+  >;
+
+  getYieldRate: TypedContractMethod<[], [bigint], "view">;
+
   getYieldToken: TypedContractMethod<[], [string], "view">;
+
+  isTokenAllowed: TypedContractMethod<[_token: AddressLike], [boolean], "view">;
+
+  modifyAllowedTokens: TypedContractMethod<
+    [_newToken: AddressLike, _allowed: boolean],
+    [void],
+    "nonpayable"
+  >;
+
+  removeAllowedToken: TypedContractMethod<
+    [_tokenAddress: AddressLike],
+    [void],
+    "nonpayable"
+  >;
 
   unstake: TypedContractMethod<
     [positionId: BigNumberish],
+    [void],
+    "nonpayable"
+  >;
+
+  updateYieldParameters: TypedContractMethod<
+    [
+      _yieldRate: BigNumberish,
+      _minDuration: BigNumberish,
+      _maxDuration: BigNumberish
+    ],
     [void],
     "nonpayable"
   >;
@@ -284,23 +450,19 @@ export interface YieldPool extends BaseContract {
   ): T;
 
   getFunction(
-    nameOrSignature: "calculateYield"
-  ): TypedContractMethod<
-    [position: YieldPool.PositionStruct],
-    [bigint],
-    "view"
-  >;
+    nameOrSignature: "addAllowedTokens"
+  ): TypedContractMethod<[_tokenAddress: AddressLike], [void], "nonpayable">;
   getFunction(
-    nameOrSignature: "calculateYieldTokens"
+    nameOrSignature: "calculateExpectedYield"
   ): TypedContractMethod<
-    [amount: BigNumberish, duration: BigNumberish],
+    [_amount: BigNumberish, _lockDuration: BigNumberish],
     [bigint],
     "view"
   >;
   getFunction(
     nameOrSignature: "deposit"
   ): TypedContractMethod<
-    [amount: BigNumberish, duration: BigNumberish],
+    [_token: AddressLike, _amount: BigNumberish, duration: BigNumberish],
     [void],
     "nonpayable"
   >;
@@ -308,8 +470,14 @@ export interface YieldPool extends BaseContract {
     nameOrSignature: "getActivePositions"
   ): TypedContractMethod<[], [YieldPool.PositionStructOutput[]], "view">;
   getFunction(
-    nameOrSignature: "getEduToken"
-  ): TypedContractMethod<[], [string], "view">;
+    nameOrSignature: "getAllowedTokens"
+  ): TypedContractMethod<[], [string[]], "view">;
+  getFunction(
+    nameOrSignature: "getMaxStakeDuration"
+  ): TypedContractMethod<[], [bigint], "view">;
+  getFunction(
+    nameOrSignature: "getMinStakeDuration"
+  ): TypedContractMethod<[], [bigint], "view">;
   getFunction(
     nameOrSignature: "getPosition"
   ): TypedContractMethod<
@@ -324,11 +492,45 @@ export interface YieldPool extends BaseContract {
     nameOrSignature: "getTotalValueLocked"
   ): TypedContractMethod<[], [bigint], "view">;
   getFunction(
+    nameOrSignature: "getUserTokenBalances"
+  ): TypedContractMethod<
+    [],
+    [[string[], bigint[]] & { tokens: string[]; balances: bigint[] }],
+    "view"
+  >;
+  getFunction(
+    nameOrSignature: "getYieldRate"
+  ): TypedContractMethod<[], [bigint], "view">;
+  getFunction(
     nameOrSignature: "getYieldToken"
   ): TypedContractMethod<[], [string], "view">;
   getFunction(
+    nameOrSignature: "isTokenAllowed"
+  ): TypedContractMethod<[_token: AddressLike], [boolean], "view">;
+  getFunction(
+    nameOrSignature: "modifyAllowedTokens"
+  ): TypedContractMethod<
+    [_newToken: AddressLike, _allowed: boolean],
+    [void],
+    "nonpayable"
+  >;
+  getFunction(
+    nameOrSignature: "removeAllowedToken"
+  ): TypedContractMethod<[_tokenAddress: AddressLike], [void], "nonpayable">;
+  getFunction(
     nameOrSignature: "unstake"
   ): TypedContractMethod<[positionId: BigNumberish], [void], "nonpayable">;
+  getFunction(
+    nameOrSignature: "updateYieldParameters"
+  ): TypedContractMethod<
+    [
+      _yieldRate: BigNumberish,
+      _minDuration: BigNumberish,
+      _maxDuration: BigNumberish
+    ],
+    [void],
+    "nonpayable"
+  >;
   getFunction(
     nameOrSignature: "withdraw"
   ): TypedContractMethod<[positionId: BigNumberish], [void], "nonpayable">;
@@ -341,15 +543,29 @@ export interface YieldPool extends BaseContract {
     DepositedEvent.OutputObject
   >;
   getEvent(
+    key: "TokenAllowedStatusChanged"
+  ): TypedContractEvent<
+    TokenAllowedStatusChangedEvent.InputTuple,
+    TokenAllowedStatusChangedEvent.OutputTuple,
+    TokenAllowedStatusChangedEvent.OutputObject
+  >;
+  getEvent(
     key: "Withdrawn"
   ): TypedContractEvent<
     WithdrawnEvent.InputTuple,
     WithdrawnEvent.OutputTuple,
     WithdrawnEvent.OutputObject
   >;
+  getEvent(
+    key: "YieldParametersUpdated"
+  ): TypedContractEvent<
+    YieldParametersUpdatedEvent.InputTuple,
+    YieldParametersUpdatedEvent.OutputTuple,
+    YieldParametersUpdatedEvent.OutputObject
+  >;
 
   filters: {
-    "Deposited(address,uint256,uint256)": TypedContractEvent<
+    "Deposited(address,address,uint256,uint256)": TypedContractEvent<
       DepositedEvent.InputTuple,
       DepositedEvent.OutputTuple,
       DepositedEvent.OutputObject
@@ -360,7 +576,18 @@ export interface YieldPool extends BaseContract {
       DepositedEvent.OutputObject
     >;
 
-    "Withdrawn(address,uint256,uint256)": TypedContractEvent<
+    "TokenAllowedStatusChanged(address,bool)": TypedContractEvent<
+      TokenAllowedStatusChangedEvent.InputTuple,
+      TokenAllowedStatusChangedEvent.OutputTuple,
+      TokenAllowedStatusChangedEvent.OutputObject
+    >;
+    TokenAllowedStatusChanged: TypedContractEvent<
+      TokenAllowedStatusChangedEvent.InputTuple,
+      TokenAllowedStatusChangedEvent.OutputTuple,
+      TokenAllowedStatusChangedEvent.OutputObject
+    >;
+
+    "Withdrawn(address,address,uint256,uint256)": TypedContractEvent<
       WithdrawnEvent.InputTuple,
       WithdrawnEvent.OutputTuple,
       WithdrawnEvent.OutputObject
@@ -369,6 +596,17 @@ export interface YieldPool extends BaseContract {
       WithdrawnEvent.InputTuple,
       WithdrawnEvent.OutputTuple,
       WithdrawnEvent.OutputObject
+    >;
+
+    "YieldParametersUpdated(uint256,uint256,uint256)": TypedContractEvent<
+      YieldParametersUpdatedEvent.InputTuple,
+      YieldParametersUpdatedEvent.OutputTuple,
+      YieldParametersUpdatedEvent.OutputObject
+    >;
+    YieldParametersUpdated: TypedContractEvent<
+      YieldParametersUpdatedEvent.InputTuple,
+      YieldParametersUpdatedEvent.OutputTuple,
+      YieldParametersUpdatedEvent.OutputObject
     >;
   };
 }

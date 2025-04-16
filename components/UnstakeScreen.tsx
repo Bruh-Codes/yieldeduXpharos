@@ -1,7 +1,7 @@
 "use client";
 
 import { toast } from "@/hooks/use-toast";
-import { getYieldPoolConfig } from "@/lib/utils";
+import { getDynamicGasPrice, getYieldPoolConfig } from "@/lib/utils";
 import { useQueryClient } from "@tanstack/react-query";
 import { Dispatch, SetStateAction } from "react";
 import { useWriteContract } from "wagmi";
@@ -43,8 +43,10 @@ const UnstakeScreen = ({
 
 	const handleUnstake = async () => {
 		try {
+			const gas = await getDynamicGasPrice();
+
 			Unstake(
-				{ ...getYieldPoolConfig("unstake", [position_id]) },
+				{ ...getYieldPoolConfig("unstake", [position_id]), gas },
 				{
 					async onSuccess() {
 						await queryClient.invalidateQueries();

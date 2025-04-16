@@ -34,13 +34,18 @@ export interface YieldTokenInterface extends Interface {
       | "burn"
       | "decimals"
       | "getIsStudent"
+      | "getMinters"
+      | "isMinter"
       | "isStudent"
       | "lastMintTime"
       | "mint"
       | "mintForStudent"
+      | "mintToPool"
       | "name"
       | "owner"
+      | "removeMinter"
       | "renounceOwnership"
+      | "setMinter"
       | "setStudentStatus"
       | "symbol"
       | "totalSupply"
@@ -50,7 +55,12 @@ export interface YieldTokenInterface extends Interface {
   ): FunctionFragment;
 
   getEvent(
-    nameOrSignatureOrTopic: "Approval" | "OwnershipTransferred" | "Transfer"
+    nameOrSignatureOrTopic:
+      | "Approval"
+      | "MinterSet"
+      | "OwnershipTransferred"
+      | "TokensMinted"
+      | "Transfer"
   ): EventFragment;
 
   encodeFunctionData(
@@ -83,6 +93,14 @@ export interface YieldTokenInterface extends Interface {
     values: [AddressLike]
   ): string;
   encodeFunctionData(
+    functionFragment: "getMinters",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "isMinter",
+    values: [AddressLike]
+  ): string;
+  encodeFunctionData(
     functionFragment: "isStudent",
     values: [AddressLike]
   ): string;
@@ -98,11 +116,23 @@ export interface YieldTokenInterface extends Interface {
     functionFragment: "mintForStudent",
     values: [AddressLike, BigNumberish]
   ): string;
+  encodeFunctionData(
+    functionFragment: "mintToPool",
+    values: [AddressLike]
+  ): string;
   encodeFunctionData(functionFragment: "name", values?: undefined): string;
   encodeFunctionData(functionFragment: "owner", values?: undefined): string;
   encodeFunctionData(
+    functionFragment: "removeMinter",
+    values: [AddressLike]
+  ): string;
+  encodeFunctionData(
     functionFragment: "renounceOwnership",
     values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "setMinter",
+    values: [AddressLike, boolean]
   ): string;
   encodeFunctionData(
     functionFragment: "setStudentStatus",
@@ -143,6 +173,8 @@ export interface YieldTokenInterface extends Interface {
     functionFragment: "getIsStudent",
     data: BytesLike
   ): Result;
+  decodeFunctionResult(functionFragment: "getMinters", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "isMinter", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "isStudent", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "lastMintTime",
@@ -153,12 +185,18 @@ export interface YieldTokenInterface extends Interface {
     functionFragment: "mintForStudent",
     data: BytesLike
   ): Result;
+  decodeFunctionResult(functionFragment: "mintToPool", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "name", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "owner", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "removeMinter",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(
     functionFragment: "renounceOwnership",
     data: BytesLike
   ): Result;
+  decodeFunctionResult(functionFragment: "setMinter", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "setStudentStatus",
     data: BytesLike
@@ -197,12 +235,43 @@ export namespace ApprovalEvent {
   export type LogDescription = TypedLogDescription<Event>;
 }
 
+export namespace MinterSetEvent {
+  export type InputTuple = [account: AddressLike, status: boolean];
+  export type OutputTuple = [account: string, status: boolean];
+  export interface OutputObject {
+    account: string;
+    status: boolean;
+  }
+  export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+  export type Filter = TypedDeferredTopicFilter<Event>;
+  export type Log = TypedEventLog<Event>;
+  export type LogDescription = TypedLogDescription<Event>;
+}
+
 export namespace OwnershipTransferredEvent {
   export type InputTuple = [previousOwner: AddressLike, newOwner: AddressLike];
   export type OutputTuple = [previousOwner: string, newOwner: string];
   export interface OutputObject {
     previousOwner: string;
     newOwner: string;
+  }
+  export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+  export type Filter = TypedDeferredTopicFilter<Event>;
+  export type Log = TypedEventLog<Event>;
+  export type LogDescription = TypedLogDescription<Event>;
+}
+
+export namespace TokensMintedEvent {
+  export type InputTuple = [
+    to: AddressLike,
+    amount: BigNumberish,
+    minter: AddressLike
+  ];
+  export type OutputTuple = [to: string, amount: bigint, minter: string];
+  export interface OutputObject {
+    to: string;
+    amount: bigint;
+    minter: string;
   }
   export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
   export type Filter = TypedDeferredTopicFilter<Event>;
@@ -303,6 +372,10 @@ export interface YieldToken extends BaseContract {
 
   getIsStudent: TypedContractMethod<[student: AddressLike], [boolean], "view">;
 
+  getMinters: TypedContractMethod<[], [string[]], "view">;
+
+  isMinter: TypedContractMethod<[arg0: AddressLike], [boolean], "view">;
+
   isStudent: TypedContractMethod<[arg0: AddressLike], [boolean], "view">;
 
   lastMintTime: TypedContractMethod<[arg0: AddressLike], [bigint], "view">;
@@ -319,11 +392,29 @@ export interface YieldToken extends BaseContract {
     "nonpayable"
   >;
 
+  mintToPool: TypedContractMethod<
+    [_yieldPoolAddress: AddressLike],
+    [void],
+    "nonpayable"
+  >;
+
   name: TypedContractMethod<[], [string], "view">;
 
   owner: TypedContractMethod<[], [string], "view">;
 
+  removeMinter: TypedContractMethod<
+    [account: AddressLike],
+    [void],
+    "nonpayable"
+  >;
+
   renounceOwnership: TypedContractMethod<[], [void], "nonpayable">;
+
+  setMinter: TypedContractMethod<
+    [account: AddressLike, status: boolean],
+    [void],
+    "nonpayable"
+  >;
 
   setStudentStatus: TypedContractMethod<
     [student: AddressLike, status: boolean],
@@ -398,6 +489,12 @@ export interface YieldToken extends BaseContract {
     nameOrSignature: "getIsStudent"
   ): TypedContractMethod<[student: AddressLike], [boolean], "view">;
   getFunction(
+    nameOrSignature: "getMinters"
+  ): TypedContractMethod<[], [string[]], "view">;
+  getFunction(
+    nameOrSignature: "isMinter"
+  ): TypedContractMethod<[arg0: AddressLike], [boolean], "view">;
+  getFunction(
     nameOrSignature: "isStudent"
   ): TypedContractMethod<[arg0: AddressLike], [boolean], "view">;
   getFunction(
@@ -418,14 +515,31 @@ export interface YieldToken extends BaseContract {
     "nonpayable"
   >;
   getFunction(
+    nameOrSignature: "mintToPool"
+  ): TypedContractMethod<
+    [_yieldPoolAddress: AddressLike],
+    [void],
+    "nonpayable"
+  >;
+  getFunction(
     nameOrSignature: "name"
   ): TypedContractMethod<[], [string], "view">;
   getFunction(
     nameOrSignature: "owner"
   ): TypedContractMethod<[], [string], "view">;
   getFunction(
+    nameOrSignature: "removeMinter"
+  ): TypedContractMethod<[account: AddressLike], [void], "nonpayable">;
+  getFunction(
     nameOrSignature: "renounceOwnership"
   ): TypedContractMethod<[], [void], "nonpayable">;
+  getFunction(
+    nameOrSignature: "setMinter"
+  ): TypedContractMethod<
+    [account: AddressLike, status: boolean],
+    [void],
+    "nonpayable"
+  >;
   getFunction(
     nameOrSignature: "setStudentStatus"
   ): TypedContractMethod<
@@ -465,11 +579,25 @@ export interface YieldToken extends BaseContract {
     ApprovalEvent.OutputObject
   >;
   getEvent(
+    key: "MinterSet"
+  ): TypedContractEvent<
+    MinterSetEvent.InputTuple,
+    MinterSetEvent.OutputTuple,
+    MinterSetEvent.OutputObject
+  >;
+  getEvent(
     key: "OwnershipTransferred"
   ): TypedContractEvent<
     OwnershipTransferredEvent.InputTuple,
     OwnershipTransferredEvent.OutputTuple,
     OwnershipTransferredEvent.OutputObject
+  >;
+  getEvent(
+    key: "TokensMinted"
+  ): TypedContractEvent<
+    TokensMintedEvent.InputTuple,
+    TokensMintedEvent.OutputTuple,
+    TokensMintedEvent.OutputObject
   >;
   getEvent(
     key: "Transfer"
@@ -491,6 +619,17 @@ export interface YieldToken extends BaseContract {
       ApprovalEvent.OutputObject
     >;
 
+    "MinterSet(address,bool)": TypedContractEvent<
+      MinterSetEvent.InputTuple,
+      MinterSetEvent.OutputTuple,
+      MinterSetEvent.OutputObject
+    >;
+    MinterSet: TypedContractEvent<
+      MinterSetEvent.InputTuple,
+      MinterSetEvent.OutputTuple,
+      MinterSetEvent.OutputObject
+    >;
+
     "OwnershipTransferred(address,address)": TypedContractEvent<
       OwnershipTransferredEvent.InputTuple,
       OwnershipTransferredEvent.OutputTuple,
@@ -500,6 +639,17 @@ export interface YieldToken extends BaseContract {
       OwnershipTransferredEvent.InputTuple,
       OwnershipTransferredEvent.OutputTuple,
       OwnershipTransferredEvent.OutputObject
+    >;
+
+    "TokensMinted(address,uint256,address)": TypedContractEvent<
+      TokensMintedEvent.InputTuple,
+      TokensMintedEvent.OutputTuple,
+      TokensMintedEvent.OutputObject
+    >;
+    TokensMinted: TypedContractEvent<
+      TokensMintedEvent.InputTuple,
+      TokensMintedEvent.OutputTuple,
+      TokensMintedEvent.OutputObject
     >;
 
     "Transfer(address,address,uint256)": TypedContractEvent<

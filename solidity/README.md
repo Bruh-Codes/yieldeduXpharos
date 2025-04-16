@@ -1,9 +1,10 @@
-# 🌟  YieldPharos X Pharos
- Fixed Yield Protocol
+# 🌟 YieldPharos X Pharos
+
+Fixed Yield Protocol
 
 A decentralized fixed-yield protocol built on pharos
- Chain that enables users to earn guaranteed yields through staking and participating in educational activities. Stack your knowledge with your tokens - learn, earn, and earn FYT tokens on your pharos
- holdings through staking rewards and educational achievements.
+Chain that enables users to earn guaranteed yields through staking and participating in educational activities. Stack your knowledge with your tokens - learn, earn, and earn FYT tokens on your pharos
+holdings through staking rewards and educational achievements.
 
 ![pharos
 ](https://github.com/user-attachments/assets/6e7cd216-f018-4f28-8485-1ab3669e9927)
@@ -13,8 +14,8 @@ A decentralized fixed-yield protocol built on pharos
 - Node.js v18+
 - pnpm
 - Git
--pharos
- testnet wallet
+  -pharos
+  testnet wallet
 - IDE (VS Code recommended)
 
 ## 🚀 Quick Start
@@ -87,10 +88,11 @@ pnpm run dev
    Open `http://localhost:3000` in your browser
 
 ## 📝 Contract Addresses (pharos
- Testnet)
 
-YieldToken: ``
-YieldPool: ``
+Testnet)
+
+YieldToken: `0x8D6444887c22Eb1A32De4299E507C62EbAb4004A`
+YieldPool: `0x835E7250A4E2ffc56F14AA171F0086Bc60A6D4eA`
 
 ## 📝 Verified Contract URL
 
