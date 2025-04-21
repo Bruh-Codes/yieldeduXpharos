@@ -116,13 +116,13 @@ const Page = () => {
 						setCustomDuration={setCustomDuration}
 						duration={duration}
 						setDuration={setDuration}
-						customDuration={customDuration}
 						customInputActive={customInputActive}
 						setCustomInputActive={setCustomInputActive}
 					/>
 				</div>
 
 				{/* Right column - Info Panels */}
+
 				<BorrowDetails
 					collateralAmount={customCollateralAmount}
 					healthFactor={healthFactor}

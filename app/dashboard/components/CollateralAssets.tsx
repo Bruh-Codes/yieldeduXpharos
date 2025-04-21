@@ -1,9 +1,10 @@
 "use client";
 import { Card } from "@/components/ui/card";
-import AssetSelector from "./AssetSelector";
-import AmountInput from "./AmountInput";
-import { useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { formatUnits } from "viem";
+import { Skeleton } from "@/components/ui/skeleton";
+const AssetSelector = lazy(() => import("./AssetSelector"));
+const AmountInput = lazy(() => import("./AmountInput"));
 
 export type Asset = {
 	balance?: string;
@@ -37,24 +38,33 @@ const CollateralAssets = ({
 }: collateralAssetProps) => {
 	const [collateralAssetsWithBalance, setCollateralAssetsWithBalance] =
 		useState<Asset[]>([]);
+	const [isCollateralWithBalanceLoading, setIsCollateralWithBalanceLoading] =
+		useState(false);
 
 	useEffect(() => {
 		if (address) {
 			const fetchBalances = async () => {
-				const balances = await Promise.all(
-					tokenDetails.map(async (token) => ({
-						...token,
-						icon: token.symbol,
-						balance: formatUnits(
-							await getTokenBalances(
-								address as unknown as `0x${string}`,
-								token.address
+				setIsCollateralWithBalanceLoading(true);
+				try {
+					const balances = await Promise.all(
+						tokenDetails.map(async (token) => ({
+							...token,
+							icon: token.symbol,
+							balance: formatUnits(
+								await getTokenBalances(
+									address as unknown as `0x${string}`,
+									token.address
+								),
+								18
 							),
-							18
-						),
-					}))
-				);
-				setCollateralAssetsWithBalance(balances);
+						}))
+					);
+					setCollateralAssetsWithBalance(balances);
+				} catch (error) {
+					console.log("Failed to fetch token balances", error);
+				} finally {
+					setIsCollateralWithBalanceLoading(false);
+				}
 			};
 
 			fetchBalances();
@@ -65,27 +75,39 @@ const CollateralAssets = ({
 		<Card className=" space-y-7 dark:bg-gradient-to-r from-[#1A103D50] to-[#1A103D30] p-5 rounded-2xl border border-slate-200 dark:border-slate-700/40 shadow-sm mb-6">
 			<h2 className="text-xl font-semibold mb-6">Provide Collateral</h2>
 
-			<AssetSelector
-				label="Collateral Asset"
-				assets={collateralAssetsWithBalance}
-				onSelect={(asset) => setSelectedCollateral(JSON.parse(asset))}
-			/>
+			{isCollateralWithBalanceLoading ? (
+				<Skeleton className="h-14 w-full bg-[#432d9225]" />
+			) : (
+				<Suspense
+					fallback={<Skeleton className="h-14 w-full bg-[#432d9225]" />}
+				>
+					<AssetSelector
+						label="Collateral Asset"
+						assets={collateralAssetsWithBalance}
+						onSelect={(asset) => setSelectedCollateral(JSON.parse(asset))}
+					/>
+				</Suspense>
+			)}
 
-			<AmountInput
-				minimumCollateral={minimumCollateral}
-				label="Collateral Amount"
-				value={customCollateralAmount}
-				selectedCollateral={selectedCollateral}
-				onChange={setCustomCollateralAmount}
-				max={
-					"balance" in selectedCollateral
-						? selectedCollateral.balance
-						: undefined
-				}
-				symbol={
-					"symbol" in selectedCollateral ? selectedCollateral.symbol : undefined
-				}
-			/>
+			<Suspense fallback={<Skeleton className="h-14 w-full bg-[#432d9225]" />}>
+				<AmountInput
+					minimumCollateral={minimumCollateral}
+					label="Collateral Amount"
+					value={customCollateralAmount}
+					selectedCollateral={selectedCollateral}
+					onChange={setCustomCollateralAmount}
+					max={
+						"balance" in selectedCollateral
+							? selectedCollateral.balance
+							: undefined
+					}
+					symbol={
+						"symbol" in selectedCollateral
+							? selectedCollateral.symbol
+							: undefined
+					}
+				/>
+			</Suspense>
 		</Card>
 	);
 };
