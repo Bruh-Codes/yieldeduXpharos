@@ -4,6 +4,7 @@ export const storeTransaction = async (transaction: {
 	transaction_hash: string;
 	owner: string;
 	amount: number;
+	lock_duration: number;
 }) => {
 	// First check if transaction already exists
 	const { data: existingTx } = await supabase

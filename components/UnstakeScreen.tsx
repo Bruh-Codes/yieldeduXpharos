@@ -74,12 +74,6 @@ const UnstakeScreen = ({
 				{ ...getYieldPoolConfig("unstake", [position_id]), gas },
 				{
 					async onSuccess() {
-						await queryClient.invalidateQueries();
-						// Explicitly invalidate the transactions query
-						await queryClient.invalidateQueries({
-							queryKey: ["transactions"],
-						});
-
 						const { error } = await removeTransaction(
 							transaction_hash!,
 							owner!
@@ -88,7 +82,8 @@ const UnstakeScreen = ({
 							console.log(error);
 						}
 
-						setUnstakeLoading(true);
+						setUnstakeLoading(false);
+						await queryClient.invalidateQueries();
 
 						toast({
 							title: "Transaction Successful",

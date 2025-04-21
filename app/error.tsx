@@ -17,7 +17,7 @@ export default function Error({
 	}, [error]);
 
 	return (
-		<div className="container flex flex-col items-center justify-center min-h-[70vh] py-12 text-center">
+		<div className="container flex flex-col mx-auto items-center justify-center min-h-[70vh] py-12 text-center">
 			<div className="flex flex-col items-center space-y-6 text-center">
 				<div className="rounded-full bg-red-100 dark:bg-red-900/20 p-6">
 					<AlertTriangle className="h-12 w-12 text-red-600 dark:text-red-400" />

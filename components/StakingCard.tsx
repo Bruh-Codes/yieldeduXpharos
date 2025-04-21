@@ -257,16 +257,16 @@ const StakingCard = ({
 							setIsDepositLoading(false);
 						},
 						async onSuccess(data) {
-							// Invalidate queries to refresh data
-							await queryClient.invalidateQueries();
-
 							try {
 								// Store transaction data
 								const { error } = await storeTransaction({
 									transaction_hash: data,
 									owner: address!,
 									amount: Number(amountInWei),
+									lock_duration: durationInSeconds,
 								});
+
+								// Invalidate queries to refresh data
 
 								if (error) {
 									console.error("Database error:", error);
@@ -282,13 +282,14 @@ const StakingCard = ({
 								console.error("Error storing transaction:", err);
 							}
 
+							await queryClient.invalidateQueries();
+
 							toast({
 								title: "Deposit Successful",
 								description: "Your tokens have been successfully staked",
 							});
 
 							setAmount("");
-							await queryClient.refetchQueries({ queryKey: ["transactions"] });
 						},
 					}
 				);

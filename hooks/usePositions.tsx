@@ -44,6 +44,9 @@ const usePositions = () => {
 
 			return data || [];
 		},
+		staleTime: 0,
+		refetchOnWindowFocus: true,
+		refetchOnMount: true,
 	});
 
 	const userPositions = positions.filter(

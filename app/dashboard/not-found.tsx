@@ -4,7 +4,7 @@ import { BookX } from "lucide-react";
 
 const Page = () => {
 	return (
-		<div className="container flex flex-col items-center justify-center min-h-[70vh] text-center">
+		<div className="container flex flex-col mx-auto items-center justify-center min-h-[70vh] text-center">
 			<div className="flex flex-col items-center space-y-6 text-center">
 				<div className="rounded-full bg-red-800 p-6">
 					<BookX className="h-12 w-12 text-red-400" />

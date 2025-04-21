@@ -18,7 +18,6 @@ const clientFromReactQuery = new QueryClient({
 		queries: {
 			refetchOnWindowFocus: false,
 			refetchOnMount: false,
-			refetchOnReconnect: true,
 		},
 	},
 });
