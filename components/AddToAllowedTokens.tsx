@@ -45,8 +45,8 @@ const AddToAllowedTokens = () => {
 		if (isSuccess) {
 			toast({
 				variant: "default",
-				title: "Token has been added to the contract",
-				description: "Tokens have been minted successfully",
+				title: "Token has been added successfully",
+				description: "Tokens have been add to the pool",
 			});
 			setIsLoading(false);
 		}

@@ -11,6 +11,7 @@ import {
 	Trophy,
 	Wallet,
 	PanelLeft,
+	Landmark,
 } from "lucide-react";
 
 import {
@@ -157,6 +158,12 @@ const Sidebar = () => {
 											active={pathname === "/dashboard/stake"}
 											link={"/dashboard/stake"}
 										/>
+										<SidebarLink
+											icon={<Landmark className="w-5 h-5" />}
+											label="Borrow"
+											active={pathname === "/dashboard/borrow"}
+											link={"/dashboard/borrow"}
+										/>
 
 										<SidebarLink
 											icon={<Trophy className="w-5 h-5" />}
@@ -267,22 +274,23 @@ function SidebarLink({
 	link: string;
 	className?: ClassValue;
 }) {
-	const { sidebarOpen, setSidebarOpen } = useContext(GlobalContext);
-	const router = useRouter();
-	const handleLinkClicked = (link: string) => {
-		if (window.innerWidth >= 1024) {
-			router.push(link);
-		} else {
-			setSidebarOpen(false);
-			router.push(link);
-		}
-	};
+	const { sidebarOpen } = useContext(GlobalContext);
+	// const router = useRouter();
+	// const handleLinkClicked = (link: string) => {
+	// 	if (window.innerWidth >= 1024) {
+	// 		router.push(link);
+	// 	} else {
+	// 		setSidebarOpen(false);
+	// 		router.push(link);
+	// 	}
+	// };
 
 	return (
 		<Tooltip disableHoverableContent={false}>
 			<TooltipTrigger className={cn("flex items-center  w-full", className)}>
-				<div
-					onClick={() => handleLinkClicked(link)}
+				<Link
+					href={link}
+					// onClick={() => handleLinkClicked(link)}
 					className={cn(
 						"flex items-center gap-3 w-full px-3 overflow-x-clip py-2 rounded-lg transition-colors",
 						{
@@ -310,7 +318,7 @@ function SidebarLink({
 							<span className="font-medium">{label}</span>
 						</TooltipContent>
 					)}
-				</div>
+				</Link>
 			</TooltipTrigger>
 		</Tooltip>
 	);

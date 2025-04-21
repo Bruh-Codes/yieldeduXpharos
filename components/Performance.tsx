@@ -19,6 +19,7 @@ import {
 import usePositions from "@/hooks/usePositions";
 import { useAppKit, useAppKitAccount } from "@reown/appkit/react";
 import { Button } from "./ui/button";
+import { ActivePosition } from "./PositionOverview";
 
 interface IchartData {
 	date: string;
@@ -44,40 +45,62 @@ const Performance = () => {
 	const { open } = useAppKit();
 
 	useEffect(() => {
-		if (activeTab === "tvl" && userPositions) {
-			setChartData(() => {
-				return userPositions.map((position) => {
-					const startTime = new Date(position.startTime * 1000);
-					const formattedDate = startTime.toLocaleDateString("en-US", {
-						year: "numeric",
-						month: "long",
-						day: "numeric",
-					});
-
-					return { date: formattedDate, tvl: position.amount };
+		const formatPositions = (positions: ActivePosition[]) => {
+			return positions.map((position: ActivePosition) => {
+				const startTime = new Date(position.startTime * 1000);
+				const formattedDate = startTime.toLocaleDateString("en-US", {
+					year: "numeric",
+					month: "long",
+					day: "numeric",
 				});
+
+				return { date: formattedDate, tvl: position.amount };
 			});
-		} else if (activeTab === "apy") {
-			setChartData([
-				{ date: "Jan 1", apy: 8.2 },
-				{ date: "Jan 2", apy: 8.5 },
-				{ date: "Jan 3", apy: 8.3 },
-				{ date: "Jan 4", apy: 8.8 },
-				{ date: "Jan 5", apy: 9.1 },
-				{ date: "Jan 6", apy: 9.3 },
-				{ date: "Jan 7", apy: 10.0 },
-			]);
-		} else if (activeTab === "rewards") {
-			setChartData([
-				{ date: "Jan 1", rewards: 0 },
-				{ date: "Jan 2", rewards: 0 },
-				{ date: "Jan 3", rewards: 0 },
-				{ date: "Jan 4", rewards: 0 },
-				{ date: "Jan 5", rewards: 0 },
-				{ date: "Jan 6", rewards: 0 },
-				{ date: "Jan 7", rewards: 0 },
-			]);
-		}
+		};
+
+		const getStaticData = (type: "apy" | "rewards") => {
+			const staticData = {
+				apy: [
+					{ date: "Jan 1", apy: 8.2 },
+					{ date: "Jan 2", apy: 8.5 },
+					{ date: "Jan 3", apy: 8.3 },
+					{ date: "Jan 4", apy: 8.8 },
+					{ date: "Jan 5", apy: 9.1 },
+					{ date: "Jan 6", apy: 9.3 },
+					{ date: "Jan 7", apy: 10.0 },
+				],
+				rewards: [
+					{ date: "Jan 1", rewards: 0 },
+					{ date: "Jan 2", rewards: 0 },
+					{ date: "Jan 3", rewards: 0 },
+					{ date: "Jan 4", rewards: 0 },
+					{ date: "Jan 5", rewards: 0 },
+					{ date: "Jan 6", rewards: 0 },
+					{ date: "Jan 7", rewards: 0 },
+				],
+			};
+			return staticData[type] || [];
+		};
+
+		const updateChartData = () => {
+			switch (activeTab) {
+				case "tvl":
+					if (userPositions) {
+						setChartData(formatPositions(userPositions));
+					}
+					break;
+				case "apy":
+					setChartData(getStaticData("apy"));
+					break;
+				case "rewards":
+					setChartData(getStaticData("rewards"));
+					break;
+				default:
+					setChartData([]);
+			}
+		};
+
+		updateChartData();
 	}, [activeTab, userPositions]);
 
 	return (

@@ -35,7 +35,7 @@ const AchievementBanner = () => {
 						className="bg-yellow-400/20 w-fitdark:bg-[#1A103D] text-yellow-600 dark:text-yellow-400 border-yellow-400/30 px-3 py-1"
 					>
 						<Sparkles className="w-4 h-4 mr-1" />
-						<p>+10% APY Boost</p>
+						<p>+3% APY Boost</p>
 					</Badge>
 					<Button
 						asChild

@@ -7,7 +7,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/components/theme-provider";
 import GlobalContextProvider from "@/context/globalContext";
 import { yieldEduMetadata } from "@/utils/metadata";
-
+import NextTopLoader from "nextjs-toploader";
 const spaceMono = Space_Grotesk({
 	variable: "--font-space-mono",
 	subsets: ["latin", "latin-ext", "vietnamese"],
@@ -29,6 +29,17 @@ export default async function RootLayout({
 			<body
 				className={`${spaceMono.variable} antialiased bg-slate-50 dark:bg-[#0A0B1E]`}
 			>
+				<NextTopLoader
+					color="#38BDF8"
+					initialPosition={0.04}
+					crawlSpeed={300}
+					height={2}
+					crawl={true}
+					easing="ease"
+					speed={350}
+					shadow="0 0 10px #38BDF8,0 0 5px #38BDF8"
+					zIndex={9999}
+				/>
 				<ThemeProvider
 					attribute="class"
 					defaultTheme="dark"

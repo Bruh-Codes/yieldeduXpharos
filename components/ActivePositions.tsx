@@ -250,9 +250,6 @@ const ActivePositions = ({
 			id: "actions",
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			cell: ({ row }: CellContext<ActivePosition, any>) => {
-				// =row data using row.original
-				// const payment = row.original;
-
 				return (
 					<DropdownMenu modal={false}>
 						{row.original.positionAddress === address ? (
@@ -280,15 +277,18 @@ const ActivePositions = ({
 										className="bg-slate-800 text-white w-full dark:hover:bg-sky-400/30 rounded-sm p-2 justify-center ml-0 shadow hover:bg-primary/90"
 									/>
 								)}
-								<Button
-									onClick={() => handleUnstake(row.original.id)}
-									type="button"
-									variant={"default"}
-									className="bg-slate-800 text-white w-full dark:hover:bg-sky-400/30"
-								>
-									Unstake
-								</Button>
+								{row.original.timeLeft > 0 ? (
+									<Button
+										onClick={() => handleUnstake(row.original.id)}
+										type="button"
+										variant={"default"}
+										className="bg-slate-800 text-white w-full dark:hover:bg-sky-400/30"
+									>
+										Unstake
+									</Button>
+								) : null}
 								<CountDownTimer
+									setModalType={setModalType}
 									positionId={row.original.id}
 									transaction_hash={row.original.transactionHash}
 									setShowWithDrawModal={setShowWithDrawModal}

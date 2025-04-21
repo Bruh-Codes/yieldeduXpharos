@@ -1,5 +1,5 @@
 "use state";
-import React, { useState } from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useAppKitAccount } from "@reown/appkit/react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -27,9 +27,11 @@ export interface ActivePosition {
 const PositionOverview = ({
 	positions,
 	setShowWithDrawModal,
+	setModalType,
 }: {
 	positions: [] | ActivePosition[];
 	setShowWithDrawModal: React.Dispatch<React.SetStateAction<boolean>>;
+	setModalType: Dispatch<SetStateAction<"withdraw" | "unstake" | null>>;
 }) => {
 	const { isConnected } = useAppKitAccount();
 	const [currentPositionIndex, setCurrentPositionIndex] = useState(0);
@@ -144,6 +146,7 @@ const PositionOverview = ({
 									) : userPositions.length > 0 ? (
 										<>
 											<CountDownTimer
+												setModalType={setModalType}
 												transaction_hash={userPosition?.transactionHash}
 												positionId={userPosition.id}
 												setShowWithDrawModal={setShowWithDrawModal}

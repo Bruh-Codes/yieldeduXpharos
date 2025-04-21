@@ -3,7 +3,7 @@
 import { toast } from "@/hooks/use-toast";
 import { getDynamicGasPrice, getYieldPoolConfig } from "@/lib/utils";
 import { useQueryClient } from "@tanstack/react-query";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { useWriteContract } from "wagmi";
 import {
 	DialogContent,
@@ -38,10 +38,35 @@ const UnstakeScreen = ({
 		amountToReturn = amount - penalty;
 	}
 
-	const { writeContract: Unstake, isPending: unstakePending } =
-		useWriteContract();
+	const {
+		writeContract: Unstake,
+		isPending: unstakePending,
+		error: unstakeError,
+		isError: isUnstakeError,
+	} = useWriteContract();
+
+	const [unstakeLoading, setUnstakeLoading] = useState(false);
+
+	useEffect(() => {
+		if (isUnstakeError) {
+			setUnstakeLoading(false);
+			console.log(unstakeError);
+			toast({
+				variant: "destructive",
+				title: "Unstake error",
+				description: "An error occurred try again",
+			});
+		}
+	}, [isUnstakeError, unstakeError]);
+
+	useEffect(() => {
+		if (unstakePending) {
+			setUnstakeLoading(false);
+		}
+	}, [unstakePending]);
 
 	const handleUnstake = async () => {
+		setUnstakeLoading(true);
 		try {
 			const gas = await getDynamicGasPrice();
 
@@ -63,6 +88,8 @@ const UnstakeScreen = ({
 							console.log(error);
 						}
 
+						setUnstakeLoading(true);
+
 						toast({
 							title: "Transaction Successful",
 							description: "Unstake was a success",
@@ -72,21 +99,22 @@ const UnstakeScreen = ({
 					},
 					onError(error) {
 						console.log(error);
-						if (error.message.includes("User rejected the request")) {
-							toast({
-								variant: "destructive",
-								title: "Transaction Rejected",
-								description: "You rejected the transaction",
-							});
-						}
+						toast({
+							variant: "destructive",
+							title: "Transaction Rejected",
+							description: "something went wrong",
+						});
 					},
 				}
 			);
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		} catch (error: any) {
 			console.log(error);
+			setUnstakeLoading(false);
 		}
 	};
+
+	const isPending = unstakePending || unstakeLoading;
 	return (
 		<DialogContent className="m-2 bg-slate-100 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700/40">
 			<DialogHeader>
@@ -117,17 +145,21 @@ const UnstakeScreen = ({
 				</p>
 			</div>
 			<Button
-				disabled={unstakePending}
+				disabled={isPending}
 				onClick={handleUnstake}
 				type="button"
 				variant={"default"}
 				className="w-full bg-gradient-to-r from-sky-500 to-yellow-500 text-slate-800 font-semibold hover:opacity-90"
 			>
 				<>
-					{unstakePending && (
+					{isPending && (
 						<div className="size-6 rounded-full animate-[spin_0.5s_linear_infinite] border-b-transparent border-[3px] border-white" />
 					)}
-					{unstakePending ? "Please wait..." : "Unstake"}
+					{unstakeLoading
+						? "Please wait..."
+						: unstakePending
+						? "Waiting for approval..."
+						: "Unstake"}
 				</>
 			</Button>
 		</DialogContent>

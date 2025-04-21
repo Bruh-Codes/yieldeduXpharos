@@ -65,13 +65,6 @@ const usePositions = () => {
 
 					// Find matching transaction for this position
 					const matchingTransaction = transactionsData?.find((transaction) => {
-						// Convert blockchain timestamp to seconds
-						const positionStartTime = Number(positionData.startTime);
-						// Convert transaction created_at to seconds
-						const transactionTime = Math.floor(
-							new Date(transaction.created_at).getTime() / 1000
-						);
-
 						// More strict matching criteria
 						const isMatch =
 							// Check address match
@@ -82,12 +75,8 @@ const usePositions = () => {
 							// Check lock duration match
 							(!transaction.lock_duration ||
 								Number(transaction.lock_duration) ===
-									Number(positionData.lockDuration)) &&
-							// Reduce time window to 30 seconds and ensure transaction is not already used
-							Math.abs(positionStartTime - transactionTime) < 30 &&
-							!transaction.used;
+									Number(positionData.lockDuration));
 
-						// Mark transaction as used if it matches
 						if (isMatch) {
 							transaction.used = true;
 						}

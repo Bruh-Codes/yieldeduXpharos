@@ -11,13 +11,11 @@ const WithdrawModal = ({
 	showWithdrawModal,
 	setShowWithDrawModal,
 	positions,
-	setModalType,
 	modalType,
 }: {
 	showWithdrawModal: boolean;
 	setShowWithDrawModal: Dispatch<SetStateAction<boolean>>;
 	positions: ActivePosition[];
-	setModalType: Dispatch<SetStateAction<"withdraw" | "unstake" | null>>;
 	modalType: "withdraw" | "unstake" | null;
 }) => {
 	const searchParams = useSearchParams();
@@ -30,11 +28,10 @@ const WithdrawModal = ({
 			open={showWithdrawModal}
 			onOpenChange={(state) => (
 				window.history.pushState({}, "", `/dashboard`),
-				setShowWithDrawModal(state),
-				setModalType("withdraw")
+				setShowWithDrawModal(state)
 			)}
 		>
-			{modalType === "withdraw" ? (
+			{modalType === "withdraw" && (
 				<WithDrawScreen
 					owner={position?.positionAddress}
 					transaction_hash={position?.transactionHash}
@@ -43,7 +40,8 @@ const WithdrawModal = ({
 					position_id={positionId}
 					setShowWithDrawModal={setShowWithDrawModal}
 				/>
-			) : (
+			)}
+			{modalType === "unstake" && (
 				<UnstakeScreen
 					owner={position?.positionAddress}
 					position_id={positionId}

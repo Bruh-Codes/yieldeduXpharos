@@ -38,6 +38,7 @@ const CountDownTimer = ({
 	setShowWithDrawModal,
 	positionId,
 	transaction_hash,
+	setModalType,
 }: {
 	startTime: number;
 	lockDuration: number;
@@ -45,6 +46,9 @@ const CountDownTimer = ({
 	positionId: string;
 	transaction_hash?: string;
 	setShowWithDrawModal: React.Dispatch<React.SetStateAction<boolean>>;
+	setModalType: React.Dispatch<
+		React.SetStateAction<"withdraw" | "unstake" | null>
+	>;
 }) => {
 	const [timeLeft, setTimeLeft] = useState<number>(() => {
 		const currentTime = Math.floor(Date.now() / 1000);
@@ -82,6 +86,7 @@ const CountDownTimer = ({
 	const formatNumber = (n: number): string => n.toString().padStart(2, "0");
 
 	const handleWithdrawClick = () => {
+		setModalType("withdraw");
 		const params = new URLSearchParams(searchParams.toString());
 		params.set("positionId", positionId);
 		window.history.pushState({}, "", `?${params.toString()}`);
@@ -164,9 +169,6 @@ const CountDownTimer = ({
 			)}
 		>
 			{!isConnected ? "Connect your wallet!" : formatTimeLeft()}
-			{transaction_hash && (
-				<ExploreTransactionButton transaction_hash={transaction_hash} />
-			)}
 		</p>
 	);
 };

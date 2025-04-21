@@ -54,7 +54,7 @@ const WithDrawScreen = ({
 						if (error) {
 							console.log(error);
 						}
-						window.history.pushState({}, "", `/`);
+						window.history.pushState({}, "", `/dashboard`);
 						setShowWithDrawModal(false);
 					},
 					onError(error) {
@@ -94,7 +94,7 @@ const WithDrawScreen = ({
 			<DialogHeader>
 				<DialogTitle className="text-foreground">Withdraw</DialogTitle>
 				<DialogDescription className="space-y-4 pt-3">
-					<p>This process mostly takes a few minutes.</p>
+					<p>This process mostly takes a minute.</p>
 				</DialogDescription>
 			</DialogHeader>
 			<div className="flex items-center gap-3 w-full">

@@ -32,6 +32,7 @@ import { parseEther } from "viem";
 import { useQueryClient } from "@tanstack/react-query";
 import { storeTransaction } from "@/utils/supabase/helpers";
 import { ClassValue } from "clsx";
+import DurationSelector from "./DurationSelector";
 
 const StakingCard = ({
 	className,
@@ -45,6 +46,8 @@ const StakingCard = ({
 	const [lockDurationCustom, setLockDurationCustom] = useState(0);
 	const [showCustomInput, setShowCustomInput] = useState(false);
 	const [customInputActive, setCustomInputActive] = useState(false);
+	const [isDepositLoading, setIsDepositLoading] = useState(false);
+
 	const [showModal, setShowModal] = useState(false);
 	const { isConnected, address } = useAppKitAccount();
 	const durationInSeconds =
@@ -82,8 +85,23 @@ const StakingCard = ({
 		}
 	}, [isApproveError, approveError]);
 
-	const { writeContract: deposit, isPending: isDepositPending } =
-		useWriteContract();
+	const {
+		writeContract: deposit,
+		isPending: isDepositPending,
+		isError: isDepositPendingError,
+		error: depositPendingError,
+	} = useWriteContract();
+	useEffect(() => {
+		if (isDepositPendingError) {
+			console.error("Approval simulation error:", depositPendingError);
+			setIsDepositLoading(false);
+			toast({
+				variant: "destructive",
+				title: "Deposit Error",
+				description: "User rejected deposit",
+			});
+		}
+	}, [isDepositPendingError, depositPendingError]);
 
 	const results = useBalance({
 		address: address as unknown as `0x${string}`,
@@ -119,6 +137,7 @@ const StakingCard = ({
 			: false;
 		if (!hasBalance && isConnected) {
 			setShowModal(true);
+			setIsDepositLoading(false);
 			return false;
 		}
 
@@ -127,6 +146,7 @@ const StakingCard = ({
 
 	const handleStake = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
+		setIsDepositLoading(true);
 		if (!isConnected) {
 			open();
 			return;
@@ -143,6 +163,7 @@ const StakingCard = ({
 				title: "Insufficient Balance",
 				description: "You don't have enough FYT tokens for the transaction",
 			});
+			setIsDepositLoading(false);
 			return;
 		}
 
@@ -150,16 +171,19 @@ const StakingCard = ({
 			const amountInWei = parseEther(amount);
 
 			// Ensure allowance data is fresh
-			await refetchAllowance();
 
+			await refetchAllowance();
 			// Check if we need approval
 			if (!allowance || Number(allowance) < BigInt(amountInWei)) {
 				if (!approveSimulator?.request) {
+					setIsDepositLoading(false);
 					toast({
 						variant: "destructive",
 						title: "Approval Simulation Failed",
-						description: "Failed to simulate the approval transaction",
+						description:
+							"Failed to simulate the approval transaction. Try again.",
 					});
+
 					return;
 				}
 
@@ -180,6 +204,8 @@ const StakingCard = ({
 							title: "Approval Successful",
 							description: "Transaction Approved. Proceeding with deposit...",
 						});
+						setIsDepositLoading(true);
+
 						await refetchAllowance();
 						// Now proceed with deposit
 						executeDeposit();
@@ -228,6 +254,7 @@ const StakingCard = ({
 									description: `Error: ${error.message}`,
 								});
 							}
+							setIsDepositLoading(false);
 						},
 						async onSuccess(data) {
 							// Invalidate queries to refresh data
@@ -238,7 +265,7 @@ const StakingCard = ({
 								const { error } = await storeTransaction({
 									transaction_hash: data,
 									owner: address!,
-									amount: Number(amountInWei), // Be careful with this conversion
+									amount: Number(amountInWei),
 								});
 
 								if (error) {
@@ -249,6 +276,8 @@ const StakingCard = ({
 										description: "Failed to store transaction details",
 									});
 								}
+
+								setIsDepositLoading(false);
 							} catch (err) {
 								console.error("Error storing transaction:", err);
 							}
@@ -265,6 +294,7 @@ const StakingCard = ({
 				);
 			}
 		} catch (error) {
+			setIsDepositLoading(false);
 			console.error("Transaction setup failed:", error);
 			toast({
 				variant: "destructive",
@@ -272,6 +302,8 @@ const StakingCard = ({
 				description:
 					error instanceof Error ? error.message : "Unknown error occurred",
 			});
+		} finally {
+			setIsDepositLoading(false);
 		}
 	};
 
@@ -302,7 +334,8 @@ const StakingCard = ({
 		};
 	}, [customInputActive, lockDuration, showCustomInput]);
 
-	const isTransactionInProgress = isApprovePending || isDepositPending;
+	const isTransactionInProgress =
+		isDepositLoading || isApprovePending || isDepositPending;
 
 	return (
 		<>
@@ -338,77 +371,19 @@ const StakingCard = ({
 								className="bg-slate-100 dark:bg-[#1A103D] border-slate-200 dark:border-slate-700/40 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:!ring-slate-500 dark:focus:!ring-sky-500 focus:!border-transparent focus:ring-offset-2 dark:ring-offset-sky-700 ring-offset-slate-700"
 							/>
 						</div>
-						<div>
-							<label className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5 block">
-								Lock Duration
-							</label>
-							<div
-								ref={buttonGridRef}
-								className="grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-2 2xl:grid-cols-4 gap-2"
-							>
-								{["30", "60", "90"].map((days) => (
-									<Button
-										type="button"
-										disabled={isTransactionInProgress}
-										key={days}
-										variant="outline"
-										className={cn("border-slate-200 dark:border-slate-700/40", {
-											"bg-gradient-to-r from-sky-500 hover:text-slate-900 to-yellow-500 text-slate-900 border-transparent":
-												lockDuration === parseFloat(days),
-											"bg-white dark:bg-[#1A103D] text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800":
-												lockDuration !== parseFloat(days),
-										})}
-										onClick={() => (
-											setLockDuration(parseFloat(days)),
-											setShowCustomInput(lockDurationCustom ? true : false),
-											setCustomInputActive(false)
-										)}
-									>
-										{days} Days
-									</Button>
-								))}
-								{!showCustomInput ? (
-									<Button
-										variant="outline"
-										className={cn(
-											"bg-white border-slate-200 dark:border-slate-700/40  dark:bg-[#1A103D] text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
-										)}
-										onClick={() => (
-											setLockDuration(1),
-											setShowCustomInput(true),
-											setLockDurationCustom(1),
-											setCustomInputActive(true)
-										)}
-									>
-										Custom
-									</Button>
-								) : (
-									<Input
-										disabled={isTransactionInProgress}
-										ref={customInputRef}
-										type="number"
-										min={1}
-										max={365}
-										maxLength={3}
-										placeholder="Custom"
-										value={lockDurationCustom}
-										onChange={(e) =>
-											setLockDurationCustom(parseFloat(e.target.value))
-										}
-										className={cn(
-											"bg-slate-100 dark:bg-[#1A103D] border-slate-200 dark:border-slate-700/40 text-slate-900 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:ring-2 focus:!ring-slate-500 dark:focus:!ring-sky-500 focus:!border-transparent dark:caret-white hover:bg-slate-100 dark:hover:bg-slate-800 dark:text-slate-200 focus:ring-offset-2 dark:ring-offset-sky-700 ring-offset-slate-700",
-											{
-												"bg-gradient-to-tr !text-slate-900 from-sky-500 to-yellow-500":
-													lockDurationCustom && customInputActive,
-
-												"bg-white dark:bg-[#1A103D] text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800":
-													!lockDurationCustom,
-											}
-										)}
-									/>
-								)}
-							</div>
-						</div>
+						<DurationSelector
+							buttonGridRef={buttonGridRef}
+							customInputActive={customInputActive}
+							customInputRef={customInputRef}
+							isTransactionInProgress={isTransactionInProgress}
+							lockDuration={lockDuration}
+							lockDurationCustom={lockDurationCustom}
+							setCustomInputActive={setCustomInputActive}
+							setLockDuration={setLockDuration}
+							setLockDurationCustom={setLockDurationCustom}
+							setShowCustomInput={setShowCustomInput}
+							showCustomInput={showCustomInput}
+						/>
 						<div className="bg-slate-100 dark:bg-[#1A103D] rounded-xl p-4 space-y-2">
 							<div className="flex justify-between text-sm">
 								<span className="text-slate-500 dark:text-slate-400">
@@ -454,7 +429,7 @@ const StakingCard = ({
 										? "Waiting for Approval..."
 										: isDepositPending
 										? "Waiting For Deposit Approval..."
-										: "Checking..."}
+										: "Please wait..."}
 								</>
 							) : (
 								"Stake Now"
