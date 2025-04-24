@@ -42,7 +42,7 @@ const CollateralAssets = ({
 		useState(false);
 
 	useEffect(() => {
-		if (address) {
+		if (address && collateralAssetsWithBalance.length === 0) {
 			const fetchBalances = async () => {
 				setIsCollateralWithBalanceLoading(true);
 				try {
@@ -69,25 +69,23 @@ const CollateralAssets = ({
 
 			fetchBalances();
 		}
-	}, [address, getTokenBalances, tokenDetails]);
+	}, [
+		address,
+		collateralAssetsWithBalance.length,
+		getTokenBalances,
+		tokenDetails,
+	]);
 
 	return (
 		<Card className=" space-y-7 dark:bg-gradient-to-r from-[#1A103D50] to-[#1A103D30] p-5 rounded-2xl border border-slate-200 dark:border-slate-700/40 shadow-sm mb-6">
 			<h2 className="text-xl font-semibold mb-6">Provide Collateral</h2>
 
-			{isCollateralWithBalanceLoading ? (
-				<Skeleton className="h-14 w-full bg-[#432d9225]" />
-			) : (
-				<Suspense
-					fallback={<Skeleton className="h-14 w-full bg-[#432d9225]" />}
-				>
-					<AssetSelector
-						label="Collateral Asset"
-						assets={collateralAssetsWithBalance}
-						onSelect={(asset) => setSelectedCollateral(JSON.parse(asset))}
-					/>
-				</Suspense>
-			)}
+			<AssetSelector
+				isCollateralWithBalanceLoading={isCollateralWithBalanceLoading}
+				label="Collateral Asset"
+				assets={collateralAssetsWithBalance}
+				onSelect={(asset) => setSelectedCollateral(JSON.parse(asset))}
+			/>
 
 			<Suspense fallback={<Skeleton className="h-14 w-full bg-[#432d9225]" />}>
 				<AmountInput
