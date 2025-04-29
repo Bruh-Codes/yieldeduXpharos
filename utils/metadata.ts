@@ -2,6 +2,10 @@ import icon from "@/public/icon2.png";
 import openGraphImage from "@/public/YieldEDU.png";
 import { Metadata } from "next";
 
+const websiteUrl = process.env.NEXT_PUBLIC_WEBSITE_URL as string;
+if(!websiteUrl){
+	throw new Error('NEXT_PUBLIC_WEBSITE_URL is not set')
+}
 export const yieldEduMetadata: Metadata = {
 	title: " YieldPharos",
 	description:
@@ -42,12 +46,12 @@ export const yieldEduMetadata: Metadata = {
 		images: [openGraphImage.src, icon.src],
 		creator: "@bruh_codes",
 	},
-	metadataBase: new URL(process.env.NEXT_PUBLIC_WEBSITE_URL as string),
+	metadataBase: new URL(websiteUrl),
 
 	category: "Defi",
 
 	alternates: {
-		canonical: process.env.NEXT_PUBLIC_WEBSITE_URL,
+		canonical:websiteUrl,
 		languages: {
 			"en-US": "/en-US",
 		},

@@ -1,13 +1,10 @@
 # 🌟 YieldPharos X Pharos
 
-Fixed Yield Protocol
+## Fixed Yield Protocol
 
-A decentralized fixed-yield protocol built on pharos
-Chain that enables users to earn guaranteed yields through staking and participating in educational activities. Stack your knowledge with your tokens - learn, earn, and earn FYT tokens on your pharos
-holdings through staking rewards and educational achievements.
+YieldPharos is a decentralized fixed-yield protocol built on the Pharos Chain. It enables users to earn guaranteed yields through staking and participating in educational activities. Stack your knowledge with your tokens—learn, earn, and gain FYT tokens on your Pharos holdings through staking rewards and educational achievements.
 
-![pharos
-](https://github.com/user-attachments/assets/6e7cd216-f018-4f28-8485-1ab3669e9927)
+![Pharos](https://github.com/user-attachments/assets/6e7cd216-f018-4f28-8485-1ab3669e9927) 🌟 YieldPharos X Pharos
 
 ## 🔧 Prerequisites
 
@@ -36,7 +33,7 @@ cd pharos
 pnpm install
 
 # Install frontend dependencies
-cd frontend
+cd solidity
 pnpm install
 ```
 
@@ -96,8 +93,8 @@ YieldPool: `0x835E7250A4E2ffc56F14AA171F0086Bc60A6D4eA`
 
 ## 📝 Verified Contract URL
 
-[YieldToken](https://)
-[YieldPool](https://)
+[YieldToken](https://pharosscan.xyz/address/0x8D6444887c22Eb1A32De4299E507C62EbAb4004A)
+[YieldPool](https://pharosscan.xyz/address/0x835E7250A4E2ffc56F14AA171F0086Bc60A6D4eA)
 
 ## 🔍 Features
 

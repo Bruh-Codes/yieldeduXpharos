@@ -2,27 +2,19 @@ import { expect } from "chai";
 import hre from "hardhat";
 
 import {
-	ProxyAdmin__factory,
-	YieldPoolV2__factory,
-	YieldTokenV2__factory,
-	YieldTokenV2,
-	YieldPoolV2,
-	ProxyAdmin,
+	YieldPool,
+	YieldPool__factory,
 	YieldToken,
 	YieldToken__factory,
 } from "../typechain-types";
 
 import { SignerWithAddress } from "@nomicfoundation/hardhat-ethers/signers";
 
-describe("YieldPoolV2 Proxy", async function () {
-	let YieldPoolV2: YieldPoolV2;
-	let YieldTokenV2: YieldTokenV2;
-	let yieldToken: YieldToken;
-	let yieldTokenV2Factory: YieldTokenV2__factory;
-	let YieldPoolV2Factory: YieldPoolV2__factory;
+describe("YieldPool", async function () {
+	let YieldPool: YieldPool;
+	let YieldToken: YieldToken;
+	let YieldPoolFactory: YieldPool__factory;
 	let yieldTokenFactory: YieldToken__factory;
-	let ProxyAdminFactory: ProxyAdmin__factory;
-	let ProxyAdmin: ProxyAdmin;
 	let owner: SignerWithAddress;
 	let otherAccount: SignerWithAddress;
 
@@ -37,292 +29,260 @@ describe("YieldPoolV2 Proxy", async function () {
 	const duration = 7 * 24 * 60 * 60;
 
 	beforeEach(async () => {
-		yieldTokenV2Factory = await hre.ethers.getContractFactory("YieldTokenV2");
 		yieldTokenFactory = await hre.ethers.getContractFactory("YieldToken");
 
 		[owner, otherAccount] = await hre.ethers.getSigners();
 
-		YieldPoolV2Factory = await hre.ethers.getContractFactory("YieldPoolV2");
-		ProxyAdminFactory = await hre.ethers.getContractFactory("ProxyAdmin");
+		YieldPoolFactory = await hre.ethers.getContractFactory("YieldPool");
 
-		// Deploy implementation contracts first
-		YieldPoolV2 = await YieldPoolV2Factory.deploy();
-		YieldTokenV2 = await yieldTokenV2Factory.deploy();
-		yieldToken = await yieldTokenFactory.deploy(
+		YieldToken = await yieldTokenFactory.deploy(
 			owner,
-			"Fixed Yield Token",
-			"FYT"
+			tokenName,
+			tokenSymbol
 		);
+		YieldPool = await YieldPoolFactory.deploy(await YieldToken.getAddress(),yieldRate,minDuration,maxDuration);
 
-		// Deploy ProxyAdmin
-		ProxyAdmin = await ProxyAdminFactory.deploy(owner.address);
 
-		const TransparentUpgradeableProxy = await hre.ethers.getContractFactory(
-			"TransparentUpgradeableProxy"
-		);
 
-		//  deploy YieldToken proxy
-		const YieldTokenProxy = await TransparentUpgradeableProxy.deploy(
-			await YieldTokenV2.getAddress(),
-			await ProxyAdmin.getAddress(),
-			YieldTokenV2.interface.encodeFunctionData("initialize", [
-				tokenName,
-				tokenSymbol,
-				owner.address,
-			])
-		);
-
-		// Get YieldTokenV2 proxied instance first
-		YieldTokenV2 = yieldTokenV2Factory.attach(
-			await YieldTokenProxy.getAddress()
-		) as YieldTokenV2;
-
-		// Now we can set the minter after YieldTokenV2 is properly initialized
-		await YieldTokenV2.setMinter(await YieldPoolV2.getAddress(), true);
-
-		// deploy YieldPool proxy with proxied YieldTokenV2 address
-		const YieldPoolProxy = await TransparentUpgradeableProxy.connect(
-			owner
-		).deploy(
-			await YieldPoolV2.getAddress(),
-			await ProxyAdmin.getAddress(),
-			YieldPoolV2.interface.encodeFunctionData("initialize", [
-				await YieldTokenV2.getAddress(),
-				yieldRate,
-				minDuration,
-				maxDuration,
-			])
-		);
-
-		await YieldTokenV2.setMinter(await YieldPoolProxy.getAddress(), true);
-
-		// Get YieldPoolV2 proxied instance
-		YieldPoolV2 = YieldPoolV2Factory.attach(
-			await YieldPoolProxy.getAddress()
-		) as YieldPoolV2;
 	});
-	it("should mint tokens to yieldPoolV2 contract", async () => {
+	it("should mint tokens to yieldPool contract", async () => {
 		//mint initialTokens to pool
-		await YieldTokenV2.mintToPool(await YieldPoolV2.getAddress());
-		expect(await YieldTokenV2.balanceOf(YieldPoolV2)).to.be.equal(amount);
+		await YieldToken.mintToPool(YieldPool.getAddress());
+		expect(await YieldToken.balanceOf(YieldPool)).to.be.equal(amount);
 	});
-	it("Should have upgraded the proxy to v2", async function () {
+	it("Should have upgraded the proxy to ", async function () {
 		// Mint tokens to owner first
-		await YieldTokenV2.mint(owner.address, amount);
+		await YieldToken.mint(owner.address, amount);
 
 		// Check balance after mint
-		const ownerBalance = await YieldTokenV2.balanceOf(owner.address);
+		const ownerBalance = await YieldToken.balanceOf(owner.address);
 		expect(ownerBalance).to.equal(amount);
-		// Approve YieldPoolV2 to spend tokens
-		await YieldTokenV2.approve(await YieldPoolV2.getAddress(), amount);
+		// Approve YieldPool to spend tokens
+		await YieldToken.approve(await YieldPool.getAddress(), amount);
 
-		const yieldTokenAddress = await YieldTokenV2.getAddress();
+		const yieldTokenAddress = await YieldToken.getAddress();
 		// Perform deposit
-		await expect(YieldPoolV2.deposit(yieldTokenAddress, amount, duration))
-			.to.emit(YieldPoolV2, "Deposited")
+		await expect(YieldPool.deposit(yieldTokenAddress, amount, duration))
+			.to.emit(YieldPool, "Deposited")
 			.withArgs(owner.address, yieldTokenAddress, amount, duration);
 
-		const position = await YieldPoolV2.getPosition(1);
+		const position = await YieldPool.getPosition(1);
 		expect(position.amount).to.equal(amount);
 		expect(position.lockDuration).to.equal(duration);
 	});
 
 	it("Should have set the name during upgrade", async function () {
-		expect(await YieldTokenV2.connect(otherAccount).name()).to.equal(
+		expect(await YieldToken.connect(otherAccount).name()).to.equal(
 			"YieldEDU"
 		);
-		expect(await YieldTokenV2.connect(otherAccount).symbol()).to.equal("YDU");
+		expect(await YieldToken.connect(otherAccount).symbol()).to.equal("YDU");
 	});
 
 	it("successful update yield parameters by owner", async () => {
-		const oldRate = await YieldPoolV2.getYieldRate();
-		const oldMinDuration = await YieldPoolV2.getMinStakeDuration();
-		const oldMaxDuration = await YieldPoolV2.getMaxStakeDuration();
+		const oldRate = await YieldPool.getYieldRate();
+		const oldMinDuration = await YieldPool.getMinStakeDuration();
+		const oldMaxDuration = await YieldPool.getMaxStakeDuration();
 
 		await expect(
-			YieldPoolV2.connect(otherAccount).updateYieldParameters(20, 2, 365)
-		).to.be.revertedWithCustomError(YieldPoolV2, "OwnableUnauthorizedAccount");
+			YieldPool.connect(otherAccount).updateYieldParameters(20, 2, 365)
+		)
+		.to.be.revertedWith('Not the contract owner')
 
-		expect(await YieldPoolV2.getYieldRate()).to.be.equal(oldRate);
-		expect(await YieldPoolV2.getMinStakeDuration()).to.be.equal(oldMinDuration);
-		expect(await YieldPoolV2.getMaxStakeDuration()).to.be.equal(oldMaxDuration);
+		expect(await YieldPool.getYieldRate()).to.be.equal(oldRate);
+		expect(await YieldPool.getMinStakeDuration()).to.be.equal(oldMinDuration);
+		expect(await YieldPool.getMaxStakeDuration()).to.be.equal(oldMaxDuration);
 
-		await expect(YieldPoolV2.updateYieldParameters(15, 2, 365))
-			.to.emit(YieldPoolV2, "YieldParametersUpdated")
+		await expect(YieldPool.updateYieldParameters(15, 2, 365))
+			.to.emit(YieldPool, "YieldParametersUpdated")
 			.withArgs(15, 2, 365);
 
-		expect(await YieldPoolV2.getYieldRate()).to.be.equal(15);
-		expect(await YieldPoolV2.getMinStakeDuration()).to.be.equal(2);
-		expect(await YieldPoolV2.getMaxStakeDuration()).to.be.equal(365);
+		expect(await YieldPool.getYieldRate()).to.be.equal(15);
+		expect(await YieldPool.getMinStakeDuration()).to.be.equal(2);
+		expect(await YieldPool.getMaxStakeDuration()).to.be.equal(365);
 	});
 
 	it("Throws an error if deposit token param is not acceptable", async () => {
-		await YieldTokenV2.mint(owner, amount);
-		await YieldTokenV2.approve(YieldPoolV2, amount);
+		await YieldToken.mint(owner, amount);
+		await YieldToken.approve(YieldPool, amount);
 		await expect(
-			YieldPoolV2.deposit(otherAccount, amount, duration)
+			YieldPool.deposit(otherAccount, amount, duration)
 		).to.be.revertedWith("We do not support the tokens you're staking");
 	});
 	it("Throws an error if amount is not greater than zero", async () => {
-		await YieldTokenV2.approve(YieldPoolV2, 0);
+		await YieldToken.approve(YieldPool, 0);
 		await expect(
-			YieldPoolV2.deposit(YieldTokenV2, 0, duration)
+			YieldPool.deposit(YieldToken, 0, duration)
 		).to.be.revertedWith("Amount must be greater than 0");
 	});
 	it("Throws an error if duration is less than required minimum or is more than required maximum duration", async () => {
-		await YieldTokenV2.mint(owner, amount);
-		await YieldTokenV2.approve(YieldPoolV2, amount);
+		await YieldToken.mint(owner, amount);
+		await YieldToken.approve(YieldPool, amount);
 		await expect(
-			YieldPoolV2.deposit(YieldTokenV2, amount, 0)
+			YieldPool.deposit(YieldToken, amount, 0)
 		).to.be.revertedWith("Invalid duration");
 		await expect(
-			YieldPoolV2.deposit(YieldTokenV2, amount, 365)
+			YieldPool.deposit(YieldToken, amount, 365)
 		).to.be.revertedWith("Invalid duration");
 	});
 
 	it("successfully deposits", async () => {
-		await YieldTokenV2.mint(owner, amount);
-		await YieldTokenV2.approve(YieldPoolV2, amount);
-		await expect(YieldPoolV2.deposit(YieldTokenV2, amount, duration))
-			.to.emit(YieldPoolV2, "Deposited")
-			.withArgs(owner, YieldTokenV2, amount, duration);
+		await YieldToken.mint(owner, amount);
+		await YieldToken.approve(YieldPool, amount);
+		await expect(YieldPool.deposit(YieldToken, amount, duration))
+			.to.emit(YieldPool, "Deposited")
+			.withArgs(owner, YieldToken, amount, duration);
 	});
 
 	it("reverts when token is not acceptable", async () => {
-		await yieldToken.mint(owner, amount);
-		await yieldToken.approve(YieldPoolV2, amount);
+		// Deploy a new token that is not allowed
+		const AnotherTokenFactory = await hre.ethers.getContractFactory("YieldToken");
+		const AnotherToken = await AnotherTokenFactory.deploy(owner, "AnotherToken", "ATK");
+
+		await AnotherToken.mint(owner, amount);
+		await AnotherToken.approve(YieldPool, amount);
+
 		await expect(
-			YieldPoolV2.deposit(yieldToken, amount, duration)
+			YieldPool.deposit(AnotherToken, amount, duration)
 		).to.be.revertedWith("We do not support the tokens you're staking");
 	});
 
 	it("successfully gets user balances", async () => {
-		await YieldTokenV2.mint(owner, amount);
-		await YieldTokenV2.approve(YieldPoolV2, amount);
-		await expect(YieldPoolV2.deposit(YieldTokenV2, amount, duration))
-			.to.emit(YieldPoolV2, "Deposited")
-			.withArgs(owner, YieldTokenV2, amount, duration);
+		await YieldToken.mint(owner, amount);
+		await YieldToken.approve(YieldPool, amount);
+		await expect(YieldPool.deposit(YieldToken, amount, duration))
+			.to.emit(YieldPool, "Deposited")
+			.withArgs(owner, YieldToken, amount, duration);
 
 		expect(
-			(await YieldPoolV2.getUserTokenBalances()).balances[0].toString()
+			(await YieldPool.getUserTokenBalances()).balances[0].toString()
 		).to.be.equal(amount.toString());
 		expect(
-			(await YieldPoolV2.getUserTokenBalances()).tokens[0].toString()
-		).to.be.equal(YieldTokenV2);
+			(await YieldPool.getUserTokenBalances()).tokens[0].toString()
+		).to.be.equal(YieldToken);
 
 		//deposit some new tokens
-		await YieldPoolV2.addAllowedTokens(yieldToken);
-		await yieldToken.mint(owner, BigInt(Number(amount) * 2));
-		await yieldToken.approve(YieldPoolV2, BigInt(Number(amount) * 2));
+		await YieldToken.mint(owner, BigInt(Number(amount) * 2));
+		await YieldToken.approve(YieldPool, BigInt(Number(amount) * 2));
 
 		await expect(
-			YieldPoolV2.deposit(yieldToken, BigInt(Number(amount) * 2), duration)
+			YieldPool.deposit(YieldToken, BigInt(Number(amount) * 2), duration)
 		)
-			.to.emit(YieldPoolV2, "Deposited")
-			.withArgs(owner, yieldToken, BigInt(Number(amount) * 2), duration);
+			.to.emit(YieldPool, "Deposited")
+			.withArgs(owner, YieldToken, BigInt(Number(amount) * 2), duration);
 
+
+			const userBalances = await YieldPool.getUserTokenBalances();
+			
 		expect(
-			(await YieldPoolV2.getUserTokenBalances()).balances[1].toString()
-		).to.be.equal((await YieldPoolV2.getUserTokenBalances()).balances[1]);
+			userBalances.balances[0].toString(),
+		).to.be.equal(userBalances.balances[0].toString());
 		expect(
-			(await YieldPoolV2.getUserTokenBalances()).tokens[1].toString()
-		).to.be.equal(yieldToken);
+			userBalances.tokens[0].toString()
+		).to.be.equal(YieldToken);
 	});
 
 	it("successfully allows tokens", async () => {
-		const allowedTokens = await YieldPoolV2.getAllowedTokens();
-		expect(allowedTokens).to.include(await YieldTokenV2.getAddress());
+		const allowedTokens = await YieldPool.getAllowedTokens();
+
+		const AnotherTokenFactory = await hre.ethers.getContractFactory("YieldToken");
+		const AnotherToken = await AnotherTokenFactory.deploy(owner, "AnotherToken", "ATK");
+
+		expect(allowedTokens).to.include(await YieldToken.getAddress());
 		expect(
-			await YieldPoolV2.isTokenAllowed(await YieldTokenV2.getAddress())
+			await YieldPool.isTokenAllowed(await YieldToken.getAddress())
 		).to.be.equals(true);
-		expect(allowedTokens).to.not.include(await yieldToken.getAddress());
+		
+		expect(allowedTokens).to.not.include(await AnotherToken.getAddress());
 		expect(
-			await YieldPoolV2.isTokenAllowed(await yieldToken.getAddress())
+			await YieldPool.isTokenAllowed(await AnotherToken.getAddress())
 		).to.be.equals(false);
 
 		//setAllowedToken
-		await YieldPoolV2.addAllowedTokens(await yieldToken.getAddress());
-		expect(await YieldPoolV2.getAllowedTokens()).to.include(
-			await yieldToken.getAddress()
+		await YieldPool.addAllowedTokens(await AnotherToken.getAddress());
+		expect(await YieldPool.getAllowedTokens()).to.include(
+			await AnotherToken.getAddress()
 		);
 		expect(
-			await YieldPoolV2.isTokenAllowed(await yieldToken.getAddress())
+			await YieldPool.isTokenAllowed(await AnotherToken.getAddress())
 		).to.be.equals(true);
-		await YieldPoolV2.removeAllowedToken(await YieldTokenV2.getAddress());
-		expect(await YieldPoolV2.getAllowedTokens()).to.not.include(
-			await YieldTokenV2.getAddress()
+		await YieldPool.removeAllowedToken(await AnotherToken.getAddress());
+		expect(await YieldPool.getAllowedTokens()).to.not.include(
+			await AnotherToken.getAddress()
 		);
 		expect(
-			await YieldPoolV2.isTokenAllowed(await YieldTokenV2.getAddress())
+			await YieldPool.isTokenAllowed(await AnotherToken.getAddress())
 		).to.be.equals(false);
 
-		//modify allowedTokens
-		await YieldPoolV2.modifyAllowedTokens(yieldToken, false);
-		expect(await YieldPoolV2.getAllowedTokens()).to.deep.equal([]);
+		// //modify allowedTokens
+		await YieldPool.modifyAllowedTokens(AnotherToken, false);
+		await YieldPool.modifyAllowedTokens(YieldToken, false);
+		expect(await YieldPool.getAllowedTokens()).to.deep.equal([]);
 	});
 
 	it("Get user positions", async () => {
-		await YieldTokenV2.mint(owner, amount);
-		await YieldTokenV2.approve(YieldPoolV2, amount);
-		await YieldPoolV2.deposit(YieldTokenV2, amount, duration);
+		await YieldToken.mint(owner, amount);
+		await YieldToken.approve(YieldPool, amount);
+		await YieldPool.deposit(YieldToken, amount, duration);
 
-		const positions = await YieldPoolV2.getPosition(1);
+		const positions = await YieldPool.getPosition(1);
 		expect(positions.amount).to.be.equal(amount);
 		expect(positions.lockDuration).to.be.equal(duration);
 	});
 	it("reverts when position is not found", async () => {
-		await YieldTokenV2.mint(owner, amount);
-		await YieldTokenV2.approve(YieldPoolV2, amount);
-		await YieldPoolV2.deposit(YieldTokenV2, amount, duration);
+		await YieldToken.mint(owner, amount);
+		await YieldToken.approve(YieldPool, amount);
+		await YieldPool.deposit(YieldToken, amount, duration);
 
-		await expect(YieldPoolV2.getPosition(2)).to.be.revertedWith(
+		await expect(YieldPool.getPosition(2)).to.be.revertedWith(
 			"Position does not exist"
 		);
 	});
 
 	it("gets total stakers", async () => {
-		await YieldTokenV2.mint(owner, amount);
-		await YieldTokenV2.approve(YieldPoolV2, amount);
-		await expect(YieldPoolV2.deposit(YieldTokenV2, amount, duration))
-			.to.emit(YieldPoolV2, "Deposited")
-			.withArgs(owner, YieldTokenV2, amount, duration);
+		await YieldToken.mint(owner, amount);
+		await YieldToken.approve(YieldPool, amount);
+		await expect(YieldPool.deposit(YieldToken, amount, duration))
+		.to.emit(YieldPool, "Deposited")
+		.withArgs(owner, YieldToken, amount, duration);
+		
+		expect(await YieldPool.getTotalStakers()).to.be.equal(1);
+		const AnotherTokenFactory = await hre.ethers.getContractFactory("YieldToken");
+		const AnotherToken = await AnotherTokenFactory.deploy(owner, "AnotherToken", "ATK");
 
-		expect(await YieldPoolV2.getTotalStakers()).to.be.equal(1);
+		await AnotherToken.mint(otherAccount, amount);
+		await AnotherToken.connect(otherAccount).approve(YieldPool, amount);
+		await YieldPool.addAllowedTokens(await AnotherToken.getAddress());
 
-		await yieldToken.mint(otherAccount, amount);
-		await yieldToken.connect(otherAccount).approve(YieldPoolV2, amount);
-		await YieldPoolV2.addAllowedTokens(await yieldToken.getAddress());
 
-		await expect(
-			YieldPoolV2.connect(otherAccount).deposit(yieldToken, amount, duration) //connect another user so count wont be the same
+		 expect(
+			await YieldPool.connect(otherAccount).deposit(AnotherToken, amount, duration) //connect another user so count wont be the same
 		)
-			.to.emit(YieldPoolV2, "Deposited")
-			.withArgs(otherAccount, yieldToken, amount, duration);
+			.to.emit(YieldPool, "Deposited")
+			.withArgs(otherAccount, AnotherToken, amount, duration);
 
-		expect(await YieldPoolV2.getTotalStakers()).to.be.equal(2);
+		expect(await YieldPool.getTotalStakers()).to.be.equal(2);
 	});
 
 	it("get total value locked", async () => {
-		await YieldTokenV2.mint(owner, amount);
-		await YieldTokenV2.approve(YieldPoolV2, amount);
-		await expect(YieldPoolV2.deposit(YieldTokenV2, amount, duration))
-			.to.emit(YieldPoolV2, "Deposited")
-			.withArgs(owner, YieldTokenV2, amount, duration);
+		await YieldToken.mint(owner, amount);
+		await YieldToken.approve(YieldPool, amount);
+		await expect(YieldPool.deposit(YieldToken, amount, duration))
+			.to.emit(YieldPool, "Deposited")
+			.withArgs(owner, YieldToken, amount, duration);
 
-		expect(await YieldPoolV2.getTotalStakers()).to.be.equal(1);
+		expect(await YieldPool.getTotalStakers()).to.be.equal(1);
 
-		await yieldToken.mint(otherAccount, amount);
-		await yieldToken.connect(otherAccount).approve(YieldPoolV2, amount);
-		await YieldPoolV2.addAllowedTokens(await yieldToken.getAddress());
+		await YieldToken.mint(otherAccount, amount);
+		await YieldToken.connect(otherAccount).approve(YieldPool, amount);
 
 		await expect(
-			YieldPoolV2.connect(otherAccount).deposit(yieldToken, amount, duration) //connect another user so count wont be the same
+			YieldPool.connect(otherAccount).deposit(YieldToken, amount, duration) //connect another user so count wont be the same
 		)
-			.to.emit(YieldPoolV2, "Deposited")
-			.withArgs(otherAccount, yieldToken, amount, duration);
+			.to.emit(YieldPool, "Deposited")
+			.withArgs(otherAccount, YieldToken, amount, duration);
 
-		expect(await YieldPoolV2.getTotalStakers()).to.be.equal(2);
-		expect(await YieldPoolV2.getTotalValueLocked()).to.be.equal(
+		expect(await YieldPool.getTotalStakers()).to.be.equal(2);
+		expect(await YieldPool.getTotalValueLocked()).to.be.equal(
 			hre.ethers.parseUnits("20000000", 18)
 		);
 	});
@@ -333,43 +293,42 @@ describe("YieldPoolV2 Proxy", async function () {
 			BigInt(31536000 * 100);
 
 		expect(
-			await YieldPoolV2.calculateExpectedYield(amount, duration)
+			await YieldPool.calculateExpectedYield(amount, duration)
 		).to.be.equal(expectedYield);
 	});
 
 	it("does not allow withdrawal when token is still locked", async () => {
-		await YieldTokenV2.mint(owner, amount);
-		await YieldTokenV2.approve(YieldPoolV2, amount);
+		await YieldToken.mint(owner, amount);
+		await YieldToken.approve(YieldPool, amount);
 
-		await expect(YieldPoolV2.deposit(YieldTokenV2, amount, duration))
-			.to.emit(YieldPoolV2, "Deposited")
-			.withArgs(owner, YieldTokenV2, amount, duration);
-		const userPosition1 = await YieldPoolV2.getPosition(1);
-		await expect(YieldPoolV2.withdraw(userPosition1.id)).to.revertedWith(
+		await expect(YieldPool.deposit(YieldToken, amount, duration))
+			.to.emit(YieldPool, "Deposited")
+			.withArgs(owner, YieldToken, amount, duration);
+		const userPosition1 = await YieldPool.getPosition(1);
+		await expect(YieldPool.withdraw(userPosition1.id)).to.revertedWith(
 			"Still locked"
 		);
 	});
 	it("successfully withdraw", async () => {
-		await YieldTokenV2.mint(owner, 10);
-		await YieldTokenV2.approve(YieldPoolV2, 10);
-		await expect(YieldPoolV2.deposit(YieldTokenV2, 10, duration))
-			.to.emit(YieldPoolV2, "Deposited")
-			.withArgs(owner, YieldTokenV2, 10, duration);
+		await YieldToken.mint(owner, 10);
+		await YieldToken.approve(YieldPool, 10);
+		await expect(YieldPool.deposit(YieldToken, 10, duration))
+			.to.emit(YieldPool, "Deposited")
+			.withArgs(owner, YieldToken, 10, duration);
 
-		expect(await YieldPoolV2.getTotalStakers()).to.be.equal(1);
+		expect(await YieldPool.getTotalStakers()).to.be.equal(1);
 
-		await yieldToken.mint(otherAccount, 10);
-		await yieldToken.connect(otherAccount).approve(YieldPoolV2, 10);
-		await YieldPoolV2.addAllowedTokens(await yieldToken.getAddress());
+		await YieldToken.mint(otherAccount, 10);
+		await YieldToken.connect(otherAccount).approve(YieldPool, 10);
 
 		await expect(
-			YieldPoolV2.connect(otherAccount).deposit(yieldToken, 10, duration) //connect another user so count wont be the same
+			YieldPool.connect(otherAccount).deposit(YieldToken, 10, duration) //connect another user so count wont be the same
 		)
-			.to.emit(YieldPoolV2, "Deposited")
-			.withArgs(otherAccount, yieldToken, 10, duration);
+			.to.emit(YieldPool, "Deposited")
+			.withArgs(otherAccount, YieldToken, 10, duration);
 
-		expect(await YieldPoolV2.getTotalStakers()).to.be.equal(2);
-		const userPosition1 = await YieldPoolV2.getPosition(1);
+		expect(await YieldPool.getTotalStakers()).to.be.equal(2);
+		const userPosition1 = await YieldPool.getPosition(1);
 
 		//calculate yieldAmount
 		const expectedYield =
@@ -379,63 +338,61 @@ describe("YieldPoolV2 Proxy", async function () {
 		// Fast forward time to after the lock duration
 		await hre.network.provider.send("evm_increaseTime", [duration]);
 
-		await expect(YieldPoolV2.withdraw(userPosition1.id))
-			.to.emit(YieldPoolV2, "Withdrawn")
-			.withArgs(owner, YieldTokenV2, BigInt(10) + expectedYield, expectedYield);
+		await expect(YieldPool.withdraw(userPosition1.id))
+			.to.emit(YieldPool, "Withdrawn")
+			.withArgs(owner, YieldToken, BigInt(10) + expectedYield, expectedYield);
 	});
 	//test for insufficient balance in pool
 
 	it("reverts when user tries to withdraw a position he does not own", async () => {
-		await YieldTokenV2.mint(owner, 10);
-		await YieldTokenV2.approve(YieldPoolV2, 10);
-		await expect(YieldPoolV2.deposit(YieldTokenV2, 10, duration))
-			.to.emit(YieldPoolV2, "Deposited")
-			.withArgs(owner, YieldTokenV2, 10, duration);
+		await YieldToken.mint(owner, 10);
+		await YieldToken.approve(YieldPool, 10);
+		await expect(YieldPool.deposit(YieldToken, 10, duration))
+			.to.emit(YieldPool, "Deposited")
+			.withArgs(owner, YieldToken, 10, duration);
 
-		expect(await YieldPoolV2.getTotalStakers()).to.be.equal(1);
+		expect(await YieldPool.getTotalStakers()).to.be.equal(1);
 
-		await yieldToken.mint(otherAccount, 10);
-		await yieldToken.connect(otherAccount).approve(YieldPoolV2, 10);
-		await YieldPoolV2.addAllowedTokens(await yieldToken.getAddress());
+		await YieldToken.mint(otherAccount, 10);
+		await YieldToken.connect(otherAccount).approve(YieldPool, 10);
 
 		await expect(
-			YieldPoolV2.connect(otherAccount).deposit(yieldToken, 10, duration) //connect another user so count wont be the same
+			YieldPool.connect(otherAccount).deposit(YieldToken, 10, duration) //connect another user so count wont be the same
 		)
-			.to.emit(YieldPoolV2, "Deposited")
-			.withArgs(otherAccount, yieldToken, 10, duration);
+			.to.emit(YieldPool, "Deposited")
+			.withArgs(otherAccount, YieldToken, 10, duration);
 
-		expect(await YieldPoolV2.getTotalStakers()).to.be.equal(2);
-		const userPosition2 = await YieldPoolV2.getPosition(2);
+		expect(await YieldPool.getTotalStakers()).to.be.equal(2);
+		const userPosition2 = await YieldPool.getPosition(2);
 
 		// Fast forward time to after the lock duration
 		await hre.network.provider.send("evm_increaseTime", [duration]);
 
-		await expect(YieldPoolV2.withdraw(userPosition2.id)).to.revertedWith(
+		await expect(YieldPool.withdraw(userPosition2.id)).to.revertedWith(
 			"You are not the owner of this position"
 		);
 	});
 
 	it("reverts when position has already been withdrawn", async () => {
-		await YieldTokenV2.mint(owner, 10);
-		await YieldTokenV2.approve(YieldPoolV2, 10);
-		await expect(YieldPoolV2.deposit(YieldTokenV2, 10, duration))
-			.to.emit(YieldPoolV2, "Deposited")
-			.withArgs(owner, YieldTokenV2, 10, duration);
+		await YieldToken.mint(owner, 10);
+		await YieldToken.approve(YieldPool, 10);
+		await expect(YieldPool.deposit(YieldToken, 10, duration))
+			.to.emit(YieldPool, "Deposited")
+			.withArgs(owner, YieldToken, 10, duration);
 
-		expect(await YieldPoolV2.getTotalStakers()).to.be.equal(1);
+		expect(await YieldPool.getTotalStakers()).to.be.equal(1);
 
-		await yieldToken.mint(owner, 10);
-		await yieldToken.approve(YieldPoolV2, 10);
-		await YieldPoolV2.addAllowedTokens(await yieldToken.getAddress());
+		await YieldToken.mint(owner, 10);
+		await YieldToken.approve(YieldPool, 10);
 
 		await expect(
-			YieldPoolV2.deposit(yieldToken, 10, duration) //connect another user so count wont be the same
+			YieldPool.deposit(YieldToken, 10, duration) //connect another user so count wont be the same
 		)
-			.to.emit(YieldPoolV2, "Deposited")
-			.withArgs(owner, yieldToken, 10, duration);
+			.to.emit(YieldPool, "Deposited")
+			.withArgs(owner, YieldToken, 10, duration);
 
-		expect(await YieldPoolV2.getTotalStakers()).to.be.equal(1);
-		const userPosition1 = await YieldPoolV2.getPosition(1);
+		expect(await YieldPool.getTotalStakers()).to.be.equal(1);
+		const userPosition1 = await YieldPool.getPosition(1);
 
 		//calculate yieldAmount
 		const expectedYield =
@@ -445,62 +402,62 @@ describe("YieldPoolV2 Proxy", async function () {
 		// Fast forward time to after the lock duration
 		await hre.network.provider.send("evm_increaseTime", [duration]);
 
-		await expect(YieldPoolV2.withdraw(userPosition1.id))
-			.to.emit(YieldPoolV2, "Withdrawn")
-			.withArgs(owner, YieldTokenV2, BigInt(10) + expectedYield, expectedYield);
+		await expect(YieldPool.withdraw(userPosition1.id))
+			.to.emit(YieldPool, "Withdrawn")
+			.withArgs(owner, YieldToken, BigInt(10) + expectedYield, expectedYield);
 	});
 
 	it("fails to unstake if user is not position owner", async () => {
-		await YieldTokenV2.mint(owner, 10);
-		await YieldTokenV2.approve(YieldPoolV2, 10);
-		await expect(YieldPoolV2.deposit(YieldTokenV2, 10, duration))
-			.to.emit(YieldPoolV2, "Deposited")
-			.withArgs(owner, YieldTokenV2, 10, duration);
+		await YieldToken.mint(owner, 10);
+		await YieldToken.approve(YieldPool, 10);
+		await expect(YieldPool.deposit(YieldToken, 10, duration))
+			.to.emit(YieldPool, "Deposited")
+			.withArgs(owner, YieldToken, 10, duration);
 
-		expect(await YieldPoolV2.getTotalStakers()).to.be.equal(1);
+		expect(await YieldPool.getTotalStakers()).to.be.equal(1);
 
-		const userPosition1 = await YieldPoolV2.getPosition(1);
+		const userPosition1 = await YieldPool.getPosition(1);
 
 		await expect(
-			YieldPoolV2.connect(otherAccount).unstake(userPosition1.id)
+			YieldPool.connect(otherAccount).unstake(userPosition1.id)
 		).to.be.revertedWith("Not position owner");
 	});
 
 	it("fails to unstake if position does not exist", async () => {
-		await YieldTokenV2.mint(owner, 10);
-		await YieldTokenV2.approve(YieldPoolV2, 10);
+		await YieldToken.mint(owner, 10);
+		await YieldToken.approve(YieldPool, 10);
 
 		await expect(
-			YieldPoolV2.deposit(YieldTokenV2, 10, duration) //connect another user so count wont be the same
+			YieldPool.deposit(YieldToken, 10, duration) //connect another user so count wont be the same
 		)
-			.to.emit(YieldPoolV2, "Deposited")
-			.withArgs(owner, YieldTokenV2, 10, duration);
+			.to.emit(YieldPool, "Deposited")
+			.withArgs(owner, YieldToken, 10, duration);
 
-		expect(await YieldPoolV2.getTotalStakers()).to.be.equal(1);
+		expect(await YieldPool.getTotalStakers()).to.be.equal(1);
 
-		await expect(YieldPoolV2.unstake(2)).to.be.revertedWith(
+		await expect(YieldPool.unstake(2)).to.be.revertedWith(
 			"Not position owner"
 		);
 	});
 
 	it("successfully incur 10% penalty when users unstake", async () => {
-		await YieldTokenV2.mint(owner, 10);
-		await YieldTokenV2.approve(YieldPoolV2, 10);
+		await YieldToken.mint(owner, 10);
+		await YieldToken.approve(YieldPool, 10);
 
 		await expect(
-			YieldPoolV2.deposit(YieldTokenV2, 10, duration) //connect another user so count wont be the same
+			YieldPool.deposit(YieldToken, 10, duration) //connect another user so count wont be the same
 		)
-			.to.emit(YieldPoolV2, "Deposited")
-			.withArgs(owner, YieldTokenV2, 10, duration);
+			.to.emit(YieldPool, "Deposited")
+			.withArgs(owner, YieldToken, 10, duration);
 
-		const userPosition1 = await YieldPoolV2.getPosition(1);
+		const userPosition1 = await YieldPool.getPosition(1);
 		const penalty = userPosition1.amount / BigInt(10);
 		const amountToReturn = userPosition1.amount - penalty;
 
-		await yieldToken.approve(YieldPoolV2, penalty);
+		await YieldToken.approve(YieldPool, penalty);
 
-		await expect(YieldPoolV2.unstake(userPosition1.id))
-			.to.emit(YieldPoolV2, "Withdrawn")
-			.withArgs(owner, YieldTokenV2, amountToReturn, 0);
+		await expect(YieldPool.unstake(userPosition1.id))
+			.to.emit(YieldPool, "Withdrawn")
+			.withArgs(owner, YieldToken, amountToReturn, 0);
 	});
 });

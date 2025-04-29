@@ -11,8 +11,6 @@ import "./YieldToken.sol";
  * @dev manages deposits and yield generation
  */
 
-
-
 contract YieldPool is ReentrancyGuard {
     using SafeERC20 for IERC20;
     // State variables that can be configured in initializer
@@ -49,7 +47,7 @@ contract YieldPool is ReentrancyGuard {
     mapping(uint256 => address) private positionOwners;
     address owner = msg.sender;
 
-    modifier onlyOwner{
+    modifier onlyOwner() {
         require(msg.sender == owner, "Not the contract owner");
         _;
     }
@@ -80,7 +78,6 @@ contract YieldPool is ReentrancyGuard {
         uint256 _minDuration,
         uint256 _maxDuration
     ) {
-
         // Initialize configurable parameters
         yieldRate = _yieldRate;
         minDuration = _minDuration;
@@ -289,7 +286,7 @@ contract YieldPool is ReentrancyGuard {
     function getPosition(
         uint256 positionId
     ) external view returns (Position memory) {
-         address positionOwner = positionOwners[positionId];
+        address positionOwner = positionOwners[positionId];
         require(positionOwner != address(0), "Position does not exist");
 
         Position[] memory userPositions = positions[positionOwner];

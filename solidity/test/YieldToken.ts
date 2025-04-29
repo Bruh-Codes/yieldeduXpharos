@@ -2,25 +2,21 @@ import { expect } from "chai";
 import hre from "hardhat";
 import { SignerWithAddress } from "@nomicfoundation/hardhat-ethers/signers";
 import {
-	ProxyAdmin,
-	ProxyAdmin__factory,
-	YieldPoolV2,
-	YieldPoolV2__factory,
-	YieldTokenV2,
-	YieldTokenV2__factory,
+	YieldPool,
+	YieldPool__factory,
+	YieldToken,
+	YieldToken__factory,
 } from "../typechain-types";
 
-describe("YieldTokenV2 proxy", async () => {
-	let yieldTokenV2Factory: YieldTokenV2__factory;
-	let ProxyAdminFactory: ProxyAdmin__factory;
-	let YieldTokenV2: YieldTokenV2;
-	let YieldPoolV2: YieldPoolV2;
-	let YieldPoolV2Factory: YieldPoolV2__factory;
+describe("YieldToken proxy", async () => {
+	let yieldTokenFactory: YieldToken__factory;
+	let YieldToken: YieldToken;
+	let YieldPool: YieldPool;
+	let YieldPoolFactory: YieldPool__factory;
 
 	let owner: SignerWithAddress;
 	let otherAccount: SignerWithAddress;
 	let otherAccount2: SignerWithAddress;
-	let ProxyAdmin: ProxyAdmin;
 	const amount = hre.ethers.parseUnits("10000000", 18);
 
 	const tokenName = "YieldEDU";
@@ -32,154 +28,112 @@ describe("YieldTokenV2 proxy", async () => {
 
 	beforeEach(async () => {
 		[owner, otherAccount, otherAccount2] = await hre.ethers.getSigners();
-		yieldTokenV2Factory = await hre.ethers.getContractFactory("YieldTokenV2");
-		ProxyAdminFactory = await hre.ethers.getContractFactory("ProxyAdmin");
-		YieldPoolV2Factory = await hre.ethers.getContractFactory("YieldPoolV2");
+		yieldTokenFactory = await hre.ethers.getContractFactory("YieldToken");
+		YieldPoolFactory = await hre.ethers.getContractFactory("YieldPool");
 
-		YieldTokenV2 = await yieldTokenV2Factory.deploy();
-		YieldPoolV2 = await YieldPoolV2Factory.deploy();
+		YieldToken = await yieldTokenFactory.deploy(owner,tokenName,tokenSymbol);
+		YieldPool = await YieldPoolFactory.deploy(await YieldToken.getAddress(),yieldRate,minDuration,maxDuration);
 
-		// Deploy ProxyAdmin
-		ProxyAdmin = await ProxyAdminFactory.deploy(owner.address);
-
-		const TransparentUpgradeableProxy = await hre.ethers.getContractFactory(
-			"TransparentUpgradeableProxy"
-		);
-
-		//  deploy YieldToken proxy
-		const YieldTokenProxy = await TransparentUpgradeableProxy.deploy(
-			await YieldTokenV2.getAddress(),
-			await ProxyAdmin.getAddress(),
-			YieldTokenV2.interface.encodeFunctionData("initialize", [
-				tokenName,
-				tokenSymbol,
-				owner.address,
-			])
-		);
-
-		// deploy YieldPool proxy with proxied YieldTokenV2 address
-		const YieldPoolProxy = await TransparentUpgradeableProxy.connect(
-			owner
-		).deploy(
-			await YieldPoolV2.getAddress(),
-			await ProxyAdmin.getAddress(),
-			YieldPoolV2.interface.encodeFunctionData("initialize", [
-				await YieldTokenV2.getAddress(),
-				yieldRate,
-				minDuration,
-				maxDuration,
-			])
-		);
-
-		// Get YieldPoolV2 proxied instance
-		YieldPoolV2 = YieldPoolV2Factory.attach(
-			await YieldPoolProxy.getAddress()
-		) as YieldPoolV2;
-
-		// Get YieldTokenV2 proxied instance first
-		YieldTokenV2 = yieldTokenV2Factory.attach(
-			await YieldTokenProxy.getAddress()
-		) as YieldTokenV2;
 	});
 
 	it("setMinter should revert if not called by owner", async () => {
 		await expect(
-			YieldTokenV2.connect(otherAccount).setMinter(otherAccount.address, true)
-		).to.be.revertedWithCustomError(YieldTokenV2, "OwnableUnauthorizedAccount");
+			YieldToken.connect(otherAccount).setMinter(otherAccount.address, true)
+		).to.be.revertedWithCustomError(YieldToken, "OwnableUnauthorizedAccount");
 	});
 
 	it("successfully sets a minter", async () => {
-		await expect(YieldTokenV2.setMinter(otherAccount.address, true))
-			.to.emit(YieldTokenV2, "MinterSet")
+		await expect(YieldToken.setMinter(otherAccount.address, true))
+			.to.emit(YieldToken, "MinterSet")
 			.withArgs(otherAccount, true);
 	});
 
 	it("reverts when address is not a minter", async () => {
-		await expect(YieldTokenV2.setMinter(otherAccount.address, true))
-			.to.emit(YieldTokenV2, "MinterSet")
+		await expect(YieldToken.setMinter(otherAccount.address, true))
+			.to.emit(YieldToken, "MinterSet")
 			.withArgs(otherAccount, true);
 
-		await expect(YieldTokenV2.removeMinter(otherAccount2)).to.be.revertedWith(
+		await expect(YieldToken.removeMinter(otherAccount2)).to.be.revertedWith(
 			"Address is not a minter"
 		);
 	});
 	it("successfully removes a minter", async () => {
-		await expect(YieldTokenV2.setMinter(otherAccount.address, true))
-			.to.emit(YieldTokenV2, "MinterSet")
+		await expect(YieldToken.setMinter(otherAccount.address, true))
+			.to.emit(YieldToken, "MinterSet")
 			.withArgs(otherAccount, true);
 
-		await expect(YieldTokenV2.removeMinter(otherAccount))
-			.to.emit(YieldTokenV2, "MinterSet")
+		await expect(YieldToken.removeMinter(otherAccount))
+			.to.emit(YieldToken, "MinterSet")
 			.withArgs(otherAccount, false);
-		await expect(YieldTokenV2.removeMinter(otherAccount2)).to.be.revertedWith(
+		await expect(YieldToken.removeMinter(otherAccount2)).to.be.revertedWith(
 			"Address is not a minter"
 		);
 	});
 
 	it("successfully get minters", async () => {
-		await expect(YieldTokenV2.setMinter(otherAccount.address, true))
-			.to.emit(YieldTokenV2, "MinterSet")
+		await expect(YieldToken.setMinter(otherAccount.address, true))
+			.to.emit(YieldToken, "MinterSet")
 			.withArgs(otherAccount, true);
 
-		expect(await YieldTokenV2.getMinters()).to.include(otherAccount.address);
+		expect(await YieldToken.getMinters()).to.include(otherAccount.address);
 	});
 
 	it("allows only owner to mint", async () => {
 		await expect(
-			YieldTokenV2.connect(otherAccount).mint(otherAccount2, amount)
-		).to.be.revertedWithCustomError(YieldTokenV2, "UnauthorizedMinter");
+			YieldToken.connect(otherAccount).mint(otherAccount2, amount)
+		).to.be.revertedWithCustomError(YieldToken, "UnauthorizedMinter");
 	});
 
 	it("successfully mints to an address", async () => {
-		await expect(YieldTokenV2.mint(otherAccount2, amount))
-			.to.emit(YieldTokenV2, "TokensMinted")
+		await expect(YieldToken.mint(otherAccount2, amount))
+			.to.emit(YieldToken, "TokensMinted")
 			.withArgs(otherAccount2, amount, owner);
 	});
 
 	it("reverts when mint to pool by an unauthorized owner", async () => {
 		await expect(
-			YieldTokenV2.connect(otherAccount).mintToPool(
-				await YieldTokenV2.getAddress()
+			YieldToken.connect(otherAccount).mintToPool(
+				await YieldToken.getAddress()
 			)
 		)
-			.to.revertedWithCustomError(YieldTokenV2, "OwnableUnauthorizedAccount")
+			.to.revertedWithCustomError(YieldToken, "OwnableUnauthorizedAccount")
 			.withArgs(otherAccount);
 	});
 	it("successfully min to pool by authorized owner", async () => {
-		await expect(YieldTokenV2.mintToPool(await YieldPoolV2.getAddress()))
-			.to.emit(YieldTokenV2, "TokensMinted")
-			.withArgs(YieldPoolV2, amount, owner);
+		await expect(YieldToken.mintToPool(await YieldPool.getAddress()))
+			.to.emit(YieldToken, "TokensMinted")
+			.withArgs(YieldPool, amount, owner);
 
-		expect(await YieldTokenV2.balanceOf(YieldPoolV2)).to.be.equals(amount);
+		expect(await YieldToken.balanceOf(YieldPool)).to.be.equals(amount);
 	});
 
 	it("should manage student status correctly", async () => {
-		expect(await YieldTokenV2.getIsStudent(otherAccount)).to.be.equals(false);
+		expect(await YieldToken.getIsStudent(otherAccount)).to.be.equals(false);
 
-		await YieldTokenV2.setStudentStatus(otherAccount, true);
-		expect(await YieldTokenV2.getIsStudent(otherAccount)).to.be.equals(true);
+		await YieldToken.setStudentStatus(otherAccount, true);
+		expect(await YieldToken.getIsStudent(otherAccount)).to.be.equals(true);
 
-		expect(await YieldTokenV2.getIsStudent(owner)).to.be.equals(false);
-		expect(await YieldTokenV2.getIsStudent(owner)).to.be.equals(false);
+		expect(await YieldToken.getIsStudent(owner)).to.be.equals(false);
+		expect(await YieldToken.getIsStudent(owner)).to.be.equals(false);
 	});
 
 	it("should revert if an unauthorized account tries to burn tokens", async () => {
-		await expect(YieldTokenV2.mintToPool(await YieldPoolV2.getAddress()))
-			.to.emit(YieldTokenV2, "TokensMinted")
-			.withArgs(YieldPoolV2, amount, owner);
-		expect(await YieldTokenV2.balanceOf(YieldPoolV2)).to.be.equals(amount);
+		await expect(YieldToken.mintToPool(await YieldPool.getAddress()))
+			.to.emit(YieldToken, "TokensMinted")
+			.withArgs(YieldPool, amount, owner);
+		expect(await YieldToken.balanceOf(YieldPool)).to.be.equals(amount);
 
-		await expect(YieldTokenV2.connect(otherAccount).burn(YieldPoolV2, amount))
-			.to.be.revertedWithCustomError(YieldTokenV2, "OwnableUnauthorizedAccount")
+		await expect(YieldToken.connect(otherAccount).burn(YieldPool, amount))
+			.to.be.revertedWithCustomError(YieldToken, "OwnableUnauthorizedAccount")
 			.withArgs(otherAccount);
 	});
 
 	it("should burn tokens", async () => {
-		await expect(YieldTokenV2.mintToPool(await YieldPoolV2.getAddress()))
-			.to.emit(YieldTokenV2, "TokensMinted")
-			.withArgs(YieldPoolV2, amount, owner);
-		expect(await YieldTokenV2.balanceOf(YieldPoolV2)).to.be.equals(amount);
-		expect(await YieldTokenV2.burn(YieldPoolV2, amount));
-		expect(await YieldTokenV2.balanceOf(YieldPoolV2)).to.be.equals(0);
+		await expect(YieldToken.mintToPool(await YieldPool.getAddress()))
+			.to.emit(YieldToken, "TokensMinted")
+			.withArgs(YieldPool, amount, owner);
+		expect(await YieldToken.balanceOf(YieldPool)).to.be.equals(amount);
+		expect(await YieldToken.burn(YieldPool, amount));
+		expect(await YieldToken.balanceOf(YieldPool)).to.be.equals(0);
 	});
 });
