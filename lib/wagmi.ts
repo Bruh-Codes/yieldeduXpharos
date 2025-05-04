@@ -21,7 +21,7 @@ export const pharosTestnet = defineChain({
 	testnet: true,
 	rpcUrls: {
 		default: {
-			http: ["https://devnet.dplabs-internal.com/"],
+			http: ["/api/proxy"],
 		},
 	},
 	blockExplorers: {

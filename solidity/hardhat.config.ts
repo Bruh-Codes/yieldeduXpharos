@@ -39,6 +39,7 @@ const config = {
 		"pharos-testnet": {
 			url: "https://devnet.dplabs-internal.com",
 			accounts: [ACCOUNT_PRIVATE_KEY],
+			// gasPrice: 50_000_000_000, // 50 gwei
 		},
 	},
 
@@ -52,6 +53,8 @@ const config = {
 					apiURL: "",
 					browserURL: "https://pharosscan.xyz",
 				},
+				gas: 600000000, // Set the gas limit here
+				gasPrice:600000000,
 			},
 		],
 	},
