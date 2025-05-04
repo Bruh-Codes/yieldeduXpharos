@@ -30,7 +30,7 @@ import { useGetAllowedTokens, useGetBallance } from "@/hooks";
 
 const DashboardClientPage = () => {
 	const { address } = useAppKitAccount();
-	const { userPositions } = usePositions();
+	const { userPositions, positions } = usePositions();
 
 	const [modalType, setModalType] = useState<"withdraw" | "unstake" | null>(
 		null
@@ -182,13 +182,13 @@ const DashboardClientPage = () => {
 			<ActivePositions
 				setModalType={setModalType}
 				setShowWithDrawModal={setShowWithDrawModal}
-				positions={userPositions}
+				positions={positions}
 			/>
 			{/* <Performance /> */}
 
 			<WithdrawModal
 				modalType={modalType}
-				positions={userPositions}
+				positions={positions}
 				setShowWithDrawModal={setShowWithDrawModal}
 				showWithdrawModal={showWithdrawModal}
 			/>
