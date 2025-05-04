@@ -147,7 +147,6 @@ const PositionOverview = ({
 										<>
 											<CountDownTimer
 												setModalType={setModalType}
-												transaction_hash={userPosition?.transactionHash}
 												positionId={userPosition.id}
 												setShowWithDrawModal={setShowWithDrawModal}
 												isConnected={isConnected}
