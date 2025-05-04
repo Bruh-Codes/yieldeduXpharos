@@ -1,7 +1,7 @@
 // app/api/proxy/route.ts
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(req: NextRequest) {
+export async function GET() {
 	const url = "https://devnet.dplabs-internal.com";
 	const res = await fetch(url, {
 		headers: {
