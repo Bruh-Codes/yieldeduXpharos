@@ -37,14 +37,12 @@ const CountDownTimer = ({
 	isConnected,
 	setShowWithDrawModal,
 	positionId,
-	transaction_hash,
 	setModalType,
 }: {
 	startTime: number;
 	lockDuration: number;
 	isConnected: boolean;
 	positionId: string;
-	transaction_hash?: string;
 	setShowWithDrawModal: React.Dispatch<React.SetStateAction<boolean>>;
 	setModalType: React.Dispatch<
 		React.SetStateAction<"withdraw" | "unstake" | null>
@@ -109,9 +107,6 @@ const CountDownTimer = ({
 					>
 						Withdraw
 					</Button>
-					{transaction_hash && (
-						<ExploreTransactionButton transaction_hash={transaction_hash} />
-					)}
 				</div>
 			);
 		}

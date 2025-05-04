@@ -290,7 +290,6 @@ const ActivePositions = ({
 								<CountDownTimer
 									setModalType={setModalType}
 									positionId={row.original.id}
-									transaction_hash={row.original.transactionHash}
 									setShowWithDrawModal={setShowWithDrawModal}
 									isConnected={isConnected}
 									lockDuration={Number(row.original.lockDuration)}
