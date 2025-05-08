@@ -27,7 +27,7 @@ export const pharosTestnet = defineChain({
 	blockExplorers: {
 		default: {
 			name: "Pharos",
-			url: "https://pharosscan.xyz",
+			url: "https://devnet.pharosscan.xyz",
 		},
 	},
 });

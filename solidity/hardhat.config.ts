@@ -51,10 +51,10 @@ const config = {
 				network: "pharos-testnet",
 				urls: {
 					apiURL: "",
-					browserURL: "https://pharosscan.xyz",
+					browserURL: "https://devnet.pharosscan.xyz",
 				},
 				gas: 600000000, // Set the gas limit here
-				gasPrice:600000000,
+				gasPrice: 600000000,
 			},
 		],
 	},
